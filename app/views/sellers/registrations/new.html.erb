@@ -1,0 +1,62 @@
+<div class="container">
+  <div class ="row">
+
+    <div class="col-md-2 col-0">
+    </div>
+
+    <div class="col-md-8 col-12">
+
+      <h2 class="mt-5">新規登録フォーム</h2>
+      <p class="text-danger">ここは管理者側のみのアクセスできるページとする</p>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="form-group">
+          <%= f.label :company_name, "会社名" %>
+          <%= f.text_field :company_name, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :company_address, "会社住所" %>
+          <%= f.text_field :company_address, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :company_tell, "会社電話番号" %>
+          <%= f.text_field :company_tell, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :company_url, "会社Webサイト" %>
+          <%= f.text_field :company_url, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(最低<%= @minimum_password_length %> 文字)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation, "確認用に再度Passwordを入力して下さい。" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "新規登録", class:"btn btn-primary my-3" %>
+        </div>
+
+      <% end %>
+
+      <%= render "sellers/shared/links" %>
+
+    </div>
+
+    <div class="col-md-2 col-0">
+    </div>
+
+  </div>
+</div>

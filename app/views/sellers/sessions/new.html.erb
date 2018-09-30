@@ -1,0 +1,41 @@
+<div class="container">
+  <div class ="row">
+
+    <div class="col-md-2 col-0">
+    </div>
+
+    <div class="col-md-8 col-12">
+
+      <%= link_to "#", class:"dropdown-item mt-5" do %>
+      <strong>初めての企業様はこちらからご連絡ください。</strong>
+      <% end %>
+      <hr>
+
+
+      <h2>サインイン</h2>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "heyworld@heyworld.com" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me, "パスワードを記憶する" %>
+      </div>
+      <% end -%>
+
+      <div class="actions">
+        <%= f.submit "サインイン", class:"btn btn-primary my-3" %>
+      </div>
+
+      <% end %>
+
+      <%= render "sellers/shared/links" %>
