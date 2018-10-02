@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: auto_parts
+# Table name: autoparts
 #
 #  id         :bigint(8)        not null, primary key
 #  seller_id  :bigint(8)        not null
@@ -11,6 +11,6 @@
 #  updated_at :datetime         not null
 #
 
-class AutoPart < ApplicationRecord
+class Autopart < ApplicationRecord
   belongs_to :seller
 end

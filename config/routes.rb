@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root 'top#index'
+  resources :autoparts, only:[:index,:show]
 
   devise_for :sellers
 
