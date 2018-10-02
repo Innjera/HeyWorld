@@ -1,6 +1,6 @@
-class CreateParts < ActiveRecord::Migration[5.2]
+class CreateAutoParts < ActiveRecord::Migration[5.2]
   def change
-    create_table :parts do |t|
+    create_table :auto_parts do |t|
       t.references :seller, null: false
       t.string :car_brand
       t.string :category
