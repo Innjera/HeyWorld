@@ -17,8 +17,9 @@ ActiveRecord::Schema.define(version: 2018_10_02_172456) do
 
   create_table "autoparts", force: :cascade do |t|
     t.bigint "seller_id", null: false
-    t.string "car_brand"
-    t.string "category"
+    t.string "car_brand", null: false
+    t.string "car_model", null: false
+    t.string "category", null: false
     t.boolean "sold", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
