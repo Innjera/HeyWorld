@@ -1,0 +1,52 @@
+<div class="container">
+  <div class ="row">
+
+    <div class="col-md-2 col-0">
+    </div>
+
+    <div class="col-md-8 col-12">
+
+      <h2 class="my-4">
+        こちらよりご連絡ください。<br>
+        担当者より速やかにご連絡いたします。
+      </h2>
+
+      <%= form_for @new_seller_register_inquiry, url: :sellers_new_seller_register_inquiry_confirm do |f| %>
+
+        <div class="form-group">
+          <%= f.label :company_name, "会社名" %>
+          &nbsp;<span class="text-danger"><small>*入力必須</small></span>
+          <%= f.text_field :company_name, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :company_tell, "電話番号" %>
+          &nbsp;<span class="text-danger"><small>*入力必須</small></span>
+          <%= f.text_field :company_tell, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :company_url, "ホームページ" %>
+          <%= f.text_field :company_url, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email, "メールアドレス" %>
+          &nbsp;<span class="text-danger"><small>*入力必須</small></span>
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :contents, "備考" %>
+          <%= f.text_area :contents, rows: 5, autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "内容を確認する", class:"btn btn-primary my-3" %>
+        </div>
+
+      <% end %>
+
+    </div>
+
+    <div class="col-md-2 col-0">
+    </div>
+
+  </div>
+</div>

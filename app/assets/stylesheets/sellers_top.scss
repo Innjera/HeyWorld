@@ -1,8 +1,8 @@
 .sidebar {
   box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, .1);/* 線 */
-  position: fixed;/* sidebar部分のみ固定される */
+  // position: fixed;/* sidebar部分のみ固定される */
   .nav-item {
-    margin-top: 5px;
+    margin-top: 0.8rem;
   }
 }
 

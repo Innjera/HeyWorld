@@ -18,4 +18,11 @@ class Autopart < ApplicationRecord
   validates :car_brand, presence: true
   validates :category, presence: true
   validates :sold, presence: true
+
+  CARBRAND_OPTIONS = {
+    "TOYOTA" => "トヨタ", "NISSAN" => "日産", "HONDA" => "ホンダ", "MAZDA" => "マツダ",
+    "SUBARU" => "スバル", "MITSUBISHI" => "三菱", "ISUZU" => "イスズ", "HINO" => "日野",
+    "SUZUKI" => "スズキ", "DAIHATSU" => "ダイハツ"
+  }
+
 end

@@ -6,9 +6,9 @@
 
     <div class="col-md-8 col-12">
 
-      <%= link_to "#", class:"dropdown-item mt-5" do %>
-      <strong>初めての企業様はこちらからご連絡ください。</strong>
-      <% end %>
+      <div class="alert alert-danger mt-5">
+        <h2 class="my-0">初めての企業様は<%= link_to "こちらから", :sellers_new_seller_register_inquiry, class: "alert-link" %>ご連絡ください。</h2>
+      </div>
       <hr>
 
 
