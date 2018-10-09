@@ -25,4 +25,9 @@ class Autopart < ApplicationRecord
     "SUZUKI" => "スズキ", "DAIHATSU" => "ダイハツ"
   }
 
+  AUTOPARTS_OPTIONS = {
+    "Engine" => "Engine単体", "Engine&Transmission" => "Engine & Transmissionセット", "Alternator" => "Alternator",
+    "Transmissions Automatic" => "Transmissions Automatic", "Starter" => "Starter"
+  }
+
 end

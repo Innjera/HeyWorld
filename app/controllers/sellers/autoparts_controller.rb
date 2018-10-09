@@ -2,6 +2,8 @@ class Sellers::AutopartsController < ApplicationController
   before_action :authenticate_seller!
 
   def index
+    @seller = current_seller
+    @autoparts = @seller.autoparts
   end
 
   def show

@@ -1,2 +1,36 @@
-<h1>Sellers::Autoparts#index</h1>
-<p>Find me in app/views/sellers/autoparts/index.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-2 bg-light sidebar">
+      <%= render 'sellers/shared/sidebar' %>
+    </nav>
+    <main class="col-10 ml-sm-auto">
+
+      <h1 class="py-3">出品中の商品一覧</h1>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">画像</th>
+            <th scope="col">カーメーカー</th>
+            <th scope="col">モデル</th>
+            <th scope="col">パーツ</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        <% @autoparts.each do |parts| %>
+        <tr>
+          <th scope="row"><%= parts.id %></th>
+          <td><%= image_tag("parts_example.JPG", alt: "parts_example", size: "180x100")%></td>
+          <td><%= parts.car_brand %></td>
+          <td><%= parts.car_model %></td>
+          <td><%= parts.category %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    </main>
+  </div>
+</div>

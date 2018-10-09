@@ -1,14 +1,15 @@
-<div class="container">
-  <div class="row text-center mr-auto">
+<div class="container-fluid">
+  <div class="row">
+
   <% @autoparts.each do |parts| %>
-  <div class="card mx-2 my-2" style="width: 18rem;">
-    <%= image_tag("parts_example.JPG", alt: "parts_example", size: "286x180")%>
-    <div class="card-body">
-      <h5 class="card-title"><%= parts.car_brand %></h5>
-      <p class="card-text"><%= parts.car_model %></p>
-      <p class="card-text"><%= parts.category %></p>
-      <a href="#" class="btn btn-primary"><%= parts.seller.company_name %></a>
-    </div>
+  <div class="card mx-2 my-2 mx-auto" style="width: 18rem;">
+  <%= image_tag("parts_example.JPG", alt: "parts_example", size: "286x180")%>
+  <div class="card-body">
+    <h5 class="card-title"><%= parts.car_brand %></h5>
+    <p class="card-text"><%= parts.car_model %></p>
+    <p class="card-text"><%= parts.category %></p>
+    <a href="#" class="btn btn-primary"><%= parts.seller.company_name %></a>
+  </div>
   </div>
   <% end %>
 </div>
