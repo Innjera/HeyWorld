@@ -31,6 +31,9 @@ gem 'aws-sdk'
 
 ### devise
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 
 ### admin
 gem 'activeadmin'

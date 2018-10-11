@@ -5,7 +5,11 @@ class ApplicationController < ActionController::Base
 
   ### Deviseの拡張
   def after_sign_in_path_for(resource)
-    sellers_root_path
+    if resource.is_a?(Seller)
+      sellers_root_path
+    elsif resource.is_a?(User)
+      root_path
+    end
   end
 
   ### Deviseの拡張
