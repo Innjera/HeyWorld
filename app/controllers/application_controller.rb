@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     if resource.is_a?(Seller)
       sellers_root_path
     elsif resource.is_a?(User)
-      root_path
+      sroot_path
     end
   end
 

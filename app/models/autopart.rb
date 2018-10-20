@@ -2,21 +2,32 @@
 #
 # Table name: autoparts
 #
-#  id         :bigint(8)        not null, primary key
-#  seller_id  :bigint(8)        not null
-#  car_brand  :string           not null
-#  car_model  :string           not null
-#  category   :string           not null
-#  sold       :boolean          default(FALSE), not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                   :bigint(8)        not null, primary key
+#  seller_id            :bigint(8)        not null
+#  parts_category       :string           not null
+#  condition            :integer          default(0), not null
+#  car_brand            :string           not null
+#  car_model            :string           not null
+#  registration_year    :date
+#  model_code           :string
+#  fuel                 :string
+#  mileage              :string
+#  mission_type         :string
+#  engine_model_code    :string
+#  drive                :string
+#  autoparts_maker      :string
+#  genuine_parts_number :string
+#  remarks              :text
+#  sold                 :boolean          default(FALSE), not null
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
 #
 
 class Autopart < ApplicationRecord
   belongs_to :seller
 
   validates :car_brand, presence: true
-  validates :category, presence: true
+  validates :parts_category, presence: true
   validates :sold, presence: true
 
   CARBRAND_OPTIONS = {

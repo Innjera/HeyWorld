@@ -1,12 +1,32 @@
 <div class="form-group">
-<%= form.label :car_brand, "Brand：メーカー" %>
+  <%= form.label :parts_category, "部品カテゴリー" %>
+  <%= form.select :parts_category, Autopart::AUTOPARTS_OPTIONS.invert, { prompt: "--選択してください--"}, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  コンディション　&nbsp;&nbsp;&nbsp;
+  <%= form.radio_button :condition, 0 %>
+  <%= form.label :condition_0, "中古" %>
+  &nbsp;&nbsp;&nbsp;
+  <%= form.radio_button :condition, 1 %>
+  <%= form.label :condition_0, "純正部品" %>
+  &nbsp;&nbsp;&nbsp;
+  <%= form.radio_button :condition, 2 %>
+  <%= form.label :condition_0, "リビルト部品" %>
+</div>
+
+<div class="form-group">
+<%= form.label :registration_year, "年式", for: "registration_year" %>
+&nbsp;&nbsp;&nbsp;
+<%= form.date_select :registration_year, start_year: 1975, end_year: Time.current.year, use_month_numbers: true, add_month_number: true, date_separator: "年  ", discard_day: true %>月
+</div>
+
+<div class="form-group">
+<%= form.label :car_brand, "カーメーカー" %>
 <%= form.select :car_brand, Autopart::CARBRAND_OPTIONS.invert, { prompt: "--選択してください--"}, class: "form-control" %>
 </div>
+
 <div class="form-group">
-<%= form.label :car_model, "Model：モデル" %>
+<%= form.label :car_model, "自動車モデル" %>
 <%= form.text_field :car_model, autofocus: true, class: "form-control", placeholder: "（例）corolla" %>
-</div>
-<div class="form-group">
-<%= form.label :category, "Parts Category：部品カテゴリー" %>
-<%= form.select :category, Autopart::AUTOPARTS_OPTIONS.invert, { prompt: "--選択してください--"}, class: "form-control" %>
 </div>

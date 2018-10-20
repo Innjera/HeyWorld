@@ -1,16 +1,88 @@
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid bg-light">
 
-  <% @autoparts.each do |parts| %>
-  <div class="card mx-2 my-2 mx-auto" style="width: 18rem;">
-  <%= image_tag("parts_example.JPG", alt: "parts_example", size: "286x180")%>
-  <div class="card-body">
-    <h5 class="card-title"><%= parts.car_brand %></h5>
-    <p class="card-text"><%= parts.car_model %></p>
-    <p class="card-text"><%= parts.category %></p>
-    <a href="#" class="btn btn-primary"><%= parts.seller.company_name %></a>
+  <div class="row">
+    <div class="m-auto mb-5">
+      <h2 class="display-3">Authentic, Quality, No Fake</h2>
+    </div>
   </div>
+
+  <div class="container">
+
+    <div class="row">
+
+    <div class ="col-lg-3 col-12">
+
+      <div class="alert alert-primary text-center mb-3" role="alert">
+        Are you looking for Used Auto Parts of Japanese Car ?
+        <br>
+        <%= link_to "https://goo.gl/forms/77nuL6HDQSVqzQeH2", class:"btn btn-danger my-2" do %>
+         <h3 class="mb-0">Place an Order!</h3>
+        <% end %>
+        <br>
+        We will find & deliver any autoparts you are looking for from Japan.
+        <br>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <%= link_to "#", class:"text-secondary" do %>
+          <i class="fas fa-car fa-lg"></i>
+          <h5 class="card-title d-inline">Find from Car Model</h5>
+          <i class="fas fa-angle-right"></i>
+          <% end %>
+          <a href="#" class="badge badge-secondary">Land Cruiser</a>
+          <a href="#" class="badge badge-secondary">X-trail</a>
+        </div>
+
+        <hr class="my-0">
+
+        <div class="card-body">
+          <%= link_to "#", class:"text-secondary" do %>
+          <i class="fas fa-wrench fa-lg"></i>
+          <h5 class="card-title d-inline">Find from Parts </h5>
+          <i class="fas fa-angle-right"></i>
+          <% end %><br>
+          <a href="#" class="badge badge-secondary">Engine</a>
+          <a href="#" class="badge badge-secondary">Starter</a>
+          <a href="#" class="badge badge-secondary">Alternator</a>
+        </div>
+
+        <hr class="my-0">
+
+        <div class="card-body">
+          <%= link_to "#", class:"text-secondary" do %>
+          <i class="far fa-list-alt fa-lg"></i>
+          <h5 class="card-title d-inline">Find from Car Maker</h5>
+          <i class="fas fa-angle-right"></i>
+          <% end %>
+          <a href="#" class="badge badge-secondary">Toyota</a>
+          <a href="#" class="badge badge-secondary">Nissan</a>
+          <a href="#" class="badge badge-secondary">Subaru</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class = "col-lg-9 col-12">
+
+      <div class="row">
+
+      <% @autoparts.each do |parts| %>
+      <div class="card mx-2 mb-2" style="width:15rem;">
+      <%= image_tag("parts_example.JPG", alt: "parts_example", size: "238x180")%>
+      <div class="card-body">
+        <h5 class="card-title"><%= parts.car_brand %></h5>
+        <p class="card-text"><%= parts.car_model %></p>
+        <p class="card-text"><%= parts.parts_category %></p>
+        <a href="#" class="btn btn-primary"><%= parts.seller.company_name %></a>
+      </div>
+      </div>
+      <% end %>
+
+    </div>
+
+    </div>
+
   </div>
-  <% end %>
 </div>
 </div>

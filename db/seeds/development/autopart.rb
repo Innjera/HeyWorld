@@ -13,7 +13,8 @@ car_models = [
   "Impressa",
   "demio"
 ]
-categories = [
+
+parts_categories = [
   "Engine",
   "Fuel Pump",
   "Alternator",
@@ -30,7 +31,7 @@ categories = [
       seller: seller,
       car_brand: "#{car_brands[idx % 5]}",
       car_model: "#{car_models[idx % 5]}",
-      category: "#{categories[idx % 7]}",
+      parts_category: "#{parts_categories[idx % 7]}",
       sold: [false, false, true][idx % 3]
     )
   end
