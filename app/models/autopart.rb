@@ -10,15 +10,15 @@
 #  car_model            :string           not null
 #  registration_year    :date
 #  model_code           :string
-#  fuel                 :string
+#  fuel_type            :integer          default(0)
 #  mileage              :string
-#  mission_type         :string
+#  mission_type         :integer          default(0)
 #  engine_model_code    :string
-#  drive                :string
+#  drive                :integer          default(0)
 #  autoparts_maker      :string
 #  genuine_parts_number :string
 #  remarks              :text
-#  sold                 :boolean          default(FALSE), not null
+#  sold                 :integer          default(0), not null
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #

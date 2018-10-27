@@ -1,2 +1,112 @@
-<h1>Sellers::Autoparts#show</h1>
-<p>Find me in app/views/sellers/autoparts/show.html.erb</p>
+<div class="container-fluid bg-light">
+  <div class="row">
+    <nav class="col-2 bg-light sidebar">
+      <%= render 'sellers/shared/sidebar' %>
+    </nav>
+    <main class="col-10 ml-sm-auto">
+
+      <div class="card mx-2 mb-2" style="width:15rem;">
+        <%= image_tag("parts_example.JPG", alt: "parts_example", size: "238x180")%>
+      </div>
+
+      <span class="badge badge-pill badge-secondary">
+      <% if @autopart.condition == 0 %>
+      Used
+      <% elsif @autopart.condition == 1 %>
+      New - Genuine
+      <% elsif @autopart.condition == 2 %>
+      new - Reman
+      <% end %>
+      </span>
+
+      <h1><%= @autopart.parts_category %></h1>
+      <h2><strong>Price : <i class="fas fa-dollar-sign"></i>20,000</strong></h2>
+
+      <hr>
+
+      <h3 class="mt-3 text-secondary"><strong>Specifications</strong></h3>
+
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th scope="row">Condition</th>
+              <td>
+                <% if @autopart.condition == 0 %>
+                Used
+                <% elsif @autopart.condition == 1 %>
+                New - Genuine
+                <% elsif @autopart.condition == 2 %>
+                new - Reman
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Maker</th>
+              <td><%= @autopart.car_brand %></td>
+            </tr>
+            <tr>
+              <th scope="row">Model</th>
+              <td><%= @autopart.car_model %></td>
+            </tr>
+            <tr>
+              <th scope="row">Product</th>
+              <td><%= @autopart.parts_category %></td>
+            </tr>
+            <tr>
+              <th scope="row">Model Code</th>
+              <td><%= @autopart.model_code %></td>
+            </tr>
+            <tr>
+              <th scope="row">Reg. Year/month</th>
+              <td><%= @autopart.registration_year.strftime("%Y/%-m") %></td>
+            </tr>
+            <tr>
+              <th scope="row">Drive</th>
+              <td>
+              <% if @autopart.drive == 0 %>
+              N/A
+              <% elsif @autopart.drive == 1 %>
+              2WD
+              <% elsif @autopart.drive == 2 %>
+              4WD
+              <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Mileage</th>
+              <td><%= number_with_delimiter(@autopart.mileage) %> &nbsp;km</td>
+            </tr>
+            <tr>
+              <th scope="row">Engine Model Code</th>
+              <td><%= @autopart.engine_model_code %></td>
+            </tr>
+            <tr>
+              <th scope="row">Fuel</th>
+              <td>
+              <% if @autopart.fuel_type == 0 %>
+              N/A
+              <% elsif @autopart.fuel_type == 1 %>
+              Gasoline / Petro
+              <% elsif @autopart.fuel_type == 2 %>
+              Diesel
+              <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Mission</th>
+              <td>
+              <% if @autopart.mission_type == 0 %>
+              N/A
+              <% elsif @autopart.mission_type == 1 %>
+              AT
+              <% elsif @autopart.mission_type == 2 %>
+              MT
+              <% elsif @autopart.mission_type == 3 %>
+              CVT
+              <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+</div>

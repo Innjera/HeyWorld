@@ -8,15 +8,16 @@ class CreateAutoparts < ActiveRecord::Migration[5.2]
       t.string :car_model, null: false              # 車名
       t.date :registration_year                     # 年式
       t.string :model_code                          # 型式
-      t.string :fuel                                # Gasoline/Petro or Diesel
+      t.integer :fuel_type, default: 0              # 0:非該当（not applicable）、1:ガソリン（Gasoline/Petro）、2:ディーゼル（Diesel）、3:ハイブリッド（Hybrid）
       t.string :mileage                             # 走行距離
-      t.string :mission_type                        # ミッション（ AT MT ）
+      t.integer :mission_type, default: 0           # ミッション（ 0:非該当（not applicable）, 1:AT）、2:MT, 3:CVT）
       t.string :engine_model_code                   # エンジン型式
-      t.string :drive                               # 2WD or 4WD
+      t.integer :drive, default: 0                  # 0:非該当（not applicable）、1:2WD、2:4WD
       t.string :autoparts_maker                     # メーカー
       t.string :genuine_parts_number                # 純正部品番号
       t.text :remarks                               # 其の他必要事項
-      t.boolean :sold, null: false, default: false  # 売却済
+      t.integer :sold, null: false, default: 0      # 0:not-sold, 1:sold
+
 
       t.timestamps
     end

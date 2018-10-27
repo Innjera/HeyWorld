@@ -23,15 +23,15 @@ ActiveRecord::Schema.define(version: 2018_10_09_132529) do
     t.string "car_model", null: false
     t.date "registration_year"
     t.string "model_code"
-    t.string "fuel"
+    t.integer "fuel_type", default: 0
     t.string "mileage"
-    t.string "mission_type"
+    t.integer "mission_type", default: 0
     t.string "engine_model_code"
-    t.string "drive"
+    t.integer "drive", default: 0
     t.string "autoparts_maker"
     t.string "genuine_parts_number"
     t.text "remarks"
-    t.boolean "sold", default: false, null: false
+    t.integer "sold", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["seller_id"], name: "index_autoparts_on_seller_id"

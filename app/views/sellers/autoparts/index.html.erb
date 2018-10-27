@@ -21,7 +21,28 @@
 
         <% @autoparts.each do |parts| %>
         <tr>
-          <th scope="row"><%= parts.id %></th>
+          <th scope="row">
+          <%= link_to sellers_autopart_path(parts) do %>
+          <%= parts.id %>
+          <% end %>
+          <br>
+          <%= link_to edit_sellers_autopart_path(parts), class:"badge badge-info py-1" do%>
+          <i class="fas fa-edit"></i>
+          編集
+          <% end %>
+          <br>
+          <%= link_to "#", class:"badge badge-warning" do %>
+          <i class="far fa-pause-circle"></i>
+          出品停止
+          <% end %>
+          <br>
+          <%= render "delete_confirmation", autopart: parts %>
+          <%= link_to sellers_autopart_path(parts), method: :delete, data: {confirm: "本当に削除しますか?"}, class:"badge badge-dark py-1" do%>
+          <i class="far fa-trash-alt"></i>
+          削除
+          <% end %>
+
+          </th>
           <td><%= image_tag("parts_example.JPG", alt: "parts_example", size: "180x100")%></td>
           <td><%= parts.car_brand %></td>
           <td><%= parts.car_model %></td>
