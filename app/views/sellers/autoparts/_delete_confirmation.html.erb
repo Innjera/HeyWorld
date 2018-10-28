@@ -13,7 +13,7 @@
 </div>
 <% end %>
 
-<div class="modal viewer" tabindex="-1" role="dialog">
+<div class="modal" id="delete-confirmation-<%= autopart.id %>", tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -27,7 +27,7 @@
           削除した場合、元には戻せません。削除はせずに、出品停止とする場合にはXXXを押してください。
         </p>
         <p>
-          削除せずに「出品停止」とする場合は<%= link_to "コチラ", "#" %>から。
+          削除せずに「出品停止」とする場合は<%= link_to "コチラ", edit_sellers_autopart_path(autopart) %>から。
         </p>
       </div>
       <div class="modal-footer">
@@ -35,10 +35,11 @@
           <i class="fas fa-times"></i>
           &nbsp;<strong>キャンセル</<strong>
         </button>
-        <button type="button" class="btn btn-danger">
-          <i class="far fa-trash-alt"></i>
-          &nbsp;<strong>削除する</strong>
-        </button>
+        <%= link_to sellers_autopart_path(autopart), method: :delete, class:"btn btn-danger" do%>
+        <i class="far fa-trash-alt"></i>
+        &nbsp;<strong>削除する</strong>
+        <% end %>
+
       </div>
     </div>
   </div>

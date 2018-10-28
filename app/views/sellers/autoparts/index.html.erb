@@ -37,7 +37,7 @@
           <% end %>
           <br>
           <%= render "delete_confirmation", autopart: parts %>
-          <%= link_to sellers_autopart_path(parts), method: :delete, data: {confirm: "本当に削除しますか?"}, class:"badge badge-dark py-1" do%>
+          <%= link_to "#delete-confirmation-#{parts.id}", data: {toggle: "modal"}, class:"badge badge-secondary" do%>
           <i class="far fa-trash-alt"></i>
           削除
           <% end %>
