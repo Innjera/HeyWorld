@@ -26,6 +26,9 @@
 class Autopart < ApplicationRecord
   belongs_to :seller
 
+  has_one :offer_price, dependent: :destroy
+  accepts_nested_attributes_for :offer_price, allow_destroy: true
+
   validates :car_brand, presence: true
   validates :parts_category, presence: true
   validates :sold, presence: true

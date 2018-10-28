@@ -26,6 +26,7 @@
 
 class Seller < ApplicationRecord
   has_many :autoparts, dependent: :destroy
+
   # Include default devise modules. Others available are:
   # :confirmable, :omniauthable
   devise :database_authenticatable, :registerable,

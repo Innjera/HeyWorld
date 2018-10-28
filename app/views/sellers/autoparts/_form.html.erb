@@ -111,3 +111,12 @@
 <%= form.label :remarks, "備考" %>
 <%= form.text_area :remarks, autofocus: true, class: "form-control", placeholder: "特記事項があれば記載ください", rows:5 %>
 </div>
+
+<hr>
+
+<div class="form-group">
+<%= form.fields_for :offer_price do |offer| %>
+  <%= offer.label :initial, "価格" %>
+  <%= offer.text_field :initial, autofocus: true, class: "form-control", placeholder: "円ベースでの金額を入れてください" %>
+<% end %>
+</div>

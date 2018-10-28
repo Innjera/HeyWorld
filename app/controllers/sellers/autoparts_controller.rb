@@ -12,6 +12,7 @@ class Sellers::AutopartsController < ApplicationController
 
   def new
     @autopart = Autopart.new
+    @autopart.build_offer_price
   end
 
   def edit
@@ -43,6 +44,7 @@ class Sellers::AutopartsController < ApplicationController
   def destroy
     @autopart = Autopart.find(params[:id])
     @autopart.destroy!
+    flash.alert = "削除しました。"
 
     redirect_to :sellers_autoparts
   end
@@ -52,7 +54,10 @@ class Sellers::AutopartsController < ApplicationController
       :seller_id, :parts_category, :string, :condition, :car_brand, :car_model,
       :registration_year, :model_code, :fuel_type, :mileage, :mission_type,
       :engine_model_code, :drive, :autoparts_maker, :genuine_parts_number,
-      :remarks, :sold
+      :remarks, :sold,
+      offer_price_attributes: [
+        :autopart_id, :initial
+      ]
     )
   end
 end
