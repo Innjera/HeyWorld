@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <nav class="col-2 bg-light sidebar">
+      <%= render 'sellers/shared/sidebar' %>
+    </nav>
+    <main class="col-10 mt-3">
+
+      <div class="alert alert-light" role="alert">
+        <h1><%= @seller.company_name %>様　ご登録情報</h1>
+      </div>
+
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <th scope="row">会社名</th>
+            <td><%= @seller.company_name %></td>
+          </tr>
+          <tr>
+            <th scope="row">住所</th>
+            <td><%= @seller.company_address %></td>
+          </tr>
+          <tr>
+            <th scope="row">Web Site</th>
+            <td><%= link_to "#{@seller.company_url}", "#{@seller.company_url}" %></td>
+          </tr>
+          <tr>
+            <th scope="row">tell</th>
+            <td><%= @seller.company_tell %></td>
+          </tr>
+          <tr>
+            <th scope="row">登録メールアドレス</th>
+            <td><%= @seller.email %></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <%= link_to edit_seller_registration_path, class:"btn btn-info" do %>
+      <strong>アップデートする</strong>
+      <% end %>
+
+    </main>
+  </div>
+</div>

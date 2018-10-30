@@ -28,7 +28,13 @@
         <% end %>
         </span>
         <h1><%= @autoparts.parts_category %></h1>
-        <h2><strong>Price : <i class="fas fa-dollar-sign"></i>20,000</strong></h2>
+        <h2 class="text-success">
+          <strong>
+            Price : <%= number_to_currency(@autoparts.offer_price.initial, :unit => "JPY ", :precision => 0) %>
+            <br>
+            (<%= number_to_currency(@autoparts.offer_price.initial / 105, :unit => "US$ ") %>)
+          </strong>
+        </h2>
 
         <hr>
 

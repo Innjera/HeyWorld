@@ -10,7 +10,7 @@
 
     <div class="row">
 
-    <div class ="col-lg-3 col-12">
+    <div class ="col-lg-3 col-12 mb-2">
 
       <div class="alert alert-primary text-center mb-3" role="alert">
         Are you looking for Used Auto Parts of Japanese Car ?
@@ -68,15 +68,32 @@
       <div class="row">
 
       <% @autoparts.each do |parts| %>
-      <%= link_to autopart_path(parts), class:"text-secondary" do %>
+      <%= link_to autopart_path(parts), class:"text-secondary remove-derline" do %>
       <div class="card mx-2 mb-2" style="width:15rem;">
       <%= image_tag("parts_example.JPG", alt: "parts_example", size: "238x180")%>
-      <div class="card-body">
-        <h5 class="card-title"><%= parts.car_brand %></h5>
-        <p class="card-text"><%= parts.car_model %></p>
-        <p class="card-text"><%= parts.parts_category %></p>
-        <a href="#" class="btn btn-primary"><%= parts.seller.company_name %></a>
+      <div class="pill-position-top">
+      <span class="badge badge-pill badge-light">
+      <% if parts.condition == 0 %>
+      Used
+      <% elsif parts.condition == 1 %>
+      New - Genuine
+      <% elsif parts.condition == 2 %>
+      new - Reman
+      <% end %>
+      </span>
       </div>
+      <div class="card-body">
+
+        <p class="card-text"><%= parts.parts_category %> of <%= parts.car_model %>, <%= parts.car_brand %></p>
+
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item text-right text-success">
+          <%= number_to_currency(parts.offer_price.initial, :unit => "JPY ", :precision => 0) %>
+          <br>
+          (<%= number_to_currency(parts.offer_price.initial / 105, :unit => "US$ ") %>)
+        </li>
+      </ul>
       </div>
       <% end %>
       <% end %>
