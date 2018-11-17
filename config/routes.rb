@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   }
 
   root 'top#index'
+
   get 'corporation' => 'top#corporation'
+  get 'mypage' => 'top#mypage'
   resources :autoparts, only:[:show]
 
   devise_for :sellers, :controllers => { :registrations => :registrations }
