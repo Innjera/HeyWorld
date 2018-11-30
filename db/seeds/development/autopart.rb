@@ -1,17 +1,17 @@
-car_brands = [
+car_makes = [
   "TOYOTA",
-  "NISSAN",
+  "TOYOTA",
   "HONDA",
-  "SUBARU",
-  "MATSUDA"
+  "TOYOTA",
+  "MITSUBISHI"
 ]
 
 car_models = [
-  "Collora",
-  "Xtrail",
-  "Odessay",
-  "Impressa",
-  "demio"
+  "Probox",
+  "Vits",
+  "Odyssey",
+  "Noah",
+  "Canter"
 ]
 
 parts_categories = [
@@ -19,21 +19,23 @@ parts_categories = [
   "Fuel Pump",
   "Alternator",
   "Starter",
-  "Head Light",
-  "Fuel Tank",
-  "A/C Compressor"
+  "Head Light"
 ]
 
-model_codes = [
-  "CBA-NCP95",
-  nil,
-  "Y12"
+car_model_codes = [
+  "NCP50",
+  "SCP90",
+  "RB1",
+  "ACR60",
+  "FB300B"
 ]
 
 engine_model_codes = [
-  "HR15DE",
-  "LDA-MF6",
-  nil
+  "2NZFE",
+  "2SZFE",
+  "K24A",
+  "1AZFSE",
+  "4DR5"
 ]
 
 company_names = [
@@ -48,16 +50,15 @@ company_names.each do |seller|
   0.upto(9) do |idx|
     Autopart.create(
       seller: seller,
-      car_brand: "#{car_brands[idx % 5]}",
+      car_make: "#{car_makes[idx % 5]}",
       car_model: "#{car_models[idx % 5]}",
+      car_model_code: "#{car_model_codes[idx % 3]}",
       parts_category: "#{parts_categories[idx % 7]}",
       registration_year: 10.years.ago.advance(month: idx+6),
+      engine_model_code: "#{engine_model_codes[idx % 3]}",
       condition: [0, 0, 0, 1, 2][idx % 5],
       mileage: 12345 * idx,
       mission_type: [0, 1, 1, 2, 2, 3][idx % 6],
-      model_code: "#{model_codes[idx % 3]}",
-      engine_model_code: "#{engine_model_codes[idx % 3]}",
-      fuel_type: [0, 1, 1, 2, 2][idx % 5],
       drive: [0, 1, 2][idx % 3],
       sold: [0, 0, 1][idx % 3]
     )

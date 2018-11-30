@@ -1,27 +1,38 @@
 <div class="form-group">
-<%= form.label :car_brand, "カーメーカー" %>
-<%= form.select :car_brand, Autopart::CARBRAND_OPTIONS.invert, { prompt: "--選択してください--"}, class: "form-control" %>
+<%= form.label :car_make, "カーメーカー" %>
+&nbsp;&nbsp;<span class="badge badge-pill badge-danger">必須</span>
+<%= form.select :car_make, Autopart::CARMAKE_OPTIONS.invert, { prompt: "--選択してください--"}, class: "form-control" %>
 </div>
 
 <div class="form-group">
 <%= form.label :car_model, "車種" %>
-<%= form.text_field :car_model, autofocus: true, class: "form-control", placeholder: "（例）2001 TOYOTA COROLLA" %>
+&nbsp;&nbsp;<span class="badge badge-pill badge-danger">必須</span>
+&nbsp;&nbsp;<span class="text-danger"><small>*英語でご記載ください。</small></span>
+<%= form.text_field :car_model, autofocus: true, class: "form-control", placeholder: "（例）Probox" %>
+</div>
+
+<div class="form-group">
+<%= form.label :car_model_code, "車両型式" %>
+<%= form.text_field :car_model_code, autofocus: true, class: "form-control", placeholder: "（例）NCP50" %>
+</div>
+
+<div class="form-group">
+<%= form.label :registration_year, "年式", for: "registration_year" %>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<%= form.date_select :registration_year, start_year: 1975, end_year: Time.current.year, use_month_numbers: true, add_month_number: true, date_separator: "年  ", discard_day: true %>月
 </div>
 
 <div class="form-group">
   <%= form.label :parts_category, "部品カテゴリー" %>
+  &nbsp;&nbsp;<span class="badge badge-pill badge-danger">必須</span>
   <%= form.select :parts_category, Autopart::AUTOPARTS_OPTIONS.invert, { prompt: "--選択してください--"}, class: "form-control" %>
 </div>
 
 <div class="form-group">
-<%= form.label :autoparts_maker, "パーツ製造メーカー" %>
-<%= form.text_field :autoparts_maker, autofocus: true, class: "form-control", placeholder: "（例）Denso" %>
+<%= form.label :engine_model_code, "エンジン型式" %>&nbsp;&nbsp;<span class="text-danger"><small>*エンジンの場合のみ記載ください。</small></span>
+<%= form.text_field :engine_model_code, autofocus: true, class: "form-control", placeholder: "（例）2NZFE" %>
 </div>
 
-<div class="form-group">
-<%= form.label :genuine_parts_number, "純正品番号" %>
-<%= form.text_field :genuine_parts_number, autofocus: true, class: "form-control", placeholder: "（例）" %>
-</div>
 
 <table class="table my-5">
   <tbody>
@@ -39,19 +50,25 @@
       </td>
     </tr>
     <tr>
-      <th scope="row">燃料タイプ</th>
+      <th scope="row">ドライブ</th>
       <td>
-        <%= form.radio_button :fuel_type, 0 %>
-        <%= form.label :fuel_type_0, "非該当" %>
+        <%= form.radio_button :drive, 0 %>
+        <%= form.label :drive_0, "非該当" %>
         &nbsp;&nbsp;&nbsp;
-        <%= form.radio_button :fuel_type, 1 %>
-        <%= form.label :fuel_type_1, "ガソリン" %>
+        <%= form.radio_button :drive, 1 %>
+        <%= form.label :drive_type_1, "FF (2WD)" %>
         &nbsp;&nbsp;&nbsp;
-        <%= form.radio_button :fuel_type, 2 %>
-        <%= form.label :fuel_type_2, "ディーゼル" %>
+        <%= form.radio_button :drive, 2 %>
+        <%= form.label :drive_type_2, "FR (2WD)" %>
         &nbsp;&nbsp;&nbsp;
-        <%= form.radio_button :fuel_type, 3 %>
-        <%= form.label :fuel_type_3, "ハイブリッド" %>
+        <%= form.radio_button :drive, 3 %>
+        <%= form.label :drive_type_3, "4WD" %>
+        &nbsp;&nbsp;&nbsp;
+        <%= form.radio_button :drive, 4 %>
+        <%= form.label :drive_type_4, "MR" %>
+        &nbsp;&nbsp;&nbsp;
+        <%= form.radio_button :drive, 5 %>
+        <%= form.label :drive_type_5, "RR" %>
       </td>
     </tr>
     <tr>
@@ -60,51 +77,22 @@
         <%= form.radio_button :mission_type, 0 %>
         <%= form.label :mission_type_0, "非該当" %>
         &nbsp;&nbsp;&nbsp;
-        <%= form.radio_button :fuel_type, 1 %>
+        <%= form.radio_button :mission_type, 1 %>
         <%= form.label :mission_type_1, "AT" %>
         &nbsp;&nbsp;&nbsp;
-        <%= form.radio_button :fuel_type, 2 %>
+        <%= form.radio_button :mission_type, 2 %>
         <%= form.label :mission_type_2, "MT" %>
         &nbsp;&nbsp;&nbsp;
-        <%= form.radio_button :fuel_type, 3 %>
+        <%= form.radio_button :mission_type, 3 %>
         <%= form.label :mission_type_3, "CVT" %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">駆動方式</th>
-      <td>
-        <%= form.radio_button :drive, 0 %>
-        <%= form.label :drive_0, "非該当" %>
-        &nbsp;&nbsp;&nbsp;
-        <%= form.radio_button :drive, 1 %>
-        <%= form.label :fuel_type_1, "2WD" %>
-        &nbsp;&nbsp;&nbsp;
-        <%= form.radio_button :drive, 2 %>
-        <%= form.label :drive_type_2, "4WD" %>
       </td>
     </tr>
   </tbody>
 </table>
 
 <div class="form-group">
-<%= form.label :model_code, "型式/モデルコード" %>
-<%= form.text_field :model_code, autofocus: true, class: "form-control", placeholder: "（例）Y12" %>
-</div>
-
-<div class="form-group">
-<%= form.label :engine_model_code, "エンジン型式" %>
-<%= form.text_field :engine_model_code, autofocus: true, class: "form-control", placeholder: "（例）Y12" %>
-</div>
-
-<div class="form-group">
 <%= form.label :mileage, "走行距離" %>
 <%= form.text_field :mileage, autofocus: true, class: "form-control", placeholder: "20,000km" %>
-</div>
-
-<div class="form-group">
-<%= form.label :registration_year, "年式", for: "registration_year" %>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<%= form.date_select :registration_year, start_year: 1975, end_year: Time.current.year, use_month_numbers: true, add_month_number: true, date_separator: "年  ", discard_day: true %>月
 </div>
 
 <div class="form-group">
@@ -116,7 +104,7 @@
 
 <div class="form-group">
 <%= form.fields_for :offer_price do |offer| %>
-  <%= offer.label :initial, "価格" %>
+  <%= offer.label :initial, "最低価格（スタート価格）" %>
   <%= offer.text_field :initial, autofocus: true, class: "form-control", placeholder: "円ベースでの金額を入れてください" %>
 <% end %>
 </div>

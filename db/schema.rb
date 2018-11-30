@@ -19,17 +19,14 @@ ActiveRecord::Schema.define(version: 2018_10_28_134106) do
     t.bigint "seller_id", null: false
     t.string "parts_category", null: false
     t.integer "condition", default: 0, null: false
-    t.string "car_brand", null: false
+    t.string "car_make", null: false
     t.string "car_model", null: false
+    t.string "car_model_code"
     t.date "registration_year"
-    t.string "model_code"
-    t.integer "fuel_type", default: 0
-    t.string "mileage"
-    t.integer "mission_type", default: 0
     t.string "engine_model_code"
+    t.string "mileage"
     t.integer "drive", default: 0
-    t.string "autoparts_maker"
-    t.string "genuine_parts_number"
+    t.integer "mission_type", default: 0
     t.text "remarks"
     t.integer "sold", default: 0, null: false
     t.datetime "created_at", null: false
