@@ -47,13 +47,13 @@ company_names = [
 
 company_names.each do |seller|
   seller = Seller.find_by(company_name: seller)
-  0.upto(9) do |idx|
-    Autopart.create(
+  1.upto(8) do |idx|
+    Autopart.create!(
       seller: seller,
       car_make: "#{car_makes[idx % 5]}",
       car_model: "#{car_models[idx % 5]}",
       car_model_code: "#{car_model_codes[idx % 3]}",
-      parts_category: "#{parts_categories[idx % 7]}",
+      parts_category: "#{parts_categories[idx % 5]}",
       registration_year: 10.years.ago.advance(month: idx+6),
       engine_model_code: "#{engine_model_codes[idx % 3]}",
       condition: [0, 0, 0, 1, 2][idx % 5],

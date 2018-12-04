@@ -5,6 +5,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require moment
+//= require moment/ja
 //= require bootstrap-datetimepicker
 //= require social-share-button
 //= require_tree .

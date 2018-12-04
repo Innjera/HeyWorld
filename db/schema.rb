@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_28_134106) do
+ActiveRecord::Schema.define(version: 2018_12_01_072031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,16 @@ ActiveRecord::Schema.define(version: 2018_10_28_134106) do
     t.index ["email"], name: "index_sellers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_sellers_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_sellers_on_unlock_token", unique: true
+  end
+
+  create_table "tenders", force: :cascade do |t|
+    t.bigint "seller_id", null: false
+    t.datetime "starts_at", null: false
+    t.datetime "ends_at", null: false
+    t.string "status", default: "draft", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["seller_id"], name: "index_tenders_on_seller_id"
   end
 
   create_table "users", force: :cascade do |t|

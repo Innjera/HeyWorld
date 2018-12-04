@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-2 bg-light sidebar">
+      <%= render 'sellers/shared/sidebar' %>
+    </nav>
+    <main class="col-10 ml-sm-auto">
+
+      <div class="mt-3">
+      <%= form_for @tender, url: :sellers_tenders do |f| %>
+
+        <div class="form-group">
+          <%= f.label :starts_at_date_part, "入札「開始」日"%>&nbsp;&nbsp;&nbsp;<span class="badge badge-pill badge-danger">必須</span>
+          <div class='input-group'>
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class='far fa-calendar-alt'></i></span>
+            </div>
+            <%= f.text_field :starts_at_date_part, class: 'form-control date-picker', required: true %>
+          </div>
+        </div>
+        <div class="form-group" >
+          <%= f.label :starts_at_time_part, "入札「開始」時間"%>&nbsp;&nbsp;&nbsp;<span class="badge badge-pill badge-danger">必須</span>
+          <div class='input-group'>
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class='far fa-clock'></i></span>
+            </div>
+            <%= f.text_field :starts_at_time_part, class: 'form-control time-picker', required: true %>
+          </div>
+        </div>
+
+        <div class="form-group" >
+          <%= f.label :ends_at_date_part, "入札「終了」日"%>&nbsp;&nbsp;&nbsp;<span class="badge badge-pill badge-danger">必須</span>
+          <div class='input-group'>
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class='far fa-calendar-alt'></i></span>
+            </div>
+            <%= f.text_field :ends_at_date_part, class: 'form-control date-picker', required: true %>
+          </div>
+        </div>
+        <div class="form-group" >
+          <%= f.label :ends_at_time_part, "入札「終了」時間" %>&nbsp;&nbsp;&nbsp;<span class="badge badge-pill badge-danger">必須</span>
+          <div class='input-group'>
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class='far fa-clock'></i></span>
+            </div>
+            <%= f.text_field :ends_at_time_part, class: 'form-control time-picker', required: true %>
+          </div>
+        </div>
+
+        <div class="form-group mt-5" >
+          <%= f.submit "入札会を設定する", class: 'btn btn-success' %>
+        </div>
+
+
+        <% end %>
+        </div>
+
+    </main>
+  </div>
+</div>

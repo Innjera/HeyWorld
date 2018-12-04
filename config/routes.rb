@@ -14,8 +14,9 @@ Rails.application.routes.draw do
 
   namespace :sellers do
     root 'top#index'
+    resources :tenders
     resources :autoparts
-
+    
     get 'account_info' => 'top#account_info'
     get 'new_seller_register_inquiry' => 'inquiry#new_seller_register_inquiry' # 販売企業入力画面
     post 'new_seller_register_inquiry_confirm' => 'inquiry#new_seller_register_inquiry_confirm' # 確認画面

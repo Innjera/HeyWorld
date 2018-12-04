@@ -1,0 +1,14 @@
+div.tenders {
+  a{
+    text-decoration: none;
+  }
+  div.one-tender {
+    margin-bottom: 0.5rem;
+  }
+  div.one-tender:last-child {
+    margin-bottom: 0;
+  }
+  span.tender-duration {
+    font-size: 0.8rem;
+  }
+}

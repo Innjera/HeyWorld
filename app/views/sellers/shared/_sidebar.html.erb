@@ -6,8 +6,18 @@
       <% end %>
       </li>
       <li class="nav-item">
+      <%= link_to :new_sellers_tender, class:"nav-link text-dark" do %>
+      <i class="fas fa-box-open"></i>&nbsp;入札を開始する
+      <% end %>
+      </li>
+      <li class="nav-item">
+      <%= link_to :sellers_tenders, class:"nav-link text-dark" do %>
+      <i class="fas fa-chalkboard-teacher"></i>&nbsp;設定済入札
+      <% end %>
+      </li>
+      <li class="nav-item">
       <%= link_to :new_sellers_autopart, class:"nav-link text-dark" do %>
-      <i class="fas fa-car"></i>&nbsp;出品
+      <i class="fas fa-car"></i>&nbsp;単品で出品する
       <% end %>
       </li>
       <li class="nav-item">

@@ -50,8 +50,15 @@
           <% end %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <% if current_seller %>
+          <%= link_to sellers_root_path, class:"dropdown-item" do %>
+          <%= current_seller.company_name %>様トップページ
+          <% end %>
+          <% elsif current_user %>
           <%= link_to mypage_path, class:"dropdown-item" do %>
           My Page
+          <% end %>
+          <% else %>
           <% end %>
           <div class="dropdown-divider"></div>
           <% if current_seller %>
