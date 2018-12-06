@@ -16,13 +16,23 @@ class Tender < ApplicationRecord
 
   STATUS_VALUES = %w(draft ready)
 
+  class << self
+    def status_text(status)
+      I18n.t("activerecord.attributes.tender.status_#{status}")
+    end
+
+    def status_options
+      STATUS_VALUES.map {|status| [status_text(status), status]}
+    end
+  end
+
   validates :starts_at, presence: true
   validates :ends_at, presence: true
   validates :status, inclusion: {in: STATUS_VALUES}
 
   scope :open, -> { where(status: "ready")}
 
-  before_save do
+  before_validation do
     if starts_at_date_part && starts_at_time_part
       self.starts_at = "#{starts_at_date_part} #{starts_at_time_part}"
     end
@@ -32,7 +42,8 @@ class Tender < ApplicationRecord
     end
   end
 
-  attr_writer :starts_at_date_part, :starts_at_time_part, :ends_at_date_part, :ends_at_time_part
+  attr_writer :starts_at_date_part, :starts_at_time_part,
+  :ends_at_date_part, :ends_at_time_part
 
   def starts_at_date_part
     @starts_at_date_part ||= starts_at&.strftime('%Y-%m-%d')

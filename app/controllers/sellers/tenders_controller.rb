@@ -1,5 +1,8 @@
 class Sellers::TendersController < ApplicationController
+  I18n.locale = "ja"
+
   before_action :authenticate_seller!
+
 
   def index
     @tenders = current_seller.tenders.order(:starts_at)
@@ -17,15 +20,24 @@ class Sellers::TendersController < ApplicationController
   end
 
   def create
-    Tender.create!(params[:tender])
-
-    redirect_to :sellers_tenders
+    @tender = Tender.new(tender_params)
+    @tender.seller = current_seller
+    if @tender.save
+      binding.pry
+      flash.notice = "入札会を設定しました。"
+      redirect_to :sellers_tenders
+    else
+      render "new"
+    end
   end
 
-  private def tenders_params
-    params.require(:tender).permit(
-      :starts_at, :starts_at_date_part, :starts_at_time_parts,
-      :ends_at, :ends_at_date_part, :ends_at_time_part
+  def edit
+  end
+
+  private def tender_params
+    params[:tender].permit(
+      :starts_at_date_part, :starts_at_time_part,
+      :ends_at_date_part, :ends_at_time_part
     )
   end
 
