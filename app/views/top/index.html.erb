@@ -73,8 +73,8 @@
         </div>
         </div>
 
-        <% @autoparts.each do |parts| %>
-        <%= link_to autopart_path(parts), class:"text-secondary remove-derline" do %>
+        <% @engines.each do |engine| %>
+        <%= link_to engine_path(engine), class:"text-secondary remove-derline" do %>
 
         <div class="row mb-2">
           <div class="card flex-row flex-wrap" style="width:100%">
@@ -87,20 +87,20 @@
             <div class="card-body p-2">
 
               <span class="badge badge-pill badge-dark">
-              <% if parts.condition == 0 %>
+              <% if engine.condition == 0 %>
               Used
-              <% elsif parts.condition == 1 %>
+              <% elsif engine.condition == 1 %>
               New Genuine
-              <% elsif parts.condition == 2 %>
+              <% elsif engine.condition == 2 %>
               New Reman
               <% end %>
               </span>
 
               <br>
 
-              <%= parts.engine_model_code %> (<%= parts.parts_category %>)
+              <%= engine.engine_model_code %>
               <br>
-              <%= parts.car_model %>, <%= parts.car_make %>
+              <%= engine.car_model %>, <%= engine.car_make %>
               <br>
               <span class="text-dark">
                 <i class="fas fa-map-marker-alt"></i>
@@ -111,7 +111,7 @@
             </div>
             <div class="card-footer w-100 bg-white p-2 text-success justify-content-end">
               <span class="text-muted">min price</span>
-              <%= number_to_currency(parts.offer_price.initial, :unit => "JPY ", :precision => 0) %>
+              <%= number_to_currency(engine.minimum_price, :unit => "JPY ", :precision => 0) %>
               &nbsp;&nbsp;
               <button type="button" class="btn btn-sm btn-success">Place Bid</button>
             </div>

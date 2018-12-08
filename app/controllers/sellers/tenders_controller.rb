@@ -1,11 +1,10 @@
 class Sellers::TendersController < ApplicationController
-  I18n.locale = "ja"
 
   before_action :authenticate_seller!
 
 
   def index
-    @tenders = current_seller.tenders.order(:starts_at)
+    @tenders = current_seller.tenders.order(id: :desc)
   end
 
   def show
@@ -23,7 +22,6 @@ class Sellers::TendersController < ApplicationController
     @tender = Tender.new(tender_params)
     @tender.seller = current_seller
     if @tender.save
-      binding.pry
       flash.notice = "入札会を設定しました。"
       redirect_to :sellers_tenders
     else
