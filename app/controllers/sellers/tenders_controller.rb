@@ -9,33 +9,48 @@ class Sellers::TendersController < ApplicationController
 
   def show
     @tender = Tender.find(params[:id])
+    @engines = @tender.engines
   end
 
   def new
     @tender = Tender.new
     time0 = Time.current.beginning_of_day
-    @tender.starts_at = time0.advance(days: 1, hours: 10)
-    @tender.ends_at = time0.advance(days: 3, hours: 15)
+    @tender.starts_at = time0.advance(days: 1, hours: 9)
+    @tender.ends_at = time0.advance(days: 3, hours: 12)
+  end
+
+  def edit
+    @tender = Tender.find(params[:id])
   end
 
   def create
     @tender = Tender.new(tender_params)
     @tender.seller = current_seller
     if @tender.save
-      flash.notice = "入札会を設定しました。"
-      redirect_to :sellers_tenders
+      flash.notice = "入札会を設定しました。掲載商品を追加してください。"
+      redirect_to sellers_tender_path(@tender)
     else
       render "new"
     end
   end
 
-  def edit
+  def update
+    @tender = Tender.find(params[:id])
+    @tender.assign_attributes(tender_params)
+
+    if @tender.save
+      flash.alert = "入札会の設定をupdateしました。"
+      redirect_to sellers_tender_path(@tender)
+    else
+      render "edit"
+    end
   end
 
   private def tender_params
     params[:tender].permit(
       :starts_at_date_part, :starts_at_time_part,
-      :ends_at_date_part, :ends_at_time_part
+      :ends_at_date_part, :ends_at_time_part,
+      :status
     )
   end
 

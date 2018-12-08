@@ -8,24 +8,23 @@
       <% @tenders.each do |tender| %>
       <div class="tenders w-100 mt-3">
         <%= link_to sellers_tender_path(tender) do %>
-        <div class="one-tender bg-light text-dark p-2">
-          <%= tender.seller.company_name %> 入札 No. <%= tender.id %>
-          &nbsp;&nbsp;
-          <% if tender.status == "ready" %>
-          <span class="badge badge-pill badge-primary">準備完了</span>
-          <% else %>
-          <span class="badge badge-pill badge-secondary">準備中</span>
-          <% end %>
+        <div class="one-tender bg-light-success text-dark p-2">
+          No. <%= tender.id %> |
+          開始：<%= tender.starts_at.strftime("%Y年%m月%d日（#{format_wday_ja(tender.starts_at)}）%H:%M") %>、
+          終了：<%= tender.ends_at.strftime("%Y年%m月%d日（#{format_wday_ja(tender.starts_at)}）%H:%M") %>
           <br>
           <span class="tender-duration">
-            入札開始日：<%= tender.starts_at.strftime("%Y年%m月%d日（#{format_wday_ja(tender.starts_at)}）%H:%M") %>、
-            入札終了日：<%= tender.ends_at.strftime("%Y年%m月%d日（#{format_wday_ja(tender.starts_at)}）%H:%M") %>
+            <% if tender.status == "ready" %>
+            <span class="badge badge-pill badge-primary">準備完了</span>
+            <% else %>
+            <span class="badge badge-pill badge-secondary">準備中</span>
+            <% end %>
+            by <%= tender.seller.company_name %>
           </span>
         </div>
         <% end %>
       </div>
       <% end %>
-
     </main>
   </div>
 </div>

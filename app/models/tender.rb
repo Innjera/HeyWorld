@@ -14,6 +14,10 @@
 class Tender < ApplicationRecord
   belongs_to :seller
 
+  has_many :engines, dependent: :destroy
+  accepts_nested_attributes_for :engines, allow_destroy: true
+
+
   STATUS_VALUES = %w(draft ready)
 
   class << self

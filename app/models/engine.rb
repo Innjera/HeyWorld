@@ -3,7 +3,7 @@
 # Table name: engines
 #
 #  id                  :bigint(8)        not null, primary key
-#  seller_id           :bigint(8)        not null
+#  tender_id           :bigint(8)        not null
 #  car_make            :string           not null
 #  car_model           :string           not null
 #  car_model_code      :string
@@ -29,7 +29,7 @@
 #
 
 class Engine < ApplicationRecord
-  belongs_to :seller
+  belongs_to :tender
 
   validates :car_make, presence: true
 

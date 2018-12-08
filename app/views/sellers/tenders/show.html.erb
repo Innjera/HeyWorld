@@ -7,20 +7,89 @@
 
       <div class="row">
 
-        <div class="col-12 mt-3">
+        <div class="col-12 my-3">
 
-          <%= @tender.seller.company_name %> 入札 No. <%= @tender.id %>
-          &nbsp;&nbsp;
-          <% if @tender.status == "ready" %>
-          <span class="badge badge-pill badge-primary">準備完了</span>
-          <% else %>
-          <span class="badge badge-pill badge-secondary">準備中</span>
+          <div class="alert alert-success" role="alert">
+            <strong><%= @tender.seller.company_name %> 入札 No. <%= @tender.id %></strong>
+
+            <%= link_to :edit_sellers_tender, class:"btn btn-sm btn-success mx-2" do %>
+            <i class="fas fa-edit"></i>&nbsp;設定を変更する
+            <% end %>
+
+            <div class="bg-light p-2 my-2">
+              入札開始日：<strong><%= @tender.starts_at.strftime("%Y年%m月%d日（#{format_wday_ja(@tender.starts_at)}） %H:%M") %></strong>、
+              入札終了日：<strong><%= @tender.ends_at.strftime("%Y年%m月%d日（#{format_wday_ja(@tender.starts_at)}）%H:%M") %></strong>
+            </div>
+
+            <div class="bg-light p-2">
+              ステータス：
+              <% if @tender.status == "ready" %>
+              <span class="text-primary">
+                <strong>準備完了 - 自動で入札が開催されます。 </strong>
+              </span>
+              <% else %>
+              <span class="text-danger">
+                <strong>準備中</strong>
+              </span>
+              <% end %>
+            </div>
+
+          </div>
+
+          </div>
+
+        <div class="col-12">
+
+          <%= link_to "#", class:"btn btn-primary mb-3" do %>
+          <i class="fas fa-plus"></i>&nbsp;出品商品を追加する
           <% end %>
-          <br>
-          <span class="tender-duration">
-            入札開始日：<%= @tender.starts_at.strftime("%Y年%m月%d日（#{format_wday_ja(@tender.starts_at)}） %H:%M") %>、
-            入札終了日：<%= @tender.ends_at.strftime("%Y年%m月%d日（#{format_wday_ja(@tender.starts_at)}）%H:%M") %>
-          </span>
+
+        </div>
+
+          <div class="col-12">
+
+            <% @engines.each do |engine| %>
+            <div class="card flex-row flex-wrap my-2" style="width:100%">
+              <div class="card-header d-inline border-0 p-0">
+                <%= image_tag("parts_example.JPG", size: "158x120")%>
+                <div class="pill-position-top">
+                <span class="badge badge-danger">remainig 3days</span>
+                </div>
+              </div>
+              <div class="card-body p-2">
+
+                <span class="badge badge-pill badge-dark">
+                <% if engine.condition == 0 %>
+                Used
+                <% elsif engine.condition == 1 %>
+                New Genuine
+                <% elsif engine.condition == 2 %>
+                New Reman
+                <% end %>
+                </span>
+
+                <br>
+
+                <%= engine.engine_model_code %>
+                <br>
+                <%= engine.car_model %>, <%= engine.car_make %>
+                <br>
+                <span class="text-dark">
+                  <i class="fas fa-map-marker-alt"></i>
+                  Aichi | Nagoya
+                </span>
+                <br>
+
+              </div>
+              <div class="card-footer w-100 bg-white p-2 text-success justify-content-end">
+                <span class="text-muted">min price</span>
+                <%= number_to_currency(engine.minimum_price, :unit => "JPY ", :precision => 0) %>
+              </div>
+            </div>
+
+            <% end %>
+
+          </div>
 
         </div>
 

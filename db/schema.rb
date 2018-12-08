@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2018_12_08_075435) do
   end
 
   create_table "engines", force: :cascade do |t|
-    t.bigint "seller_id", null: false
+    t.bigint "tender_id", null: false
     t.string "car_make", null: false
     t.string "car_model", null: false
     t.string "car_model_code"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2018_12_08_075435) do
     t.boolean "sold", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["seller_id"], name: "index_engines_on_seller_id"
+    t.index ["tender_id"], name: "index_engines_on_tender_id"
   end
 
   create_table "offer_prices", force: :cascade do |t|

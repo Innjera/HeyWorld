@@ -6,4 +6,4 @@ ja:
       tender:
         status: 状態
         status_draft: 準備中
-        status_ready: 準備完了(開始日に入札会が自動に開催されます)
+        status_ready: 準備完了(入札会が開催されます)

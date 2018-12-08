@@ -30,18 +30,10 @@ engine_model_codes = [
   "4DR5"
 ]
 
-company_names = [
-  "株式会社コマゼン",
-  "株式会社ユーパーツ",
-  "株式会社エコアール",
-  "株式会社吉田商会"
-]
-
-company_names.each do |seller|
-  seller = Seller.find_by(company_name: seller)
-  1.upto(9) do |idx|
-    Engine.create!(
-      seller: seller,
+1.upto(60) do |idx|
+  tender  = Tender.find_by(id: rand(1..12))
+  Engine.create!(
+      tender: tender,
       car_make: "#{car_makes[idx % 5]}",
       car_model: "#{car_models[idx % 5]}",
       car_model_code: "#{car_model_codes[idx % 3]}",
@@ -61,4 +53,3 @@ company_names.each do |seller|
       sold: [0, 0, 1][idx % 3]
     )
   end
-end
