@@ -20,7 +20,7 @@ class CreateEngines < ActiveRecord::Migration[5.2]
       t.integer :front_suspension, null: false, default: 0      # with front_suspension (0:yes, 1:no, 2: yes but broken)
       t.integer :rear_suspension, null: false, default: 0       # with rear_suspension (0:yes, 1:no, 2: yes but broken)
       t.text :remarks                                           # 其の他必要事項
-      t.integer :minimum_price, null: false, default: 0         # starting price of the tender
+      t.integer :minimum_price, null: false, default: 10000     # starting price of the tender
       t.boolean :sold, null: false, default: false              # sold flag
 
       t.timestamps

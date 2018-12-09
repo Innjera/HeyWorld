@@ -16,9 +16,10 @@ Rails.application.routes.draw do
 
   namespace :sellers do
     root 'top#index'
-    resources :tenders
+    resources :tenders do
+      resources :engines
+    end
     resources :autoparts
-    resources :engines
 
     get 'account_info' => 'top#account_info'
     get 'new_seller_register_inquiry' => 'inquiry#new_seller_register_inquiry' # 販売企業入力画面
