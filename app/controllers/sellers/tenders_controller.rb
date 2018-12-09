@@ -2,6 +2,7 @@ class Sellers::TendersController < ApplicationController
 
   before_action :authenticate_seller!
 
+  I18n.locale = "ja"
 
   def index
     @tenders = current_seller.tenders.order(id: :desc)
@@ -44,6 +45,13 @@ class Sellers::TendersController < ApplicationController
     else
       render "edit"
     end
+  end
+
+  def destroy
+    @tender = Tender.find(params[:id])
+    @tender.destroy!
+
+    redirect_to :sellers_tenders, alert: "入札会を削除しました。"
   end
 
   private def tender_params

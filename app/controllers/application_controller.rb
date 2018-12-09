@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
 
+  before_action :set_locale
+
+  private def set_locale
+    I18n.locale = params[:locale] || "en"
+  end
+
   ### Deviseの拡張
   before_action :configure_permitted_parameters, if: :devise_controller?
 
