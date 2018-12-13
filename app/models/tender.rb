@@ -2,17 +2,19 @@
 #
 # Table name: tenders
 #
-#  id         :bigint(8)        not null, primary key
-#  seller_id  :bigint(8)        not null
-#  starts_at  :datetime         not null
-#  ends_at    :datetime         not null
-#  status     :string           default("draft"), not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                 :bigint(8)        not null, primary key
+#  seller_id          :bigint(8)        not null
+#  tender_location_id :bigint(8)        not null
+#  starts_at          :datetime         not null
+#  ends_at            :datetime         not null
+#  status             :string           default("draft"), not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
 #
 
 class Tender < ApplicationRecord
   belongs_to :seller
+  belongs_to :tender_location
 
   has_many :engines, dependent: :destroy
   accepts_nested_attributes_for :engines, allow_destroy: true

@@ -39,3 +39,8 @@
   &nbsp;&nbsp;&nbsp;<span class="text-danger">* 全ての設定が完了した場合は完了を、ドラフトの場合はドラフトを選択してください</span>
   <%= f.select :status, Tender.status_options, {}, class: 'form-control' %>
 </div>
+
+<div class="form-group" >
+  <%= f.label :tender_location_id, "開催場所" %>
+  <%= select_tag :tender_location_id, options_from_collection_for_select(@tender_location_candidates.all, :id, :address), class: 'form-control' %>
+</div>

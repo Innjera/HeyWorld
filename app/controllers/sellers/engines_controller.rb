@@ -16,13 +16,14 @@ class Sellers::EnginesController < ApplicationController
   end
 
   def create
-    current_tender = Tender.find(params[:id])
+    current_tender = Tender.find(params[:tender_id])
     @engine = Engine.new(engine_params)
-    @engin.tender = current_seller
+    @engine.tender = current_tender
+    @engine.seller = current_seller
     binding.pry
-    if @autopart.save
-      flash.notice = "製品を新規登録しました。"
-      redirect_to :sellers_autoparts
+    if @engine.save
+      flash.notice = "エンジンを登録しました。"
+      redirect_to sellers_tender_path(current_tender)
     else
       render "new"
     end
@@ -32,8 +33,8 @@ class Sellers::EnginesController < ApplicationController
   end
 
   private def engine_params
-    params.require(:autopart).permit(
-      :tender_id, :car_make, :car_model, :car_model_code,
+    params.require(:engine).permit(
+      :seller_id, :tender_id, :car_make, :car_model, :car_model_code,
       :registration_year, :condition, :engine_model_code,
       :mileage, :drive, :mission_type, :starter, :alternator,
       :compressor, :power_steering_pump, :ecu,

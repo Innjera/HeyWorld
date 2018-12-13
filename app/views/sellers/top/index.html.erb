@@ -5,12 +5,14 @@
     </nav>
     <main class="col-10 ml-sm-auto">
       <div class="jumbotron mt-3">
-        <h1 class="display-4">入札を開始する</h1>
-        <p class="lead">これから準備</p>
+        <h1 class="display-4">Welcome!</h1>
+        <p class="lead">一般ユーザーから見たページを確認する</p>
+        <%= link_to seller_path(current_seller), class:"btn btn-primary btn-lg" do %>
+        確認
+        <% end %>
         <hr class="my-4">
-        <p>これから準備</p>
-        <%= link_to :new_sellers_autopart, class:"btn btn-primary btn-lg" do %>
-        パーツを掲載する
+        <%= link_to new_sellers_tender_path, class:"btn btn-primary btn-lg" do %>
+        入札会を開始する
         <% end %>
       </div>
     </main>

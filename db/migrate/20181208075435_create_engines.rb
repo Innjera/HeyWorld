@@ -1,6 +1,7 @@
 class CreateEngines < ActiveRecord::Migration[5.2]
   def change
     create_table :engines do |t|
+      t.references :seller, null: false
       t.references :tender, null: false
       t.string :car_make, null: false                           # 自動車メーカー（TOYOTA）
       t.string :car_model, null: false                          # 車名(PROBOX)

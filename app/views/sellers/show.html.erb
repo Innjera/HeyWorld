@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 mt-3">
+
+      <div class="jumbotron bg-light pt-2">
+        <h1 class="display-4"> <%= @seller.company_name_en %></h1>
+        <hr class="my-4">
+        <p>
+          <i class="fas fa-map-marked-alt"></i>&nbsp;
+          <%= @seller.company_address %>
+        </p>
+        <%= link_to "#", class:"btn btn-sm btn-warning" do %>
+        <i class="far fa-star"></i> follow this company
+        <% end %>
+        <%= link_to @seller.company_url, class:"btn btn-sm btn-success btn-lg" do %>
+        Visit Our Website
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+
+      <ul class="ul-modify">
+        <li><h2><%= @seller.company_name_en %> Engine Tenders</h2></li>
+      </ul>
+
+        <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">to be held</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">in progress</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">finished</a>
+        </li>
+      </ul>
+
+      <% @tenders.each do |tender| %>
+      <div class="tenders bg-light-success w-100 mt-3">
+        <%= link_to tender_path(tender) do %>
+        <div class="one-tender  text-dark p-2">
+          Tender No. <%= tender.id %>
+          &nbsp;
+          <span class="badge badge-success">
+          <i class="fas fa-car"></i>&nbsp;<strong><%= tender.engines.count %></strong> engines
+          </span>
+          <span class="badge badge-pill badge-danger">in progress</span>
+          <br>
+          Start：<strong><%= tender.starts_at.strftime("%d %b %Y (%a) %H:%M") %></strong>
+          <br>
+          End：<strong><%= tender.ends_at.strftime("%d %b %Y (%a) %H:%M") %></strong>
+          <br>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

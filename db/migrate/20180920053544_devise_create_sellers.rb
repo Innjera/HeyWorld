@@ -4,6 +4,7 @@ class DeviseCreateSellers < ActiveRecord::Migration[5.2]
   def change
     create_table :sellers do |t|
       t.string :company_name
+      t.string :company_name_en
       t.string :company_address
       t.string :company_url
       t.string :company_tell

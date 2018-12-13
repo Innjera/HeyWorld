@@ -12,6 +12,7 @@ company_names.each do |seller|
   0.upto(2) do |idx|
     Tender.create(
       seller: seller,
+      tender_location: TenderLocation.all.sample,
       starts_at: datetime0.advance(days: rand(5)+idx, hours: 7),
       ends_at: datetime0.advance(days: idx+8, hours: 7),
       status: %w(draft ready)[idx % 2]

@@ -4,6 +4,7 @@
 #
 #  id                     :bigint(8)        not null, primary key
 #  company_name           :string
+#  company_name_en        :string
 #  company_address        :string
 #  company_url            :string
 #  company_tell           :string
@@ -26,7 +27,10 @@
 
 class Seller < ApplicationRecord
   has_many :tenders
+  has_many :tender_locations
+  has_many :engines
   has_many :autoparts
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :omniauthable

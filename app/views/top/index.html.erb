@@ -74,7 +74,7 @@
         </div>
 
         <% @engines.each do |engine| %>
-        <%= link_to engine_path(engine), class:"text-secondary remove-underline" do %>
+        <%= link_to tender_path(engine.tender), class:"text-secondary remove-underline" do %>
 
         <div class="row mb-2">
           <div class="card flex-row flex-wrap" style="width:100%">
@@ -104,7 +104,7 @@
               <br>
               <span class="text-dark">
                 <i class="fas fa-map-marker-alt"></i>
-                Aichi | Nagoya
+                <%= engine.tender.tender_location.address_prefecture_part %> | <%= engine.tender.tender_location.address_city_part %>
               </span>
               <br>
 

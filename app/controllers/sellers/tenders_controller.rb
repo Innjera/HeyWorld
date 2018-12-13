@@ -18,6 +18,7 @@ class Sellers::TendersController < ApplicationController
     time0 = Time.current.beginning_of_day
     @tender.starts_at = time0.advance(days: 1, hours: 9)
     @tender.ends_at = time0.advance(days: 3, hours: 12)
+    @tender_location_candidates = current_seller.tender_locations
   end
 
   def edit

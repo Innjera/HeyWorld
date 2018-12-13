@@ -22,7 +22,7 @@
 #  front_suspension    :integer          default(0), not null
 #  rear_suspension     :integer          default(0), not null
 #  remarks             :text
-#  minimum_price       :integer          default(0), not null
+#  minimum_price       :integer          default(10000), not null
 #  sold                :boolean          default(FALSE), not null
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
@@ -30,6 +30,7 @@
 
 class Engine < ApplicationRecord
   belongs_to :tender
+  belongs_to :seller
 
   validates :car_make, presence: true
 

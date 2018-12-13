@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_08_075435) do
+ActiveRecord::Schema.define(version: 2018_12_13_073805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2018_12_08_075435) do
   end
 
   create_table "engines", force: :cascade do |t|
+    t.bigint "seller_id", null: false
     t.bigint "tender_id", null: false
     t.string "car_make", null: false
     t.string "car_model", null: false
@@ -54,10 +55,11 @@ ActiveRecord::Schema.define(version: 2018_12_08_075435) do
     t.integer "front_suspension", default: 0, null: false
     t.integer "rear_suspension", default: 0, null: false
     t.text "remarks"
-    t.integer "minimum_price", default: 0, null: false
+    t.integer "minimum_price", default: 10000, null: false
     t.boolean "sold", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["seller_id"], name: "index_engines_on_seller_id"
     t.index ["tender_id"], name: "index_engines_on_tender_id"
   end
 
@@ -71,6 +73,7 @@ ActiveRecord::Schema.define(version: 2018_12_08_075435) do
 
   create_table "sellers", force: :cascade do |t|
     t.string "company_name"
+    t.string "company_name_en"
     t.string "company_address"
     t.string "company_url"
     t.string "company_tell"
@@ -94,14 +97,28 @@ ActiveRecord::Schema.define(version: 2018_12_08_075435) do
     t.index ["unlock_token"], name: "index_sellers_on_unlock_token", unique: true
   end
 
+  create_table "tender_locations", force: :cascade do |t|
+    t.bigint "seller_id", null: false
+    t.string "address", null: false
+    t.string "address_country_part", default: "Japan", null: false
+    t.string "address_prefecture_part", null: false
+    t.string "address_city_part", null: false
+    t.string "address_rest_part", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["seller_id"], name: "index_tender_locations_on_seller_id"
+  end
+
   create_table "tenders", force: :cascade do |t|
     t.bigint "seller_id", null: false
+    t.bigint "tender_location_id", null: false
     t.datetime "starts_at", null: false
     t.datetime "ends_at", null: false
     t.string "status", default: "draft", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["seller_id"], name: "index_tenders_on_seller_id"
+    t.index ["tender_location_id"], name: "index_tenders_on_tender_location_id"
   end
 
   create_table "users", force: :cascade do |t|

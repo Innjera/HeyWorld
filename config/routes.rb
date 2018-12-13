@@ -1,20 +1,23 @@
 Rails.application.routes.draw do
 
+  #何故deviseが一番上に来るべきか https://teratail.com/questions/163615
+
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
+
+  devise_for :sellers, :controllers => { :registrations => :registrations }
 
   root 'top#index'
 
   get 'corporation' => 'top#corporation'
   get 'mypage' => 'top#mypage'
+
   resources :engines, only:[:index, :show]
   resources :tenders, only:[:index, :show]
+  resources :sellers, only:[:index, :show]
 
-
-  devise_for :sellers, :controllers => { :registrations => :registrations }
-
-  namespace :sellers do
+  namespace :sellers, path:"organizer" do
     root 'top#index'
     resources :tenders do
       resources :engines
