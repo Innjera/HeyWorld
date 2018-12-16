@@ -82,11 +82,116 @@
   </tbody>
 </table>
 
-<div class="alert alert-warning" role="alert">
+<div class="alert alert-warning pb-0" role="alert">
   <div class="bg-warning p-2"><strong>付属する部品にチェックボックスを入れてください。</strong></div>
 
   <table class="table table-striped mt-3">
     <tbody>
+
+      <tr>
+        <th scope="row">Intake Manifold</th>
+        <td>
+          <%= form.radio_button :intake_manifold, 0 %>
+          <%= form.label :intake_manifold_0, "有り" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :intake_manifold, 1 %>
+          <%= form.label :intake_manifold_1, "無し" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :intake_manifold, 2 %>
+          <%= form.label :intake_manifold_2, "有り（注意事項有 - 備考に記入）" %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Throttle Body</th>
+        <td>
+          <%= form.radio_button :throttle_body, 0 %>
+          <%= form.label :throttle_body_0, "有り" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :throttle_body, 1 %>
+          <%= form.label :throttle_body_1, "無し" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :throttle_body, 2 %>
+          <%= form.label :throttle_body_2, "有り（注意事項有 - 備考に記入）" %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Exhaust Manifold</th>
+        <td>
+          <%= form.radio_button :exhaust_manifold, 0 %>
+          <%= form.label :exhaust_manifold_0, "有り" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :exhaust_manifold, 1 %>
+          <%= form.label :exhaust_manifold_1, "無し" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :exhaust_manifold, 2 %>
+          <%= form.label :exhaust_manifold_2, "有り（注意事項有 - 備考に記入）" %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Ignition Coil</th>
+        <td>
+          <%= form.radio_button :ignition_coil, 0 %>
+          <%= form.label :ignition_coil_0, "有り" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :ignition_coil, 1 %>
+          <%= form.label :ignition_coil_1, "無し" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :ignition_coil, 2 %>
+          <%= form.label :ignition_coil_2, "有り（注意事項有 - 備考に記入）" %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Turbo Charger</th>
+        <td>
+          <%= form.radio_button :turbo_charger, 0 %>
+          <%= form.label :turbo_charger_0, "有り" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :turbo_charger, 1 %>
+          <%= form.label :turbo_charger_1, "無し" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :turbo_charger, 2 %>
+          <%= form.label :turbo_charger_2, "有り（注意事項有 - 備考に記入）" %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Fly Wheel</th>
+        <td>
+          <%= form.radio_button :fly_wheel, 0 %>
+          <%= form.label :fly_wheel_0, "有り" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :fly_wheel, 1 %>
+          <%= form.label :fly_wheel_1, "無し" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :fly_wheel, 2 %>
+          <%= form.label :fly_wheel_1, "有り（注意事項有 - 備考に記入）" %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">AC Compressor</th>
+        <td>
+          <%= form.radio_button :compressor, 0 %>
+          <%= form.label :compressor_0, "有り" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :compressor, 1 %>
+          <%= form.label :compressor_1, "無し" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :compressor, 2 %>
+          <%= form.label :compressor_2, "有り（注意事項有 - 備考に記入）" %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Power Steering Pump</th>
+        <td>
+          <%= form.radio_button :power_steering_pump, 0 %>
+          <%= form.label :power_steering_pump_0, "有り" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :power_steering_pump, 1 %>
+          <%= form.label :power_steering_pump_1, "無し" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :power_steering_pump, 2 %>
+          <%= form.label :power_steering_pump_2, "有り（注意事項有 - 備考に記入）" %>
+        </td>
+      </tr>
       <tr>
         <th scope="row">Starter</th>
         <td>
@@ -95,6 +200,9 @@
           &nbsp;&nbsp;&nbsp;
           <%= form.radio_button :starter, 1 %>
           <%= form.label :starter_1, "無し" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :starter, 2 %>
+          <%= form.label :starter_2, "有り（注意事項有 - 備考に記入）" %>
         </td>
       </tr>
       <tr>
@@ -105,25 +213,9 @@
           &nbsp;&nbsp;&nbsp;
           <%= form.radio_button :alternator, 1 %>
           <%= form.label :alternator_1, "無し" %>
-        </td>
-      </tr>
-        <th scope="row">ACコンプレッサー</th>
-        <td>
-          <%= form.radio_button :compressor, 0 %>
-          <%= form.label :compressor_0, "有り" %>
           &nbsp;&nbsp;&nbsp;
-          <%= form.radio_button :compressor, 1 %>
-          <%= form.label :compressor_1, "無し" %>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">パワーステアリングポンプ</th>
-        <td>
-          <%= form.radio_button :power_steering_pump, 0 %>
-          <%= form.label :power_steering_pump_0, "有り" %>
-          &nbsp;&nbsp;&nbsp;
-          <%= form.radio_button :power_steering_pump, 1 %>
-          <%= form.label :power_steering_pump_1, "無し" %>
+          <%= form.radio_button :alternator, 2 %>
+          <%= form.label :alternator_2, "有り（注意事項有 - 備考に記入）" %>
         </td>
       </tr>
       <tr>
@@ -134,6 +226,9 @@
           &nbsp;&nbsp;&nbsp;
           <%= form.radio_button :ecu, 1 %>
           <%= form.label :ecu_1, "無し" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :ecu, 2 %>
+          <%= form.label :ecu_2, "有り（注意事項有 - 備考に記入）" %>
         </td>
       </tr>
       <tr>
@@ -144,6 +239,9 @@
           &nbsp;&nbsp;&nbsp;
           <%= form.radio_button :engine_harness, 1 %>
           <%= form.label :engine_harness_1, "無し" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :engine_harness, 2 %>
+          <%= form.label :engine_harness_2, "有り（注意事項有 - 備考に記入）" %>
         </td>
       </tr>
       <tr>
@@ -154,6 +252,9 @@
           &nbsp;&nbsp;&nbsp;
           <%= form.radio_button :front_suspension, 1 %>
           <%= form.label :front_suspension_1, "無し" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :front_suspension, 2 %>
+          <%= form.label :front_suspension_2, "有り（注意事項有 - 備考に記入）" %>
         </td>
       </tr>
       <tr>
@@ -164,6 +265,9 @@
           &nbsp;&nbsp;&nbsp;
           <%= form.radio_button :rear_suspension, 1 %>
           <%= form.label :rear_suspension_1, "無し" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :rear_suspension, 2 %>
+          <%= form.label :rear_suspension_2, "有り（注意事項有 - 備考に記入）" %>
         </td>
       </tr>
     </tbody>
@@ -175,9 +279,9 @@
 
 <div class="form-group">
 <%= form.label :remarks, "備考" %>
-<%= form.text_area :remarks, autofocus: true, class: "form-control", placeholder: "特記事項があれば記載ください", rows:5 %>
+<%= form.text_area :remarks, autofocus: true, class: "form-control", placeholder: "特記事項があれば記載ください", rows:10 %>
 </div>
-  
+
 <div class="form-group">
 <%= form.label :minimum_price, "最低価格（スタート価格）" %>
 <%= form.text_field :minimum_price, autofocus: true, class: "form-control", placeholder: "円ベースでの金額を入れてください" %>

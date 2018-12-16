@@ -3,6 +3,7 @@
 # Table name: engines
 #
 #  id                  :bigint(8)        not null, primary key
+#  seller_id           :bigint(8)        not null
 #  tender_id           :bigint(8)        not null
 #  car_make            :string           not null
 #  car_model           :string           not null
@@ -13,10 +14,16 @@
 #  mileage             :string
 #  drive               :integer          default(0), not null
 #  mission_type        :integer          default(0), not null
-#  starter             :integer          default(0), not null
-#  alternator          :integer          default(0), not null
+#  intake_manifold     :integer          default(0), not null
+#  throttle_body       :integer          default(0), not null
+#  exhaust_manifold    :integer          default(0), not null
+#  ignition_coil       :integer          default(0)
+#  turbo_charger       :integer          default(0)
+#  fly_wheel           :integer          default(0), not null
 #  compressor          :integer          default(0), not null
 #  power_steering_pump :integer          default(0), not null
+#  starter             :integer          default(0), not null
+#  alternator          :integer          default(0), not null
 #  ecu                 :integer          default(0), not null
 #  engine_harness      :integer          default(0), not null
 #  front_suspension    :integer          default(0), not null

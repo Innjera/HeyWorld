@@ -1,0 +1,74 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <nav class="col-2 bg-light sidebar">
+      <%= render 'sellers/shared/sidebar' %>
+    </nav>
+
+    <main class="col-10">
+
+      <h1 class="text-secondary my-4">入札基本設定</h1>
+
+      <ul class="ul-orange">
+        <li>
+          <h2 class="m-0 text-secondary">
+            入札場所
+          </h2>
+        </li>
+      </ul>
+
+      <div class="alert alert-warning my-3" role="alert">
+        現在
+        <strong><span class="text-danger" style="font-size:2rem;">
+          <%= @tender_locations.count %>
+        </span></strong>
+        箇所が登録されています。
+
+        <%= link_to "#", class:"btn btn-warning" do %>
+        <i class="fas fa-plus"></i>
+        追加する
+        <% end %>
+      </div>
+
+      <ol>
+        <% @tender_locations.each do |location| %>
+
+        <div class="mb-5">
+        <h3>
+          <li class="my-3 text-secondary">
+            <%= location.address %>
+          </li>
+        </h3>
+        <%= link_to "#", class:"btn btn-sm btn-outline-dark" do %>
+        <i class="far fa-edit"></i>
+        変更
+        <% end %>
+        <%= link_to "#", class:"btn btn-sm btn-outline-dark" do %>
+        <i class="fas fa-trash-alt"></i>
+        削除
+        <% end %>
+        </div>
+
+        <% end %>
+      </ol>
+
+      <ul class="ul-orange">
+        <li>
+          <h2 class="m-0 text-secondary">
+            入札ルール
+          </h2>
+        </li>
+      </ul>
+
+
+
+        <h3><i class="fas fa-check"></i> 支払：</h3>
+
+        <%= link_to "#", class:"btn btn-warning my-5" do %>
+        <i class="far fa-edit"></i>
+        変更する
+        <% end %>
+
+.    </main>
+  </div>
+</div>

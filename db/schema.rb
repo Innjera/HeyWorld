@@ -10,29 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_13_073805) do
+ActiveRecord::Schema.define(version: 2018_12_14_181531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "autoparts", force: :cascade do |t|
-    t.bigint "seller_id", null: false
-    t.string "parts_category", null: false
-    t.integer "condition", default: 0, null: false
-    t.string "car_make", null: false
-    t.string "car_model", null: false
-    t.string "car_model_code"
-    t.date "registration_year"
-    t.string "engine_model_code"
-    t.string "mileage"
-    t.integer "drive", default: 0
-    t.integer "mission_type", default: 0
-    t.text "remarks"
-    t.integer "sold", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["seller_id"], name: "index_autoparts_on_seller_id"
-  end
 
   create_table "engines", force: :cascade do |t|
     t.bigint "seller_id", null: false
@@ -46,10 +27,16 @@ ActiveRecord::Schema.define(version: 2018_12_13_073805) do
     t.string "mileage"
     t.integer "drive", default: 0, null: false
     t.integer "mission_type", default: 0, null: false
-    t.integer "starter", default: 0, null: false
-    t.integer "alternator", default: 0, null: false
+    t.integer "intake_manifold", default: 0, null: false
+    t.integer "throttle_body", default: 0, null: false
+    t.integer "exhaust_manifold", default: 0, null: false
+    t.integer "ignition_coil", default: 0
+    t.integer "turbo_charger", default: 0
+    t.integer "fly_wheel", default: 0, null: false
     t.integer "compressor", default: 0, null: false
     t.integer "power_steering_pump", default: 0, null: false
+    t.integer "starter", default: 0, null: false
+    t.integer "alternator", default: 0, null: false
     t.integer "ecu", default: 0, null: false
     t.integer "engine_harness", default: 0, null: false
     t.integer "front_suspension", default: 0, null: false
@@ -61,14 +48,6 @@ ActiveRecord::Schema.define(version: 2018_12_13_073805) do
     t.datetime "updated_at", null: false
     t.index ["seller_id"], name: "index_engines_on_seller_id"
     t.index ["tender_id"], name: "index_engines_on_tender_id"
-  end
-
-  create_table "offer_prices", force: :cascade do |t|
-    t.bigint "autopart_id", null: false
-    t.integer "initial", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["autopart_id"], name: "index_offer_prices_on_autopart_id"
   end
 
   create_table "sellers", force: :cascade do |t|
@@ -107,6 +86,20 @@ ActiveRecord::Schema.define(version: 2018_12_13_073805) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["seller_id"], name: "index_tender_locations_on_seller_id"
+  end
+
+  create_table "tender_rules", force: :cascade do |t|
+    t.bigint "seller_id", null: false
+    t.integer "tax", default: 0, null: false
+    t.integer "payment", default: 0, null: false
+    t.integer "delivery", default: 0, null: false
+    t.integer "pickup_date", null: false
+    t.integer "cancel", default: 0, null: false
+    t.integer "priority", default: 0, null: false
+    t.integer "disclose", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["seller_id"], name: "index_tender_rules_on_seller_id"
   end
 
   create_table "tenders", force: :cascade do |t|

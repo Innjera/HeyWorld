@@ -30,6 +30,7 @@ class Seller < ApplicationRecord
   has_many :tender_locations
   has_many :engines
   has_many :autoparts
+  has_one :tender_rule
 
 
   # Include default devise modules. Others available are:

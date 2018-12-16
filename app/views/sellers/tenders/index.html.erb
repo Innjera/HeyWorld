@@ -5,6 +5,8 @@
     </nav>
     <main class="col-10">
 
+      <h1 class="text-secondary my-4">入札会一覧</h1>
+
       <% @tenders.each do |tender| %>
       <div class="tenders w-100 mt-3">
         <%= link_to sellers_tender_path(tender) do %>

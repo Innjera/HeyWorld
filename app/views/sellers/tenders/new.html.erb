@@ -5,15 +5,23 @@
       <%= render 'sellers/shared/sidebar' %>
     </nav>
 
-    <main class="col-10 ml-sm-auto">
+    <main class="col-10">
+
+      <h1 class="text-secondary my-4">入札を開始する</h1>
+
 
       <div class="mt-3">
         <%= form_for @tender, url: :sellers_tenders do |f| %>
 
         <%= render 'fields', f: f %>
 
-        <div class="form-group mt-5" >
-          <%= f.submit "入札会を設定する", class: 'btn btn-success' %>
+
+        <div class="alert alert-warning mt-5" role="alert">
+          <div class="form-group mb-0" >
+            <%= f.submit "入札を開始する", class: 'btn btn-success' %>
+            &nbsp;&nbsp;<i class="fas fa-exclamation-triangle"></i>
+            次の画面で入札に出す商品を登録してください。
+          </div>
         </div>
 
         <% end %>
