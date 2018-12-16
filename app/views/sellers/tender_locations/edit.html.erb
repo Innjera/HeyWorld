@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <nav class="col-2 bg-light sidebar">
+      <%= render 'sellers/shared/sidebar' %>
+    </nav>
+
+    <main class="col-10">
+
+      <h1 class="text-secondary my-4">入札場所アップデート</h1>
+
+      <div class="alert alert-warning my-4" role="alert">
+        <i class="fas fa-exclamation-triangle"></i>
+        英語にて記載ください。
+      </div>
+
+      <%= form_for @tender_location, url: :sellers_tender_location do |form| %>
+
+      <%= render 'sellers/tender_locations/form', form: form %>
+
+      <%= form.submit "アップデートする", class:"btn btn-warning my-3" %>
+
+      <%= link_to sellers_tender_rule_path, class:"btn btn-outline-dark my-3 ml-2" do %>
+      <i class="fas fa-times"></i> キャンセル
+      <% end %>
+
+      <% end %>
+
+    </main>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="form-group">
+<%= form.label :address_prefecture_part, "都道府県" %>
+&nbsp;&nbsp;<span class="badge badge-pill badge-danger">必須</span>
+&nbsp;&nbsp;<span class="text-danger"><small>*自動で英語化されます</small></span>
+<%= form.select :address_prefecture_part, TenderLocation::PREFECTURES, { prompt: "--選択してください--"}, class: "form-control" %>
+</div>
+
+<div class="form-group">
+<%= form.label :address_city_part, "郡区市町村" %>
+&nbsp;&nbsp;<span class="badge badge-pill badge-danger">必須</span>
+&nbsp;&nbsp;<span class="text-danger"><small>*英語（アルファベット）でご記載ください。</small></span>
+<%= form.text_field :address_city_part, autofocus: true, class: "form-control", placeholder: "（例）Minato-ku" %>
+</div>
+
+<div class="form-group">
+<%= form.label :address_rest_part, "住所残り" %>
+&nbsp;&nbsp;<span class="badge badge-pill badge-danger">必須</span>
+&nbsp;&nbsp;<span class="text-danger"><small>*英語（アルファベット）でご記載ください。</small></span>
+<%= form.text_field :address_rest_part, autofocus: true, class: "form-control", placeholder: "（例）Roppongi 3-7-1" %>
+</div>

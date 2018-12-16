@@ -36,9 +36,10 @@ class Sellers::EnginesController < ApplicationController
     params.require(:engine).permit(
       :seller_id, :tender_id, :car_make, :car_model, :car_model_code,
       :registration_year, :condition, :engine_model_code,
-      :mileage, :drive, :mission_type, :starter, :alternator,
-      :compressor, :power_steering_pump, :ecu,
-      :engine_harness, :front_suspension, :rear_suspension,
+      :mileage, :drive, :mission_type, :intake_manifold, :throttle_body,
+      :exhaust_manifold, :ignition_coil, :turbo_charger, :fly_wheel,
+      :compressor, :power_steering_pump, :starter, :alternator,
+      :ecu, :engine_harness, :front_suspension, :rear_suspension,
       :remarks, :minimum_price, :sold
     )
   end

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       resources :engines
     end
     resource :tender_rule
+    resources :tender_locations, only:[:new, :edit, :create, :update, :destroy]
 
     get 'account_info' => 'top#account_info'
     get 'new_seller_register_inquiry' => 'inquiry#new_seller_register_inquiry' # 販売企業入力画面

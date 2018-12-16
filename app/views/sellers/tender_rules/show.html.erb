@@ -24,7 +24,7 @@
         </span></strong>
         箇所が登録されています。
 
-        <%= link_to "#", class:"btn btn-warning" do %>
+        <%= link_to new_sellers_tender_location_path, class:"btn btn-warning" do %>
         <i class="fas fa-plus"></i>
         追加する
         <% end %>
@@ -39,12 +39,14 @@
             <%= location.address %>
           </li>
         </h3>
-        <%= link_to "#", class:"btn btn-sm btn-outline-dark" do %>
+        <%= link_to edit_sellers_tender_location_path(location), class:"btn btn-sm btn-outline-dark" do %>
         <i class="far fa-edit"></i>
         変更
         <% end %>
-        <%= link_to "#", class:"btn btn-sm btn-outline-dark" do %>
-        <i class="fas fa-trash-alt"></i>
+
+        <%= render "delete_confirmation", location: location %>
+        <%= link_to "#delete-confirmation-#{location.id}", data: {toggle: "modal"}, class:"btn btn-sm btn-outline-dark" do%>
+        <i class="far fa-trash-alt"></i>
         削除
         <% end %>
         </div>
@@ -69,6 +71,6 @@
         変更する
         <% end %>
 
-.    </main>
+    </main>
   </div>
 </div>

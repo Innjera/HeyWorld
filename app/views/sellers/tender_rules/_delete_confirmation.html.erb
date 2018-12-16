@@ -1,0 +1,28 @@
+<div class="modal text-dark" id="delete-confirmation-<%= location.id %>", tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">以下の住所を削除します</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <span style="font-size:2rem;">
+          <strong><%= location.address %></strong>
+        </span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
+          <i class="fas fa-times"></i>
+          &nbsp;<strong>キャンセル</<strong>
+        </button>
+        <%= link_to sellers_tender_location_path(location), method: :delete, class:"btn btn-outline-danger" do%>
+        <i class="far fa-trash-alt"></i>
+        &nbsp;<strong>削除する</strong>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
