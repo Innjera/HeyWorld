@@ -59,5 +59,112 @@
       </div>
       <% end %>
     </div>
+
+    <div class="col-12">
+
+      <ul class="ul-blue mt-5">
+        <li><h2><%= @seller.company_name_en %> Engine Tender Rule</h2></li>
+      </ul>
+
+      <% if @tender_rule %>
+
+        <table class="table table-bordered table-striped mt-5">
+          <tbody>
+            <tr>
+              <th>
+                Payment
+              </th>
+              <td>
+                <% if @tender_rule.payment_cash_in_advance %>
+                <span class="badge badge-warning" style="font-size:1rem;">
+                  Cash
+                </span>
+                <% end %>
+                <% if @tender_rule.payment_bank_transfer_in_advance %>
+                <span class="badge badge-warning" style="font-size:1rem;">
+                  Bank Transfer
+                </span>
+                <% end %>
+                <% if @tender_rule.payment_credit_card_in_advance %>
+                <span class="badge badge-warning" style="font-size:1rem;">
+                  Credit Card
+                </span>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Consumption Tax（8%）</th>
+              <td>
+                <% if @tender_rule.tax == 0 %>
+                To be paid separately
+                <% elsif @tender_rule.tax == 1 %>
+                To be included in your bid price
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Delivery</th>
+              <td>
+                <% if @tender_rule.delivery == 0 %>
+                No. You have to come to colloect.
+                <% elsif @tender_rule.delivery == 1 %>
+                Possible. You will bear the cost.
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Pick up
+              </th>
+              <td>
+                within
+                <strong><%= @tender_rule.pickup_date %></strong>
+                days
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Cancel</th>
+              <td>
+                <% if @tender_rule.cancel == 0 %>
+                Not possible.
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Priority</th>
+              <td>
+                <% if @tender_rule.priority == 0 %>
+                first bidder will be prioritized.
+                <% elsif @tender_rule.priority == 1 %>
+                その他
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Final Price</th>
+              <td>
+                <% if @tender_rule.disclose == 0 %>
+                To be disclosed.
+                <% elsif @tender_rule.disclose == 1 %>
+                Not disclosed.
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+      <% else %>
+
+      <div class="alert alert-danger my-5" role="alert">
+
+        <p>
+          <i class="fas fa-exclamation-triangle"></i>
+          No rule yet set.
+        </p>
+      </div>
+
+      <% end %>
+
   </div>
 </div>

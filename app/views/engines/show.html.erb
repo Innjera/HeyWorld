@@ -7,7 +7,7 @@
         <%= image_tag("parts_example.JPG", alt: "parts_example", size: "238x180")%>
         </div>
 
-        <div class="alert alert-warning" role="alert">
+        <div class="alert alert-warning d-none d-lg-block">
           <i class="fas fa-exclamation-triangle"></i>
           <strong>Tender Rule</strong>
 
@@ -89,23 +89,29 @@
 
       </div>
 
-      <div class="col-8">
+      <div class="col-lg-8 col-12">
 
-        <div class="alert alert-success my-5" role="alert">
+        <div class="alert alert-success text-center my-3" role="alert">
 
-        <h2 class="text-success mb-0">
-          <span class="small">min price:</span>
-          <strong>
-            <%= number_to_currency(@engine.minimum_price, :unit => " JPY ", :precision => 0) %>
-          </strong>
-          -
+          <h3 class="text-success mb-0">
+            <span class="small">min price:</span>
+            <strong>
+              <%= number_to_currency(@engine.minimum_price, :unit => " JPY ", :precision => 0) %>
+            </strong>
+          </h3>
 
-          &nbsp;&nbsp;&nbsp;&nbsp;
+          <hr>
 
-          <%= link_to "#", class:"btn btn-lg btn-success my-2" do %>
+          <%= render "place_bid", engine: @engine %>
+          <%= link_to "#place-bid-#{@engine.id}", data: {toggle: "modal"}, class:"btn btn-lg btn-success my-2" do%>
           <strong>Place Your Bid</strong>
           <% end %>
-        </h2>
+
+        <hr>
+
+        This tender will be closed at <strong><%= @engine.tender.ends_at.strftime("%d %b %Y (%a) %H:%M") %></strong>
+        <br>
+        check the other engines in this <%= link_to "tender", tender_path(@engine.tender) %>
 
         </div>
 
