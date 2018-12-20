@@ -90,8 +90,10 @@ ActiveRecord::Schema.define(version: 2018_12_14_181531) do
 
   create_table "tender_rules", force: :cascade do |t|
     t.bigint "seller_id", null: false
+    t.boolean "payment_cash_in_advance", null: false
+    t.boolean "payment_bank_transfer_in_advance", null: false
+    t.boolean "payment_credit_card_in_advance", null: false
     t.integer "tax", default: 0, null: false
-    t.integer "payment", default: 0, null: false
     t.integer "delivery", default: 0, null: false
     t.integer "pickup_date", null: false
     t.integer "cancel", default: 0, null: false

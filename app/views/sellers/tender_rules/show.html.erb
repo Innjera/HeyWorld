@@ -62,14 +62,118 @@
         </li>
       </ul>
 
+      <% if @tender_rule %>
+
+        <table class="table table-bordered table-striped mt-5">
+          <tbody>
+            <tr>
+              <th>
+                支払方法
+              </th>
+              <td>
+                <% if @tender_rule.payment_cash_in_advance %>
+                <span class="badge badge-warning" style="font-size:1rem;">
+                  現金手渡（商品引取前）
+                </span>
+                <% end %>
+                <% if @tender_rule.payment_bank_transfer_in_advance %>
+                <span class="badge badge-warning" style="font-size:1rem;">
+                  銀行振込（商品引取前）
+                </span>
+                <% end %>
+                <% if @tender_rule.payment_credit_card_in_advance %>
+                <span class="badge badge-warning" style="font-size:1rem;">
+                  クレジットカード（商品引取前）
+                </span>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">消費税（8%）</th>
+              <td>
+                <% if @tender_rule.tax == 0 %>
+                別
+                <% elsif @tender_rule.tax == 1 %>
+                税込み
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">商品配送</th>
+              <td>
+                <% if @tender_rule.delivery == 0 %>
+                不可
+                <% elsif @tender_rule.delivery == 1 %>
+                可能（費用買主負担）
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                引取期限
+              </th>
+              <td>
+                <div class="form-group">
+                  落札後
+                  <%= @tender_rule.pickup_date %>
+                  日以内
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">落札後キャンセル</th>
+              <td>
+                <% if @tender_rule.cancel == 0 %>
+                不可
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">同額入札者がいる場合</th>
+              <td>
+                <% if @tender_rule.priority == 0 %>
+                先に入札した人を優先する
+                <% elsif @tender_rule.priority == 1 %>
+                その他
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">落札価格開示</th>
+              <td>
+                <% if @tender_rule.disclose == 0 %>
+                開示
+                <% elsif @tender_rule.disclose == 1 %>
+                非開示
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      <%= link_to edit_sellers_tender_rule_path, class:"btn btn-warning my-3" do %>
+      <i class="far fa-edit"></i>
+      入札ルールを変更する
+      <% end %>
+
+      <% else %>
+
+      <div class="alert alert-danger my-5" role="alert">
+
+        <p>
+          <i class="fas fa-exclamation-triangle"></i>
+          入札会ルールの設定をしてください。
+        </p>
 
 
-        <h3><i class="fas fa-check"></i> 支払：</h3>
-
-        <%= link_to "#", class:"btn btn-warning my-5" do %>
-        <i class="far fa-edit"></i>
-        変更する
+        <%= link_to new_sellers_tender_rule_path, class:"btn btn-danger" do %>
+        <i class="fas fa-plus"></i>
+        設定する
         <% end %>
+      </div>
+
+      <% end %>
+
 
     </main>
   </div>

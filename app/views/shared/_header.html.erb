@@ -62,6 +62,9 @@
           My Page
           <% end %>
           <% else %>
+          <%= link_to "#", class:"dropdown-item" do %>
+          Buyers Sign In
+          <% end %>
           <% end %>
           <div class="dropdown-divider"></div>
           <% if current_seller %>
@@ -75,6 +78,9 @@
             Sign Out
             <% end %>
           <% else %>
+          <%= link_to "#", class:"dropdown-item" do %>
+          販売企業様サインイン
+          <% end %>
           <% end %>
         </div>
       </li>

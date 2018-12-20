@@ -4,7 +4,7 @@
 
       <div class="alert alert-primary mt-4" role="alert">
 
-        Tender No. <%= @tender.id %> <small>organized by</small>
+        Tender No. <%= @tender.id %> <small>organized by </small>
         <strong>
           <%= link_to @tender.seller.company_name_en, seller_path(@tender.seller) %>
         </strong>
@@ -37,6 +37,7 @@
     <div class="col-12">
 
       <% @engines.each do |engine| %>
+      <%= link_to engine_path(engine), class:"remove-underline" do %>
       <div class="card flex-row flex-wrap my-2 w-100">
         <div class="card-header d-inline border-0 p-0">
           <%= image_tag("parts_example.JPG", size: "158x120")%>
@@ -63,19 +64,14 @@
         </div>
 
         <div class="card-footer w-100 bg-white p-2 text-success justify-content-end">
-                <span class="text-muted">min price</span>
-                <%= number_to_currency(engine.minimum_price, :unit => "JPY ", :precision => 0) %>
-              </div>
-            </div>
-
-            <% end %>
-
-          </div>
-
+          <span class="text-muted">min price</span>
+          <%= number_to_currency(engine.minimum_price, :unit => "JPY ", :precision => 0) %>
+          &nbsp;&nbsp;
+          <button type="button" class="btn btn-sm btn-success">Show Detail & Place Bid</button>
         </div>
-
       </div>
-
+      <% end %>
+      <% end %>
     </div>
   </div>
 </div>

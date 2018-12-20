@@ -1,0 +1,125 @@
+<div class="mt-5">
+  <table class="table table-striped" style="border: 2px red solid;">
+    <tbody>
+      <tr>
+        <th rowspan="3" class="bg-white">
+          支払方法
+          <br>
+          <span class="text-danger">
+            <small>
+              可能な支払方法に
+              <br>
+              チェックを入れてください。
+              <br>
+              *複数選択可能
+            </small>
+          </span>
+        </th>
+        <td class="bg-white">
+          <div class="form-group mb-0">
+            <label class="custom-control custom-checkbox mb-0">
+              <%= form.check_box :payment_cash_in_advance, class:"custom-control-input", checked:true %>
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-label">現金手渡（商品引取時）</span>
+            </label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="bg-white">
+          <div class="form-group mb-0">
+            <label class="custom-control custom-checkbox mb-0">
+              <%= form.check_box :payment_bank_transfer_in_advance, class:"custom-control-input", checked:true %>
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-label">銀行振込（商品引取前）</span>
+            </label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="bg-white">
+          <div class="form-group mb-0">
+            <label class="custom-control custom-checkbox mb-0">
+              <%= form.check_box :payment_credit_card_in_advance, class:"custom-control-input", checked:true %>
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-label">クレジットカード（商品引取前）</span>
+            </label>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+  <table class="table table-striped mt-5">
+    <tbody>
+      <tr>
+        <th scope="row">消費税（8%）</th>
+        <td>
+          <%= form.radio_button :tax, 0 %>
+          <%= form.label :tax_0, "別途支払い" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :tax, 1 %>
+          <%= form.label :tax_1, "込み" %>
+          &nbsp;&nbsp;&nbsp;
+          <span class="text-danger">
+            <small>
+            *基本的に消費税は別途支払いとしてください。
+            </small>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">商品配送</th>
+        <td>
+          <%= form.radio_button :delivery, 0 %>
+          <%= form.label :delivery_0, "不可" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :delivery, 1 %>
+          <%= form.label :delivery_1, "可能（費用買主負担）" %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          引取期限
+          <br>
+          <small>落札後●日以内</small>
+        </th>
+        <td>
+          <div class="form-group">
+            <%= select_tag :pickup_date, options_for_select((1..10).to_a), class:"form-control" %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">落札後キャンセル</th>
+        <td>
+          <%= form.radio_button :cancel, 0 %>
+          <%= form.label :cancel_0, "不可" %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">同額入札者がいる場合</th>
+        <td>
+          <%= form.radio_button :priority, 0 %>
+          <%= form.label :priority_0, "先に入札した人優先" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :priority, 1 %>
+          <%= form.label :priority_1, "その他" %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">落札価格開示</th>
+        <td>
+          <%= form.radio_button :disclose, 0 %>
+          <%= form.label :disclose_0, "開示" %>
+          &nbsp;&nbsp;&nbsp;
+          <%= form.radio_button :disclose, 1 %>
+          <%= form.label :disclose_1, "非開示" %>
+        </td>
+      </tr>
+    </tbody>
+  </table>

@@ -60,17 +60,32 @@
 
         <div class="row">
           <div class="alert alert-warning w-100" role="alert">
-            Next tenders to be held are as follow! Don't miss it!
-        <ul class="list-group w-100 ">
-          <% @tenders.each do |tender| %>
-          <li class="list-group-item">
-            <%= tender.starts_at %> ~ <%= tender.ends_at %>
-            <%= tender.status %>
-            organized by <%= tender.seller.company_name %>
-          </li>
-          <% end %>
-        </ul>
-        </div>
+            <h5>
+            <strong>
+            <span class="text-danger"><%= @coming_tenders.count %></span>
+            </strong>
+            Tenders to be held. Don't miss it!
+            </h5>
+            <ul class="list-group w-100">
+              <% @coming_tenders.each do |tender| %>
+              <%= link_to tender_path(tender), class:"remove-underline" do %>
+              <li class="list-group-item text-muted ">
+                <strong>
+                  <%= tender.starts_at.strftime("%d %b %Y (%a) %H:%M") %>
+                </strong>
+                -
+                <strong>
+                  <%= tender.ends_at.strftime("%d %b %Y (%a) %H:%M") %>
+                </strong>
+                <small>organized by</small>
+                <strong>
+                <%= tender.seller.company_name_en %>
+                </strong>
+              </li>
+              <% end %>
+              <% end %>
+            </ul>
+          </div>
         </div>
 
         <% @engines.each do |engine| %>
@@ -86,7 +101,7 @@
             </div>
             <div class="card-body p-2">
 
-              <span class="badge badge-pill badge-dark">
+              <span class="badge badge-pill badge-dark my-2">
               <% if engine.condition == 0 %>
               Used
               <% elsif engine.condition == 1 %>
@@ -98,22 +113,28 @@
 
               <br>
 
-              <%= engine.engine_model_code %>
-              <br>
-              <%= engine.car_model %>, <%= engine.car_make %>
-              <br>
-              <span class="text-dark">
+              <div class="mb-2">
+                <strong>
+                  <%= engine.engine_model_code %>, <%= engine.car_model %>, <%= engine.car_make %>
+                </strong>
+              </div>
+
+              <span class="text-muted">
                 <i class="fas fa-map-marker-alt"></i>
                 <%= engine.tender.tender_location.address_prefecture_part %> | <%= engine.tender.tender_location.address_city_part %>
+                &nbsp;
+                <small>supplied by</small>
+                <strong><%= engine.seller.company_name_en %></strong>
               </span>
-              <br>
+
 
             </div>
             <div class="card-footer w-100 bg-white p-2 text-success justify-content-end">
               <span class="text-muted">min price</span>
               <%= number_to_currency(engine.minimum_price, :unit => "JPY ", :precision => 0) %>
               &nbsp;&nbsp;
-              <button type="button" class="btn btn-sm btn-success">Place Bid</button>
+              <button type="button" class="btn btn-sm btn-success">Detail</button>
+              &nbsp;&nbsp;
             </div>
           </div>
         </div>

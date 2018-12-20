@@ -29,7 +29,7 @@ address_rest_parts = [
 company_names.each do |seller|
   seller = Seller.find_by(company_name: seller)
   0.upto(1) do |idx|
-    TenderLocation.create(
+    TenderLocation.create!(
       seller: seller,
       address_prefecture_part: address_prefecture_parts.sample,
       address_city_part: address_city_parts.sample,

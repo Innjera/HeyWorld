@@ -10,7 +10,7 @@ datetime0 = Time.current.beginning_of_day
 company_names.each do |seller|
   seller = Seller.find_by(company_name: seller)
   0.upto(2) do |idx|
-    Tender.create(
+    Tender.create!(
       seller: seller,
       tender_location: TenderLocation.all.sample,
       starts_at: datetime0.advance(days: rand(5)+idx, hours: 7),

@@ -39,7 +39,7 @@ emails = [
 ]
 
 0.upto(3) do |idx|
-  Seller.create(
+  Seller.create!(
     company_name: "#{company_names[idx % 4]}",
     company_name_en: "#{company_names_en[idx % 4]}",
     company_address: "#{company_addresses[idx % 4]}",

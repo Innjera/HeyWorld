@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :tenders do
       resources :engines
     end
-    resource :tender_rule
+    resource :tender_rule, only:[:show, :new, :create, :edit, :update]
     resources :tender_locations, only:[:new, :edit, :create, :update, :destroy]
 
     get 'account_info' => 'top#account_info'
