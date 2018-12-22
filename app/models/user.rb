@@ -5,6 +5,8 @@
 #  id                     :bigint(8)        not null, primary key
 #  uid                    :string
 #  provider               :string
+#  name                   :string
+#  image                  :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
@@ -24,11 +26,13 @@
 
 class User < ApplicationRecord
 
-  #### :confirmable, 
+  #### :confirmable,
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :lockable, :timeoutable, :trackable, :omniauthable
 
+  has_many :bid_prices, dependent: :destroy
+  has_many :bidded_engines, through: :bid_prices, source: :engine
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
@@ -38,7 +42,9 @@ class User < ApplicationRecord
         uid:      auth.uid,
         provider: auth.provider,
         email:    auth.info.email,
-        password: Devise.friendly_token[0, 20]
+        name:  auth.info.name,
+        password: Devise.friendly_token[0, 20],
+        image:  auth.info.image
       )
     end
 

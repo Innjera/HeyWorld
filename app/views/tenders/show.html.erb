@@ -44,7 +44,7 @@
     <div class="col-12">
 
       <% @engines.each do |engine| %>
-      <%= link_to engine_path(engine), class:"remove-underline" do %>
+      <%= link_to tender_engine_path(@tender, engine), class:"remove-underline" do %>
       <div class="card flex-row flex-wrap my-2 w-100">
         <div class="card-header d-inline border-0 p-0">
           <%= image_tag("parts_example.JPG", size: "158x120")%>

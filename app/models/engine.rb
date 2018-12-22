@@ -36,6 +36,10 @@
 #
 
 class Engine < ApplicationRecord
+
+  has_many :bid_prices, dependent: :destroy
+  has_many :bidders, through: :bid_prices, source: :user
+
   belongs_to :tender
   belongs_to :seller
 

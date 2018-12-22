@@ -20,7 +20,6 @@ class Sellers::EnginesController < ApplicationController
     @engine = Engine.new(engine_params)
     @engine.tender = current_tender
     @engine.seller = current_seller
-    binding.pry
     if @engine.save
       flash.notice = "エンジンを登録しました。"
       redirect_to sellers_tender_path(current_tender)

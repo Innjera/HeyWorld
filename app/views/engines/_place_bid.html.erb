@@ -1,6 +1,7 @@
 <div class="modal text-dark" id="place-bid-<%= engine.id %>", tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+
       <div class="modal-header">
         <h5 class="modal-title">
           input your price for
@@ -13,21 +14,27 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+
+      <%= form_for @bid_price, url: tender_engine_bid_prices_path(@engine.tender, engine) do |f| %>
+
       <div class="modal-body">
         <div class="form-group">
-          <input type="email" class="form-control" placeholder="JPY">
+          <%= f.text_field :price, class: 'form-control', required: true, placeholder:"input by JPY" %>
         </div>
       </div>
+
       <div class="modal-footer">
-        <%= link_to "#", class:"btn btn-success" do%>
-        &nbsp;<strong>Submit!</strong>
-        <% end %>
+
+        <%= f.submit "Submit!", class:"btn btn-success" %>
+
         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
           <i class="fas fa-times"></i>
           &nbsp;<strong>Reconsider</<strong>
-        </button>
+          </button>
+        </div>
 
-      </div>
+        <% end %>
+
     </div>
   </div>
 </div>

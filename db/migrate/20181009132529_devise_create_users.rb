@@ -7,6 +7,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       ## for facebook
       t.string :uid
       t.string :provider
+      t.string :name
+      t.string :image
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

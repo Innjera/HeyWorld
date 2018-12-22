@@ -1,0 +1,100 @@
+<div class="container-fluid bg-light">
+  <div class="container">
+
+    <h1 class="text-secondary py-5">My Bidded Items</h1>
+
+    <div class="row">
+      <div class="col-12">
+
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <%= link_to "#", class:"nav-link active" do %>
+            Tenders in Progress
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "#", class:"nav-link" do %>
+            Tenders Finished
+            <% end %>
+          </li>
+        </ul>
+
+        <% @bidded_engines.each do |engine| %>
+
+        <%= link_to tender_path(engine.tender), class:"text-secondary remove-underline pb-3" do %>
+
+        <ul class="list-group text-secondary">
+          <li class="list-group-item">
+
+            Status :
+            <span class="badge badge-danger">
+              In progress
+            </span>
+
+            <br>
+
+            Bidded Item :
+            <strong>
+            <%= link_to tender_engine_path(engine.tender, engine) do %>
+            <%= engine.engine_model_code %>, <%= engine.car_model %> of <%= engine.car_make %>
+            <% end %>
+            </strong>
+
+            <br>
+
+            Your Price :
+            <span class="text-success"><strong>
+              <% @mybid_price = BidPrice.find_by(user_id: current_user.id, engine_id: engine.id )%>
+              <%= number_to_currency(@mybid_price.price, :unit => "JPY ", :precision => 0) %>
+            </strong></span>
+            <span class="text-muted"><small>
+              -
+              minmum price of this item :
+              <%= number_to_currency(engine.minimum_price, :unit => "JPY ", :precision => 0) %>
+              -
+            </small></span>
+
+            <br>
+
+            <hr>
+
+            The result will come out by :
+            <span class="text-danger"><strong>
+              <%= engine.tender.ends_at.strftime("%d %b %Y (%a) %H:%M") %>
+            </strong></span>
+
+            <br>
+
+            check the info of this
+            <%= link_to "tender", tender_path(engine.tender) %>
+
+            <hr>
+
+            <span class="font-italic">
+              <small>
+              want to
+              <%= link_to "#", class:"text-dark" do %>
+              <i class="fas fa-edit"></i>
+              revise
+              <% end %>
+              the price?
+              |
+              want to
+              <%= link_to "#", class:"text-dark" do %>
+              <i class="far fa-trash-alt"></i>
+              cancel
+              <% end %>
+              this bid?
+              </small>
+            </span>
+
+          </li>
+        </ul>
+
+        <% end %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

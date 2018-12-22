@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_14_181531) do
+ActiveRecord::Schema.define(version: 2018_12_20_175058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bid_prices", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "engine_id", null: false
+    t.integer "price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["engine_id"], name: "index_bid_prices_on_engine_id"
+    t.index ["user_id"], name: "index_bid_prices_on_user_id"
+  end
 
   create_table "engines", force: :cascade do |t|
     t.bigint "seller_id", null: false
@@ -119,6 +129,8 @@ ActiveRecord::Schema.define(version: 2018_12_14_181531) do
   create_table "users", force: :cascade do |t|
     t.string "uid"
     t.string "provider"
+    t.string "name"
+    t.string "image"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

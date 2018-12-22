@@ -12,9 +12,14 @@ Rails.application.routes.draw do
 
   get 'corporation' => 'top#corporation'
   get 'mypage' => 'top#mypage'
+  get 'bidded_items' => 'top#bidded_items'
 
-  resources :engines, only:[:index, :show]
-  resources :tenders, only:[:index, :show]
+  resources :tenders, only:[:index, :show] do
+    resources :engines, only:[:show] do
+      resources :bid_prices, only:[:new, :create, :edit, :update, :destroy]
+    end
+  end
+
   resources :sellers, only:[:index, :show]
 
   namespace :sellers, path:"organizer" do
