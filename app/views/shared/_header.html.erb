@@ -25,16 +25,16 @@
         &nbsp;&nbsp;
 
         <li class="nav-item">
-        <% if current_seller %>
-        <%= link_to sellers_root_path, class: 'btn btn-success' do %>
-        <%= current_seller.company_name %>様トップページ
-        <% end %>
-        <% end %>
-        <% unless current_user %>
-        <%= link_to new_seller_session_path, class: 'btn btn-success' do %>
-        部品販売企業様はこちら
-        <% end %>
-        <% end %>
+          <% if current_seller %>
+            <%= link_to sellers_root_path, class: 'btn btn-success' do %>
+            <%= current_seller.company_name %>様トップページ
+            <% end %>
+          <% end %>
+          <% unless current_user || current_seller %>
+            <%= link_to new_seller_session_path, class: 'btn btn-success' do %>
+            部品販売企業様はこちら
+            <% end %>
+          <% end %>
       </ul>
     </div>
   </nav>

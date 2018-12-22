@@ -1,0 +1,58 @@
+<div class="modal text-dark" id="bidder-list-<%= engine.id %>", tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">
+          入札者一覧 | <%= engine.engine_model_code %>
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+
+      <div class="modal-body">
+        <% @bidders = engine.bidders %>
+
+        <% if @bidders.present? %>
+
+        <% @bidders.each do |bidder| %>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">名前</th>
+              <th scope="col">金額</th>
+              <th scope="col">入札日時</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">
+                <%= bidder.name %>
+              </th>
+              <td>
+                <% @price = BidPrice.find_by(engine_id: engine.id, user_id: bidder.id)%>
+                <%= number_to_currency(@price.price, :unit => "JPY ", :precision => 0) %>
+              </td>
+              <td>
+                <%= @price.updated_at.strftime("%m/%d（#{format_wday_ja(@tender.starts_at)}） %H:%M") %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <% end %>
+
+        <% else %>
+
+        <div class="alert alert-danger" role="alert">
+          入札者はいません。
+        </div>
+        <% end %>
+
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,12 +1,14 @@
 <div class="container-fluid">
+
   <div class="row">
+
     <nav class="col-2 bg-light sidebar">
       <%= render 'sellers/shared/sidebar' %>
     </nav>
+
     <main class="col-10">
 
       <div class="row">
-
         <div class="col-12 my-3">
           <div class="alert alert-success" role="alert">
             <strong><%= @tender.seller.company_name %> 入札 No. <%= @tender.id %></strong>
@@ -41,7 +43,7 @@
 
           </div>
         </div>
-      </div>
+        </div>
 
       <div class="row">
 
@@ -60,22 +62,21 @@
           <div class="col-12">
 
             <% @engines.each do |engine| %>
+            <%= render "bidder_list", engine: engine %>
+
             <div class="card flex-row flex-wrap my-2 w-100">
               <div class="card-header d-inline border-0 p-0">
                 <%= image_tag("parts_example.JPG", size: "158x120")%>
-                <div class="pill-position-top">
-                <span class="badge badge-danger">remainig 3days</span>
-                </div>
               </div>
               <div class="card-body p-2">
 
                 <span class="badge badge-pill badge-dark">
                 <% if engine.condition == 0 %>
-                Used
+                中古
                 <% elsif engine.condition == 1 %>
-                New Genuine
+                新品 - 純正
                 <% elsif engine.condition == 2 %>
-                New Reman
+                新品 - リビルト
                 <% end %>
                 </span>
 
@@ -92,13 +93,29 @@
                 <br>
 
               </div>
-              <div class="card-footer w-100 bg-white p-2 text-success justify-content-end">
-                <span class="text-muted">min price</span>
+              <div class="card-footer w-100 bg-white p-2 text-muted justify-content-end">
+                <span class="text-muted">最低入札価格</span>：
                 <%= number_to_currency(engine.minimum_price, :unit => "JPY ", :precision => 0) %>
+                &nbsp;
+                |
+                &nbsp;
+                <i class="fas fa-users"></i>
+                入札者数 :
+                <%= link_to "#bidder-list-#{engine.id}", data: {toggle: "modal"} do %>
+                <strong>
+                <%= engine.bidders.count %>
+                </strong>
+                <% end %>
+                人
+              </div>
+              <div class="card-footer w-100 bg-white p-2 justify-content-end">
+                <%= link_to sellers_tender_engine_path(@tender, engine), class:"btn btn-sm btn-success" do %>
+                詳細確認
+                <% end %>
               </div>
             </div>
-
             <% end %>
+
 
           </div>
 
@@ -107,5 +124,7 @@
       </div>
 
     </main>
-  </div>
-</div>
+
+  </div><!-- 3. row -->
+
+</div><!-- 1. container-fluid -->

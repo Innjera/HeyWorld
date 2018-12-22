@@ -1,2 +1,11 @@
 <h1>Sellers::Engines#show</h1>
 <p>Find me in app/views/sellers/engines/show.html.erb</p>
+
+<%= @engine.id %>
+
+入札者数＊
+<%= @bidders.count %>
+
+<% @bidders.each do |bidder| %>
+<%= bidder.name %>
+<% end %>

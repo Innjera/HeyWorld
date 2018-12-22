@@ -5,6 +5,8 @@ class Sellers::EnginesController < ApplicationController
   end
 
   def show
+    @engine = Engine.find(params[:id])
+    @bidders = @engine.bidders
   end
 
   def new
