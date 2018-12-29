@@ -1,11 +1,228 @@
-<h1>Sellers::Engines#show</h1>
-<p>Find me in app/views/sellers/engines/show.html.erb</p>
+<div class="container-fluid">
 
-<%= @engine.id %>
+  <div class="row">
 
-入札者数＊
-<%= @bidders.count %>
+    <nav class="col-2 bg-light sidebar">
+      <%= render 'sellers/shared/sidebar' %>
+    </nav>
 
-<% @bidders.each do |bidder| %>
-<%= bidder.name %>
-<% end %>
+    <main class="col-10">
+
+      <div class="my-3">
+
+        <strong>
+          <h1 class="d-inline">
+          <%= @engine.engine_model_code %>" 詳細
+          </h1>
+        </strong>
+
+        <%= link_to "#", class:"btn btn-sm btn-success ml-4" do %>
+        <i class="fas fa-edit"></i>&nbsp;情報を変更
+        <% end %>
+
+        <%= link_to "#", data: {toggle: "modal"}, class:"btn btn-sm btn-secondary" do%>
+        <i class="far fa-trash-alt"></i>
+        &nbsp;削除
+        <% end %>
+
+        <%= link_to sellers_tender_path(@this_tender), class:"btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-arrow-circle-left"></i>&nbsp;当該入札会に戻る
+        <% end %>
+
+
+      </div>
+
+
+      <div class="alert alert-success mt-3">
+
+        <div class="accordion" id="accordionExample">
+
+          <div class="bg-light my-2">
+            <div id="headingOne">
+              <button class="btn btn-link remove-underline text-dark" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <i class="fas fa-chevron-circle-down"></i>
+                &nbsp;
+                <i class="fas fa-users"></i>
+                入札者一覧（現在の入札者数：<%= @bidders.count %>人）
+              </button>
+            </div>
+            <div id="collapseOne" class="collapse show text-dark" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="p-2">
+                <% if @bidders.present? %>
+                <% @bidders.each do |bidder| %>
+
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">名前</th>
+                      <th scope="col">金額</th>
+                      <th scope="col">入札日時</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">
+                        <%= bidder.name %>
+                      </th>
+                      <td>
+                        <% @price = BidPrice.find_by(engine_id: @engine.id, user_id: bidder.id)%>
+                        <%= number_to_currency(@price.price, :unit => "JPY ", :precision => 0) %>
+                      </td>
+                      <td>
+                        <%= @price.updated_at.strftime("%m/%d（#{format_wday_ja(@price.updated_at)}） %H:%M") %>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <% end %>
+                <% else %>
+
+                <div class="alert alert-danger">
+                  まだ入札者はいません。
+                </div>
+
+                <% end %>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="card mx-2 mb-2" style="width:15rem;">
+      <%= image_tag("parts_example.JPG", alt: "parts_example", size: "238x180")%>
+      </div>
+
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <th scope="row">Condition</th>
+            <td>
+              <% if @engine.condition == 0 %>
+              Used
+              <% elsif @engine.condition == 1 %>
+              New - Genuine
+              <% elsif @engine.condition == 2 %>
+              new - Reman
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Make</th>
+            <td><%= @engine.car_make %></td>
+          </tr>
+          <tr>
+            <th scope="row">Model</th>
+            <td><%= @engine.car_model %></td>
+          </tr>
+            <th scope="row">Model Code</th>
+            <td><%= @engine.engine_model_code %></td>
+          </tr>
+          <tr>
+            <th scope="row">Reg. Year</th>
+            <td><%= @engine.registration_year.strftime("%Y") %></td>
+          </tr>
+          <tr>
+            <th scope="row">Drive</th>
+            <td>
+            <% if @engine.drive == 0 %>
+            N/A
+            <% elsif @engine.drive == 1 %>
+            2WD
+            <% elsif @engine.drive == 2 %>
+            4WD
+            <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Mileage</th>
+            <td><%= number_with_delimiter(@engine.mileage) %> &nbsp;km</td>
+          </tr>
+          <tr>
+            <th scope="row">Engine Model Code</th>
+            <td><%= @engine.engine_model_code %></td>
+          </tr>
+          <tr>
+            <th scope="row">Drive</th>
+            <td>
+            <% if @engine.drive == 0 %>
+            2WD(FF)
+            <% elsif @engine.drive == 1 %>
+            2WD(FR)
+            <% elsif @engine.drive == 2 %>
+            MR
+            <% elsif @engine.drive == 3 %>
+            RR
+            <% elsif @engine.drive == 4 %>
+            4WD
+            <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Mission</th>
+            <td>
+            <% if @engine.mission_type == 0 %>
+            N/A
+            <% elsif @engine.mission_type == 1 %>
+            AT
+            <% elsif @engine.mission_type == 2 %>
+            MT
+            <% elsif @engine.mission_type == 3 %>
+            CVT
+            <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">with</th>
+            <td>
+              <% if @engine.starter == 0 %>
+              <span class="badge badge-success">Starter</span>
+              <% end %>
+              <% if @engine.alternator == 0 %>
+              <span class="badge badge-success">Alternator</span>
+              <% end %>
+              <% if @engine.compressor == 0 %>
+              <span class="badge badge-success">Compressor</span>
+              <% end %>
+              <% if @engine.power_steering_pump == 0 %>
+              <span class="badge badge-success">Power Steering Pump</span>
+              <% end %>
+              <% if @engine.engine_harness == 0 %>
+              <span class="badge badge-success">Engine Harness</span>
+              <% end %>
+              <% if @engine.ecu == 0 %>
+              <span class="badge badge-success">ECU</span>
+              <% end %>
+              <% if @engine.front_suspension == 0 %>
+              <span class="badge badge-success">Front Suspension</span>
+              <% end %>
+              <% if @engine.rear_suspension == 0 %>
+              <span class="badge badge-success">Rear Suspension</span>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Remarks</th>
+            <td>
+              <% if @engine.remarks.present? %>
+              <% @engine.remarks %>
+              <% else %>
+              ---
+              <% end %>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+
+      </main>
+
+
+</div><!-- 3. row -->
+
+</div><!-- 1. container-fluid -->
