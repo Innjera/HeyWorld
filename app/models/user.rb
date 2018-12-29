@@ -36,6 +36,12 @@ class User < ApplicationRecord
   has_many :bid_prices, dependent: :destroy
   has_many :bidded_engines, through: :bid_prices, source: :engine
 
+  before_validation do
+    if !name && first_name && last_name
+      self.name = "#{first_name} #{last_name}"
+    end
+  end
+
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
 
@@ -44,7 +50,7 @@ class User < ApplicationRecord
         uid: auth.uid,
         provider: auth.provider,
         email: auth.info.email,
-        name: auth.info.name,
+        # name: auth.info.name,
         first_name: auth.extra.raw_info.first_name,
         last_name: auth.extra.raw_info.last_name,
         password: Devise.friendly_token[0, 20],
