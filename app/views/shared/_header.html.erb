@@ -12,7 +12,7 @@
         <li class="nav-item">
           <% if current_user %>
           <%= link_to mypage_path, class: 'btn btn-primary' do %>
-          <%= current_user.name %> | Top Page
+          <%= current_user.first_name %> | Top Page
           <% end %>
           <% else %>
           <%= link_to :new_user_session, class: 'btn btn-primary' do %>
@@ -49,7 +49,7 @@
           <% if current_seller %>
           <%= current_seller.company_name %>様
           <% elsif current_user %>
-          <strong><%= current_user.name %></strong>
+          <strong><%= current_user.first_name %></strong>
           <% end %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

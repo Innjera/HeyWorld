@@ -6,6 +6,8 @@
 #  uid                    :string
 #  provider               :string
 #  name                   :string
+#  first_name             :string
+#  last_name              :string
 #  image                  :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
@@ -39,15 +41,18 @@ class User < ApplicationRecord
 
     unless user
       user = User.create(
-        uid:      auth.uid,
+        uid: auth.uid,
         provider: auth.provider,
-        email:    auth.info.email,
-        name:  auth.info.name,
+        email: auth.info.email,
+        name: auth.info.name,
+        first_name: auth.extra.raw_info.first_name,
+        last_name: auth.extra.raw_info.last_name,
         password: Devise.friendly_token[0, 20],
-        image:  auth.info.image
+        image: auth.info.image
       )
     end
 
     user
+
   end
 end
