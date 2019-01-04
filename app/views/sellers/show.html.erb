@@ -28,16 +28,13 @@
       </ul>
 
         <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">to be held</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">in progress</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">finished</a>
-        </li>
-      </ul>
+
+          <% %i(show in_progress finished).each do |action| %>
+          <li class="nav-item">
+            <%= tenders_nav_link(action) %>
+          </li>
+          <% end %>
+        </ul>
 
       <% @tenders.each do |tender| %>
       <div class="tenders bg-light-success w-100 mt-3">

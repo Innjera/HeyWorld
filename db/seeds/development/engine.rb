@@ -31,7 +31,7 @@ engine_model_codes = [
 ]
 
 1.upto(60) do |idx|
-  tender  = Tender.find_by(id: rand(1..12))
+  tender  = Tender.find_by(id: rand(1..9))
   Engine.create!(
     seller: tender.seller,
     tender: tender,

@@ -14,13 +14,17 @@ Rails.application.routes.draw do
   get 'mypage' => 'top#mypage'
   get 'bidded_items' => 'top#bidded_items'
 
+  resources :sellers, only:[:index, :show] do
+    get :in_progress, on: :member
+    get :finished, on: :member
+  end
+
   resources :tenders, only:[:index, :show] do
     resources :engines, only:[:show] do
       resources :bid_prices, only:[:new, :create, :edit, :update, :destroy]
     end
   end
 
-  resources :sellers, only:[:index, :show]
 
   namespace :sellers, path:"organizer" do
     root 'top#index'
