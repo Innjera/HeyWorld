@@ -1,8 +1,8 @@
 module NavPillsHelper
 
   ACTION_LABEL_MAP = {
-    show: 'coming',
-    in_progress: 'in progress',
+    show: 'in progress',
+    coming: 'coming',
     finished: 'finished'
   }
 
@@ -12,8 +12,8 @@ module NavPillsHelper
 
     if action == :show
       url = seller_path
-    elsif action == :in_progress
-      url = in_progress_seller_path
+    elsif action == :coming
+      url = coming_seller_path
     elsif action == :finished
       url = finished_seller_path
     end

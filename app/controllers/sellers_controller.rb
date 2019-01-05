@@ -10,14 +10,14 @@ class SellersController < ApplicationController
   def show
     @seller = Seller.find(params[:id])
     @tender_rule = @seller.tender_rule
-    @tenders = @seller.tenders.where('starts_at > ?', T1).order(:starts_at)
+    @tenders = @seller.tenders.where('starts_at < ? AND ends_at > ?', T1, T1 ).order(:starts_at)
   end
 
   # GET (member)
-  def in_progress
+  def coming
     @seller = Seller.find(params[:id])
     @tender_rule = @seller.tender_rule
-    @tenders = @seller.tenders.where('starts_at < ? AND ends_at > ?', T1, T1 ).order(:starts_at)
+    @tenders = @seller.tenders.where('starts_at > ?', T1).order(:starts_at)
     render action: :show
   end
 

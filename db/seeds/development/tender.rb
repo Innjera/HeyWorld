@@ -19,15 +19,37 @@
 
 datetime0 = Time.current.beginning_of_day
 
-0.upto(2) do |idx|
   Tender.create!(
     seller: Seller.find_by(company_name: "株式会社コマゼン"),
     tender_location: TenderLocation.find_by(seller_id: 1),
-    starts_at: datetime0.advance(days: -1+idx, hours: 7),
-    ends_at: datetime0.advance(days: 7+idx, hours: 7),
-    status: %w(draft ready)[idx % 2]
+    starts_at: datetime0.advance(days: -10, hours: 9),
+    ends_at: datetime0.advance(days: -3, hours: 15),
+    status: %w(draft ready).sample
   )
-end
+
+  Tender.create!(
+    seller: Seller.find_by(company_name: "株式会社コマゼン"),
+    tender_location: TenderLocation.find_by(seller_id: 1),
+    starts_at: datetime0.advance(days: -1, hours: 9),
+    ends_at: datetime0.advance(days: +2, hours: 12),
+    status: %w(draft ready).sample
+  )
+
+  Tender.create!(
+    seller: Seller.find_by(company_name: "株式会社コマゼン"),
+    tender_location: TenderLocation.find_by(seller_id: 1),
+    starts_at: datetime0.advance(days: 0, hours: 9),
+    ends_at: datetime0.advance(days: +3, hours: 12),
+    status: %w(draft ready).sample
+  )
+
+  Tender.create!(
+    seller: Seller.find_by(company_name: "株式会社コマゼン"),
+    tender_location: TenderLocation.find_by(seller_id: 1),
+    starts_at: datetime0.advance(days: +4, hours: 9),
+    ends_at: datetime0.advance(days: +7, hours: 12),
+    status: %w(draft ready).sample
+  )
 
 0.upto(2) do |idx|
   Tender.create!(

@@ -1,4 +1,9 @@
 class TendersController < ApplicationController
+
+  T0 = Time.current.beginning_of_day
+  T1 = Time.current
+  T2 = T0.advance(hours: 24)
+
   def index
 
   end

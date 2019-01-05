@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get 'bidded_items' => 'top#bidded_items'
 
   resources :sellers, only:[:index, :show] do
-    get :in_progress, on: :member
+    get :coming, on: :member
     get :finished, on: :member
   end
 

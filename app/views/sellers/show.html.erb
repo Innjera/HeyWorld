@@ -27,9 +27,9 @@
         <li><h2><%= @seller.company_name_en %> Engine Tenders</h2></li>
       </ul>
 
-        <ul class="nav nav-tabs">
+        <ul class="nav nav-tabs mt-4">
 
-          <% %i(show in_progress finished).each do |action| %>
+          <% %i(show coming finished).each do |action| %>
           <li class="nav-item">
             <%= tenders_nav_link(action) %>
           </li>
@@ -45,7 +45,13 @@
           <span class="badge badge-success">
           <i class="fas fa-car"></i>&nbsp;<strong><%= tender.engines.count %></strong> engines
           </span>
-          <span class="badge badge-pill badge-danger">in progress</span>
+          <% if action_name == "show" %>
+          <span class="badge badge-danger">in progress</span>
+          <% elsif action_name == "coming" %>
+          <span class="badge badge-primary">coming</span>
+          <% elsif action_name == "finished" %>
+          <span class="badge badge-dark">finished</span>
+          <% end %>
           <br>
           Start：<strong><%= tender.starts_at.strftime("%d %b %Y (%a) %H:%M") %></strong>
           <br>
