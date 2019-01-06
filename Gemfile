@@ -35,6 +35,9 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+### page_nation
+gem 'kaminari'
+gem 'kaminari-bootstrap', '~> 3.0.1'
 
 ### admin
 gem 'activeadmin'

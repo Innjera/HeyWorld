@@ -12,7 +12,7 @@ class TopController < ApplicationController
       # @engines = []
       # @engines << tender.engines
     # end
-    @engines = Engine.all.order(:updated_at)
+    @engines = Engine.all.order(:updated_at).page(params[:page])
     @coming_tenders = Tender.where('starts_at > ?', T1 ).open.order(:starts_at)
   end
 
