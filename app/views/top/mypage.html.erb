@@ -3,13 +3,26 @@
 
     <h1 class="py-4">My Account</h1>
 
+    <% if current_user && !current_user.first_name %>
+    <div class="row">
+      <div class="alert alert-danger w-100" role="alert">
+        <strong>
+        Complete your profile from
+        <%= link_to "here", edit_user_registration_path %>
+        !
+        </strong>
+      </div>
+    </div>
+    <% end %>
+
+
     <div class="row">
 
       <table class="table">
         <tbody>
           <tr>
             <th scope="row">name</th>
-            <td><%= @current_user.email %></td>
+            <td><%= @current_user.first_name ? @current_user.first_name : "not regisgtered yet" %></td>
           </tr>
           <tr>
             <th scope="row">e-mail</th>
@@ -17,11 +30,11 @@
           </tr>
           <tr>
             <th scope="row">tel</th>
-            <td>Jacob</td>
+            <td></td>
           </tr>
           <tr>
             <th scope="row">address</th>
-            <td>Larry</td>
+            <td></td>
           </tr>
         </tbody>
       </table>

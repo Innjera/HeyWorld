@@ -12,11 +12,11 @@
         <li class="nav-item">
           <% if current_user %>
           <%= link_to mypage_path, class: 'btn btn-primary' do %>
-          <%= current_user.first_name %> | Top Page
+          <%= current_user.first_name ? current_user.first_name : "Hi Buyer!" %> | Top Page
           <% end %>
           <% else %>
           <%= link_to :new_user_session, class: 'btn btn-primary' do %>
-          Buyers | Sign In
+          Buyer | Sign In
           <% end %>
           <% end %>
         </li>
@@ -64,7 +64,7 @@
             <% end %>
           <% else %>
             <%= link_to new_user_session_path, class:"dropdown-item" do %>
-            Buyers Sign In
+            Buyer Sign In
             <% end %>
           <% end %>
 
