@@ -3,10 +3,15 @@ Rails.application.routes.draw do
   #何故deviseが一番上に来るべきか https://teratail.com/questions/163615
 
   devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks'
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations:'users/registrations',
+    sessions:'users/sessions'    
   }
 
-  devise_for :sellers, :controllers => { :registrations => :registrations }
+  devise_for :sellers, controllers: {
+    registrations:'sellers/registrations',
+    sessions:'sellers/sessions'
+  }
 
   root 'top#index'
 
