@@ -9,6 +9,8 @@
 #  first_name             :string
 #  last_name              :string
 #  image                  :string
+#  nationality            :string
+#  tel                    :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string

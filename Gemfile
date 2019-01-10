@@ -49,6 +49,9 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 ### breadcrumbs
 gem "gretel"
 
+### User Info.
+gem 'country_select', '~> 4.0'
+
 ### google analytics
 gem 'google-analytics-rails', '1.1.1'
 

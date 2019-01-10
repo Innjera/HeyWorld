@@ -3,6 +3,8 @@
 
     <h1 class="py-4">My Account</h1>
 
+    <%= link_to "ここ", edit_user_registration_path %>
+
     <% if current_user && !current_user.first_name %>
     <div class="row">
       <div class="alert alert-danger w-100" role="alert">
