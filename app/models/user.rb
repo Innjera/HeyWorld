@@ -63,4 +63,11 @@ class User < ApplicationRecord
     user
 
   end
+
+  ### gem country_select
+  def country_name
+    country = ISO3166::Country[nationality]
+    country.translations[I18n.locale.to_s] || country.name
+  end
+
 end

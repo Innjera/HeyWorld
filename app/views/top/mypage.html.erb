@@ -1,17 +1,27 @@
 <div class="container-fluid bg-light">
   <div class="container">
 
-    <h1 class="py-4">My Account</h1>
+    <div class="row pt-3">
+      <h1 class="d-inline">My Account</h1>
 
-    <%= link_to "ここ", edit_user_registration_path %>
+      &nbsp;&nbsp;
 
-    <% if current_user && !current_user.first_name %>
+      <h5>
+      <%= link_to edit_user_registration_path, class:"btn btn-success" do %>
+      <i class="far fa-edit"></i>&nbsp;&nbsp; update
+      <% end %>
+      </h5>
+
+    </div>
+
+
+    <% if current_user && (!current_user.first_name || !current_user.nationality || current_user.tel.empty?) %>
     <div class="row">
-      <div class="alert alert-danger w-100" role="alert">
+      <div class="alert alert-danger w-100 mt-3" role="alert">
         <strong>
-        Complete your profile from
-        <%= link_to "here", edit_user_registration_path %>
-        !
+          Complete your profile from
+          <%= link_to "here", edit_user_registration_path %>
+          !
         </strong>
       </div>
     </div>
@@ -20,11 +30,14 @@
 
     <div class="row">
 
-      <table class="table">
+      <table class="table mt-5">
         <tbody>
           <tr>
             <th scope="row">name</th>
-            <td><%= @current_user.first_name ? @current_user.first_name : "not regisgtered yet" %></td>
+            <td>
+              <%= @current_user.first_name ? @current_user.first_name : "-register your first name-" %>
+              <%= @current_user.first_name ? @current_user.last_name : "-register your last name-" %>
+            </td>
           </tr>
           <tr>
             <th scope="row">e-mail</th>
@@ -32,15 +45,21 @@
           </tr>
           <tr>
             <th scope="row">tel</th>
-            <td></td>
+            <td>
+              <%= @current_user.tel %>
+            </td>
           </tr>
           <tr>
-            <th scope="row">address</th>
-            <td></td>
+            <th scope="row">nationality</th>
+            <td>
+              <%= @current_user.country_name %>
+            </td>
           </tr>
         </tbody>
       </table>
 
-    </div>
+      </div>
+
+
   </div>
 </div>
