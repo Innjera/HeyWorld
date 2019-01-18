@@ -6,6 +6,7 @@ class DeviseCreateSellers < ActiveRecord::Migration[5.2]
       t.string :company_name
       t.string :company_name_en
       t.string :company_address
+      t.string :company_address_en
       t.string :company_url
       t.string :company_tell
       ## Database authenticatable

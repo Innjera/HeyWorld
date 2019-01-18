@@ -6,6 +6,7 @@
 #  company_name           :string
 #  company_name_en        :string
 #  company_address        :string
+#  company_address_en     :string
 #  company_url            :string
 #  company_tell           :string
 #  email                  :string           default(""), not null

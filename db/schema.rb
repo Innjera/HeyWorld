@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2018_12_20_175058) do
     t.string "company_name"
     t.string "company_name_en"
     t.string "company_address"
+    t.string "company_address_en"
     t.string "company_url"
     t.string "company_tell"
     t.string "email", default: "", null: false

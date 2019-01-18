@@ -17,6 +17,12 @@ company_addresses = [
   "栃木県足利市久保田町838-1",
   "愛知県豊橋市下地町字新道29番地"
 ]
+company_addresses_en = [
+  "1-26-2 Kusunoki, Yatomi, Aichi",
+  "1285-2 Sayata, Kumagaya, Saitama",
+  "838-1 Kubota-cho, Ashikaga, Tochigi",
+  "29 Shimojicho Toyohashi Aichi"
+]
 company_urls = [
   "http://www.komazen.co.jp/",
   "https://www.u-parts.com/",
@@ -43,6 +49,7 @@ emails = [
     company_name: "#{company_names[idx % 4]}",
     company_name_en: "#{company_names_en[idx % 4]}",
     company_address: "#{company_addresses[idx % 4]}",
+    company_address_en: "#{company_addresses_en[idx % 4]}",
     company_url: "#{company_urls[idx % 4]}",
     company_tell: "#{company_tells[idx % 4]}",
     email: "#{emails[idx % 4]}@heyworld.com",

@@ -6,13 +6,16 @@
     <main class="col-10 ml-sm-auto">
       <div class="jumbotron mt-3">
         <h1 class="display-4">Welcome!</h1>
+        <hr class="my-4">
         <p class="lead">一般ユーザーから見たページを確認する</p>
-        <%= link_to seller_path(current_seller), class:"btn btn-primary btn-lg" do %>
+        <%= link_to seller_path(current_seller), class:"btn btn-success btn-lg" do %>
+        <i class="fas fa-tablet-alt"></i>&nbsp;&nbsp;
         確認
         <% end %>
         <hr class="my-4">
-        <%= link_to new_sellers_tender_path, class:"btn btn-primary btn-lg" do %>
-        入札会を開始する
+        <%= link_to new_sellers_tender_path, class:"btn btn-success btn-lg" do %>
+        <i class="fas fa-box-open"></i>&nbsp;&nbsp;
+        入札を開催
         <% end %>
       </div>
     </main>

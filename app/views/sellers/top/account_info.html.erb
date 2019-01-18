@@ -4,7 +4,7 @@
     <nav class="col-2 bg-light sidebar">
       <%= render 'sellers/shared/sidebar' %>
     </nav>
-    
+
     <main class="col-10">
 
       <h1 class="text-secondary my-4"><%= @seller.company_name %>様　ご登録情報</h1>
@@ -12,12 +12,28 @@
       <table class="table table-striped">
         <tbody>
           <tr>
-            <th scope="row">会社名</th>
-            <td><%= @seller.company_name %></td>
+            <th scope="row">
+              会社名
+              <hr>
+              英語
+            </th>
+            <td>
+              <%= @seller.company_name %>
+              <hr>
+              <%= @seller.company_name_en %>
+            </td>
           </tr>
           <tr>
-            <th scope="row">住所</th>
-            <td><%= @seller.company_address %></td>
+            <th scope="row">
+              住所
+              <hr>
+              英語
+            </th>
+            <td>
+              <%= @seller.company_address %>
+              <hr>
+              <%= @seller.company_address_en %>
+            </td>
           </tr>
           <tr>
             <th scope="row">Web Site</th>

@@ -63,7 +63,7 @@ end
 
 0.upto(2) do |idx|
   Tender.create!(
-    seller: Seller.find_by(company_name: "株式会社吉田商会"),
+    seller: Seller.find_by(company_name: "株式会社エコアール"),
     tender_location: TenderLocation.find_by(seller_id: 3),
     starts_at: datetime0.advance(days: idx, hours: 7),
     ends_at: datetime0.advance(days: 6+idx, hours: 7),

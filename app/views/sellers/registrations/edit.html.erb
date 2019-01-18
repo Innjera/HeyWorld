@@ -7,9 +7,7 @@
 
     <main class="col-10 mt-3">
 
-      <div class="alert alert-light" role="alert">
-        <h1>ご登録情報アップデート</h1>
-      </div>
+      <h1 class="text-secondary my-4">ご登録情報アップデート</h1>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= devise_error_messages! %>
@@ -20,10 +18,19 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :company_name_en, "会社名（英語）" %><br />
+        <%= f.text_field :company_name_en, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :company_address, "会社住所" %><br />
         <%= f.text_field :company_address, autofocus: true, class: "form-control" %>
       </div>
 
+      <div class="form-group">
+        <%= f.label :company_address_en, "会社住所（英語）" %><br />
+        <%= f.text_field :company_address_en, autofocus: true, class: "form-control" %>
+      </div>
       <div class="form-group">
         <%= f.label :company_tell, "会社電話番号" %><br />
         <%= f.text_field :company_tell, autofocus: true, class: "form-control" %>
@@ -64,19 +71,22 @@
 
       </div>
 
+      <div class="alert alert-warning">
+
       <div class="form-group">
         <%= f.label :current_password, "現在のパスワード" %> <i><span class="text-danger">* 登録情報をアップデートするにあたり、必ず現在のパスワードを入力してください</span></i><br />
         <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
       </div>
 
-      <div class="actions">
         <%= f.submit "アップデート", class:"btn btn-info my-3" %>
-      </div>
+        &nbsp;&nbsp
+        <%= link_to :sellers_account_info, class:"btn btn-outline-secondary" do %>
+        <i class="fas fa-times"></i> キャンセル
+        <% end %>
+
       <% end %>
 
-      <%= link_to :sellers_account_info, class:"btn btn-secondary" do %>
-      <i class="fas fa-times"></i> キャンセル
-      <% end %>
+      </div>
 
       <% if false %>
 

@@ -42,13 +42,18 @@ class Sellers::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:company_name, :company_address, :company_url, :company_tell])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:company_name, :company_name_en, :company_address, :company_address_en, :company_url, :company_tell])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:company_name, :company_address, :company_url, :company_tell])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:company_name, :company_name_en, :company_address, :company_address_en, :company_url, :company_tell])
   end
+
+  def after_update_path_for(resource)
+    sellers_account_info_path
+  end
+
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
