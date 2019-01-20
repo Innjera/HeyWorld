@@ -27,7 +27,7 @@ ul.ul-orange {
   padding: 0;
   position: relative;
   li {
-    border-left: solid 6px orange;/*左側の線*/
+    border-left: solid 6px $corporate-green;/*左側の線*/
     background: whitesmoke;/*背景色*/
     margin-bottom: 3px;/*下のバーとの余白*/
     line-height: 1.5;

@@ -2,10 +2,13 @@ Rails.application.routes.draw do
 
   #何故deviseが一番上に来るべきか https://teratail.com/questions/163615
 
+  ###緊急避難###
+  if Rails.env == "development"
+
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations:'users/registrations',
-    sessions:'users/sessions'    
+    sessions:'users/sessions'
   }
 
   devise_for :sellers, controllers: {
@@ -15,7 +18,6 @@ Rails.application.routes.draw do
 
   root 'top#index'
 
-  get 'corporation' => 'top#corporation'
   get 'mypage' => 'top#mypage'
   get 'bidded_items' => 'top#bidded_items'
 
@@ -44,4 +46,13 @@ Rails.application.routes.draw do
     post 'new_seller_register_inquiry_confirm' => 'inquiry#new_seller_register_inquiry_confirm' # 確認画面
     post 'new_seller_register_inquiry_thanks' => 'inquiry#new_seller_register_inquiry_thanks' # 送信完了画面
   end
+
+  ###緊急避難
+elsif Rails.env == "production"
+  root 'corporate#top'
+end
+  ###緊急避難
+
+  get 'corporate' => 'corporate#top'
+
 end
