@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  # ###緊急避難###
-  # if Rails.env == "production"
-  #   root 'corporate#top'
-  #   get 'corporate' => 'corporate#top'
-  #
-  #
-  # elsif Rails.env == "development"
+  ###緊急避難###
+  if Rails.env == "production"
+    root 'corporate#top'
+    get 'corporate' => 'corporate#top'
+
+
+  elsif Rails.env == "development"
 
   #何故deviseが一番上に来るべきか https://teratail.com/questions/163615
 
@@ -56,4 +56,4 @@ Rails.application.routes.draw do
 
 end
 
-# end ###緊急避難
+end ###緊急避難
