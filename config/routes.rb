@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
 
-  #何故deviseが一番上に来るべきか https://teratail.com/questions/163615
-
   ###緊急避難###
-  if Rails.env == "development"
+  if Rails.env == "production"
+    root 'corporate#top'
+    get 'corporate' => 'corporate#top'
+
+
+  elsif Rails.env == "development"
+
+  #何故deviseが一番上に来るべきか https://teratail.com/questions/163615
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
@@ -47,12 +52,8 @@ Rails.application.routes.draw do
     post 'new_seller_register_inquiry_thanks' => 'inquiry#new_seller_register_inquiry_thanks' # 送信完了画面
   end
 
-  ###緊急避難
-elsif Rails.env == "production"
-  root 'corporate#top'
-end
-  ###緊急避難
-
   get 'corporate' => 'corporate#top'
 
 end
+
+end ###緊急避難
