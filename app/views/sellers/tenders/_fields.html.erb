@@ -44,5 +44,5 @@
 <div class="form-group" >
   <%= f.label :tender_location_id, "開催場所" %>
   &nbsp;&nbsp;&nbsp;<span class="badge badge-pill badge-danger">必須</span>
-  <%= select_tag :tender_location_id, options_from_collection_for_select(@tender_location_candidates.all, :id, :address), class: 'form-control' %>
+  <%= f.select :tender_location_id, options_from_collection_for_select(@tender_location_candidates.all, :id, :address), {}, class: 'form-control' %>
 </div>

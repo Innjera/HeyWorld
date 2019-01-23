@@ -57,6 +57,7 @@ class Sellers::TendersController < ApplicationController
 
   private def tender_params
     params[:tender].permit(
+      :seller_id, :tender_location_id,
       :starts_at_date_part, :starts_at_time_part,
       :ends_at_date_part, :ends_at_time_part,
       :status
