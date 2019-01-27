@@ -23,6 +23,7 @@ class Sellers::TendersController < ApplicationController
 
   def edit
     @tender = Tender.find(params[:id])
+    @tender_location_candidates = current_seller.tender_locations
   end
 
   def create
@@ -39,7 +40,6 @@ class Sellers::TendersController < ApplicationController
   def update
     @tender = Tender.find(params[:id])
     @tender.assign_attributes(tender_params)
-
     if @tender.save
       flash.alert = "入札会の設定をupdateしました。"
       redirect_to sellers_tender_path(@tender)

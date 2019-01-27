@@ -14,6 +14,10 @@
 
         <div class="form-group mt-5" >
           <%= f.submit "更新する", class: 'btn btn-success' %>
+          &nbsp;
+          <%= link_to sellers_tender_path(@tender), class: "btn btn-outline-secondary" do %>
+          <i class="fas fa-times"></i>&nbsp;キャンセル
+          <% end %>
         </div>
 
         <% end %>

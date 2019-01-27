@@ -28,6 +28,10 @@
               入札終了日：<strong><%= @tender.ends_at.strftime("%Y年%m月%d日（#{format_wday_ja(@tender.starts_at)}）%H:%M") %></strong>
             </div>
 
+            <div class="bg-light p-2 my-2">
+              入札場所：<strong><%= @tender.tender_location.address %>(id:<%= @tender.tender_location.id %>)</strong>
+            </div>
+
             <div class="bg-light p-2">
               ステータス：
               <% if @tender.status == "ready" %>
