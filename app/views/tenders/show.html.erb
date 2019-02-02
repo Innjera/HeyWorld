@@ -24,7 +24,11 @@
         <div class="bg-light p-2 mb-2">
           location：
           <span>
+            <% unless @tender.tender_location.nil? %>
             <strong><%= @tender.tender_location.address_city_part %>, <%= @tender.tender_location.address_rest_part%>, <%= @tender.tender_location.address_prefecture_part%></strong>
+            <% else %>
+            <small>this location has not been used</small>
+            <% end %>
           </span>
         </div>
 

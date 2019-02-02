@@ -133,7 +133,11 @@
 
               <span class="text-muted">
                 <i class="fas fa-map-marker-alt"></i>
+                <% unless engine.tender.tender_location.nil? %>
                 <%= engine.tender.tender_location.address_prefecture_part %> | <%= engine.tender.tender_location.address_city_part %>
+                <% else %>
+                <small>This location has not been used</small>
+                <% end %>
                 &nbsp;
                 <small>supplied by</small>
                 <strong><%= engine.seller.company_name_en %></strong>
