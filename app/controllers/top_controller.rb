@@ -7,7 +7,8 @@ class TopController < ApplicationController
   before_action :authenticate_user!, only:[:mypage, :bidded_items]
 
   def index
-    @open_engines = Engine.joins(:tender).where('ends_at >= ?', Time.current).page(params[:page])
+    engines = Engine.joins(:tender).where('status= ?', "ready")
+    @open_engines = engines.joins(:tender).where('ends_at >= ?', Time.current).page(params[:page])
     @coming_tenders = Tender.where('starts_at > ?', T1 ).open.order(:starts_at)
   end
 
