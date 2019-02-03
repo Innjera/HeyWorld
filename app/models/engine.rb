@@ -45,6 +45,7 @@ class Engine < ApplicationRecord
 
   validates :car_make, presence: true
 
+
   CARMAKE_OPTIONS = {
     "TOYOTA" => "トヨタ", "NISSAN" => "日産", "HONDA" => "ホンダ", "MAZDA" => "マツダ",
     "SUBARU" => "スバル", "MITSUBISHI" => "三菱", "ISUZU" => "イスズ", "HINO" => "日野",

@@ -100,7 +100,7 @@
           </div>
         </div>
 
-        <% @engines.each do |engine| %>
+        <% @open_engines.each do |engine| %>
         <%= link_to tender_path(engine.tender), class:"text-secondary remove-underline" do %>
 
         <div class="row mb-2">
@@ -108,7 +108,10 @@
             <div class="card-header d-inline border-0 p-0">
               <%= image_tag("parts_example.JPG", size: "158x120")%>
               <div class="pill-position-top">
-              <span class="badge badge-danger">remainig 3days</span>
+              <span class="badge badge-danger">
+                remaining
+                <%= ((engine.tender.ends_at - Time.current)/60/60/24).floor %>days
+              </span>
               </div>
             </div>
             <div class="card-body p-2">
@@ -164,7 +167,7 @@
 
   <div class="row mt-5">
     <div class="mx-auto">
-      <%= paginate @engines %>
+      <%= paginate @open_engines %>
     </div>
   </div>
 </div>
