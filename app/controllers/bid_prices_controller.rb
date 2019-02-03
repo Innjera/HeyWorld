@@ -1,5 +1,7 @@
 class BidPricesController < ApplicationController
 
+  before_action :authenticate_user!, only:[:create]
+
   def create
     bidded_engine = Engine.find(params[:engine_id])
     @bid_price = BidPrice.new(bid_price_params)
