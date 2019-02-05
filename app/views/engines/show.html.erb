@@ -107,6 +107,14 @@
           <strong>Place Your Bid</strong>
           <% end %>
 
+          <br>
+
+          <i class="fas fa-users"></i>
+          <strong>
+          <%= @engine.bidders.count %>
+          </strong>
+          bidders already
+
         <hr>
 
         This tender will be closed at <strong><%= @engine.tender.ends_at.strftime("%d %b %Y (%a) %H:%M") %></strong>
