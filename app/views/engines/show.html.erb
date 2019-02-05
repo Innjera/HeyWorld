@@ -114,10 +114,18 @@
           <%= @engine.bidders.count %>
           </strong>
           bidders already
+          <div class>
+            remaining
+            <span class="text-danger"><strong>
+            <%= ((@engine.tender.ends_at - Time.current)/60/60/24).floor %>
+            </strong></span>
+            days
+          </div>
 
         <hr>
 
-        This tender will be closed at <strong><%= @engine.tender.ends_at.strftime("%d %b %Y (%a) %H:%M") %></strong>
+        This tender will be closed at
+        <strong><span class="text-danger"><%= @engine.tender.ends_at.strftime("%d %b %Y (%a) %H:%M") %></span></strong>
         <br>
         check the other engines in this <%= link_to "tender", tender_path(@engine.tender) %>
 
