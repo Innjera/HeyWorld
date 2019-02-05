@@ -2,10 +2,10 @@
 <div class="container">
   <footer class="text-center text-secondary my-5 bold">
     &copy; <%= Date.today.year %>
-    <%= link_to "HeyWorld Inc.", corporate_path %>
+    <%= link_to "HeyWorld Inc.", corporate_path, target:["_blank"] %>
     &nbsp;|&nbsp;
     follow us on
-    <%= link_to "https://twitter.com/NoteCrime" do %>
+    <%= link_to "https://twitter.com/NoteCrime", target:["_blank"] do %>
     <i class="fab fa-twitter fa-x"></i>
     <% end %>
   </footer>
