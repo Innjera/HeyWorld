@@ -14,20 +14,25 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <%= link_to "Mission", "#about", class:"nav-link js-scroll-trigger" %>
+            <%= link_to "#{t('corporate.mission')}", "#about", class:"nav-link js-scroll-trigger" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Product & Service", "#services", class:"nav-link js-scroll-trigger" %>
+            <%= link_to "#{t('corporate.product')}", "#services", class:"nav-link js-scroll-trigger" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Team", "#team", class:"nav-link js-scroll-trigger" %>
+            <%= link_to "#{t('corporate.team')}", "#team", class:"nav-link js-scroll-trigger" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Company", "#contact", class:"nav-link js-scroll-trigger" %>
+            <%= link_to "#{t('corporate.recruit')}", "#recruit", class:"nav-link js-scroll-trigger" %>
           </li>
           <li class="nav-item">
-            <%= link_to "#", class:"btn btn-sm btn-success js-scroll-trigger disabled" do %>
-            EN
+            <%= link_to "#{t('corporate.company')}", "#contact", class:"nav-link js-scroll-trigger" %>
+          </li>
+          <li class="nav-item">
+            <% if I18n.locale.to_s == "en" %>
+            <%= link_to('JP', { :locale => '' }, { class: "btn btn-sm btn-success js-scroll-trigger" }) %>
+            <% else %>
+            <%= link_to('EN', { :locale => 'en' }, { class: "btn btn-sm btn-success js-scroll-trigger" }) %>
             <% end %>
           </li>
         </ul>
@@ -50,11 +55,11 @@
         </div>
         <div class="col-lg-8 mx-auto">
           <h2 class="text-faded mb-5">
-            自動車解体・中古自動車パーツ産業を
+            <%= t('corporate.toptext') %>
             <br>
-            次のステージへ
+            <%= t('corporate.toptext2') %>
           </h2>
-          <%= link_to "Find Out More", "#about", class:"btn btn-corporate btn-corporate-green btn-corporate-xl js-scroll-trigger" %>
+          <%= link_to "#{t('corporate.findoutmore')}", "#about", class:"btn btn-corporate btn-corporate-green btn-corporate-xl js-scroll-trigger" %>
         </div>
       </div>
     </div>
@@ -69,21 +74,17 @@
           </h2>
           <hr class="corporate-light my-4">
           <p class="text-faded mb-4">
-            日本国内の自動車アフターパーツ市場は約10兆円。
-            その重要な部分を占めるリサイクル部品市場は、
-            環境面においても大切な役割を果たしている産業です。
+            <%= t('corporate.mission1')%>
             <br><br>
-            一方で、国内需要の減少や、来たる自動車産業の大変革に備え、次のステージに向けて動きを加速する必要があります。
+            <%= t('corporate.mission2')%>
             <br><br>
-            翻って、経済・人口成長が著しい新興国、特にアフリカでは、日本の自動車中古パーツ需要は年々増加しており
-            経済発展と中間所得層の増加より、「安かろう悪かろう」から「適正な価格」で「良い部品」が求められる市場へと変革し始めています。
+            <%= t('corporate.mission3')%>
             <br><br>
-            にも関わらず、既存の市場構造は、昔ながらの非効率・不透明な物流・取引形態が続いており、変化に対応できているとは言えません。
+            <%= t('corporate.mission4')%>
             <br><br>
-            HeyWorldでは、ITと物流の力で、日本の自動車リサイクル産業のコスト構造を強化し、
-            アフリカを中心とする新興国マーケットととの簡単・スムースな取引を実現します。
+            <%= t('corporate.mission5')%>
           </p>
-          <%= link_to "プロダクト・サービス", "#services", class:"btn btn-corporate btn-light btn-corporate-xl js-scroll-trigger" %>
+          <%= link_to "#{t('corporate.product')}", "#services", class:"btn btn-corporate btn-light btn-corporate-xl js-scroll-trigger" %>
         </div>
       </div>
     </div>
@@ -215,21 +216,21 @@
         <div class="col-sm-4">
           <div class="team-member">
             <%= image_tag "team/yu.jpeg", class:"mx-auto rounded-circle"  %>
-            <h4>Yu Sagawa</h4>
+            <h4><%= t('corporate.yusagawa')%></h4>
             <p class="text-muted">CEO & CTO, Co-Founder</p>
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
-                <%= link_to "https://twitter.com/innjera" do %>
+                <%= link_to "https://twitter.com/innjera", target:["_blank"] do %>
                 <i class="fab fa-twitter"></i>
                 <% end %>
               </li>
               <li class="list-inline-item">
-                <%= link_to "https://github.com/Innjera" do %>
+                <%= link_to "https://github.com/Innjera", target:["_blank"] do %>
                 <i class="fab fa-github"></i>
                 <% end %>
               </li>
               <li class="list-inline-item">
-                <%= link_to "https://www.linkedin.com/in/yu-sagawa" do %>
+                <%= link_to "https://www.linkedin.com/in/yu-sagawa", target:["_blank"] do %>
                 <i class="fab fa-linkedin-in"></i>
                 <% end %>
               </li>
@@ -237,43 +238,33 @@
           </div>
           <div class="text-center">
             <p>
-              Rubyエンジニア。三井物産を経てHeyWorldを創業。
-              三井物産では10年間、資源ビジネス・リサイクルビジネス・自動車リビルト部品製造事業・アフリカ市場開拓に携わる。
-              南アフリカに駐在し、アフリカ中を飛び回ってきた。
-              学生時代にはエチオピア・アディスアベバ大学に留学するなど、アフリカ好き。これまでサブサハラアフリカ18ヶ国に渡航。
+              <%= t('corporate.profileofyu')%>
             </p>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="team-member">
             <%= image_tag "team/maki.jpeg", class:"mx-auto rounded-circle"  %>
-            <h4>Maki Chimura</h4>
+            <h4><%= t('corporate.makichimura')%></h4>
             <p class="text-muted">COO, Co-Founder</p>
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <li class="list-inline-item">
-                  <%= link_to "https://twitter.com/NoteCrime" do %>
+                  <%= link_to "https://twitter.com/NoteCrime", target:["_blank"] do %>
                   <i class="fab fa-twitter"></i>
                   <% end %>
                 </li>
               </li>
               <li class="list-inline-item">
-                <%= link_to "https://note.mu/crimenote" do %>
+                <%= link_to "https://note.mu/crimenote", target:["_blank"] do %>
                 <i class="fab fa-blogger-b"></i>
-                <% end %>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to "#", class:"disabled" do %>
-                  <i class="fab fa-linkedin-in"></i>
                 <% end %>
               </li>
             </ul>
           </div>
           <div class="text-center">
             <p>
-              三井物産を経てHeyWorldを創業。英語、フランス語、アラビア語に堪能。
-              三井物産では８年間、資源ビジネスを担当し、南アフリカに駐在し、アフリカ大陸内の資源案件を担当。
-              チュニジア生まれ、チュニジア人とのハーフ。現在は、ウガンダ人を父に持つ。
+              <%= t('corporate.profileofmaki')%>
             </p>
           </div>
         </div>
@@ -292,8 +283,7 @@
           </div>
           <div class="text-center">
             <p>
-              ウガンダ人。ウガンダの首都カンパラ、ケニアの首都ナイロビと名古屋をベースに自動車中古パーツ事業を営む。
-              ウガンダではKani Auto Partsのオーナー経営者。
+              <%= t('corporate.profileofpatrick')%>
           </p>
           </div>
 
@@ -302,8 +292,53 @@
     </div>
   </section>
 
+  <section class="bg-corporate-dark text-white" id="recruit">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Recruit</h2>
+        </div>
+      </div>
+      <hr class="corporate-light my-4">
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 text-center">
+          <h3>
+            <%= t("corporate.recruit_top") %>
+          </h3>
+          <br>
+          <h3>
+            <%= t("corporate.recruit_second") %>
+          </h3>
+          <br>
+          <h5>
+            <%= t("corporate.recruit_third") %> :
+            <%= mail_to "heyworld.from.japan@gmail.com", class: "text-white"  do %>
+            <i class="fas fa-envelope sr-contact-2"></i>
+            <% end %>
+            &nbsp;&nbsp;
+            <%= link_to "https://twitter.com/innjera", class: "text-white", target:["_blank"] do %>
+            <i class="fab fa-twitter"></i>
+            <% end %>
+          </h5>
 
-  <section class="bg-corporate-dark text-white" id="contact">
+          <hr class="corporate-light my-4">
+          <br>
+          <h4>
+            <ul style="list-style-type: disc">
+              <li class="my-2">Ruby, Ruby on Rails, Python</li>
+              <li class="my-2">Github</li>
+              <li class="my-2">AWS</li>
+            </ul>
+          </h4>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="bg-corporate-green text-white" id="contact">
     <div class="container">
       <div class="row mb-5">
         <div class="col-lg-12 text-center">
@@ -317,31 +352,31 @@
         <table class="table bg-white text-dark">
           <tbody>
             <tr>
-              <th scope="row">社名</th>
-              <td>株式会社HeyWorld</td>
+              <th scope="row"><%= t("corporate.companyname")%></th>
+              <td><%= t("corporate.heyworld")%></td>
             </tr>
             <tr>
-              <th scope="row">設立</th>
-              <td>2019年1月</td>
+              <th scope="row"><%= t("corporate.founded")%></th>
+              <td><%= t("corporate.foundeddate")%></td>
             </tr>
             <tr>
-              <th scope="row">代表取締役</th>
+              <th scope="row"><%= t("corporate.representative")%></th>
               <td>佐川　悠 (Yu Sagawa)</td>
             </tr>
             <tr>
-              <th scope="row">所在地</th>
-              <td>東京都港区六本木3-7-1-420</td>
+              <th scope="row"><%= t("corporate.location")%></th>
+              <td><%= t("corporate.location_add")%></td>
             </tr>
             <tr>
-              <th scope="row">資本金</th>
-              <td>8,000,000円</td>
+              <th scope="row"><%= t("corporate.capital")%></th>
+              <td><%= t("corporate.capital_amount")%></td>
             </tr>
             <tr>
-              <th scope="row">取引銀行</th>
+              <th scope="row"><%= t("corporate.bank")%></th>
               <td>
-                みずほ銀行 六本木支店
+                <%= t("corporate.smbc")%>
                 <br>
-                三井住友銀行 六本木支店
+                <%= t("corporate.mizuho")%>
               </td>
             </tr>
           </tbody>
@@ -352,7 +387,7 @@
 
       <div class="row mt-5">
         <div class="col-lg-8 mx-auto text-center">
-          <h2 class="section-heading">こちらからご連絡ください</h2>
+          <h2 class="section-heading"><%= t("corporate.contact")%></h2>
           <hr class="corporate-light my-4">
         </div>
       </div>

@@ -1,22 +1,29 @@
 Rails.application.routes.draw do
 
+  ### i18対応の為のscop -- を入れたが為に追加(https://mikazuki.hatenablog.jp/entry/2016/01/16/041347)
+  devise_for :users, skip: [:sign_up, :sign_in, :sign_out, :registrations, :sessions, :passwords, :confirmations, :unlock],
+  controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  devise_for :sellers, skip: [:sign_up, :sign_in, :sign_out, :registrations, :sessions, :passwords, :confirmations, :unlock]
+
+  scope '(:locale)', locale: /#{I18n.available_locales.map(&:to_s).join('|')}/ do
+
   ###緊急避難###
   if Rails.env == "production"
     root 'corporate#top'
     get 'corporate' => 'corporate#top'
 
-
   elsif Rails.env == "development"
 
   #何故deviseが一番上に来るべきか https://teratail.com/questions/163615
 
-  devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks',
+  devise_for :users, skip:[:omniauth_callbacks], controllers: {
+    # omniauth_callbacks: 'users/omniauth_callbacks',
     registrations:'users/registrations',
     sessions:'users/sessions'
   }
 
-  devise_for :sellers, controllers: {
+  devise_for :sellers, skip:[:omniauth_callbacks], controllers: {
     registrations:'sellers/registrations',
     sessions:'sellers/sessions'
   }
@@ -53,6 +60,8 @@ Rails.application.routes.draw do
   end
 
   get 'corporate' => 'corporate#top'
+
+end
 
 end
 

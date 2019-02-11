@@ -1,4 +1,7 @@
 ja:
+  view:
+    toptext: 中古自動車パーツ産業を
+    toptext2: 次のステージへ
   activerecord:
     models:
       tender: 入札

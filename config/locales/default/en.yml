@@ -1,4 +1,5 @@
 en:
+  view:
   activerecord:
     models:
       tender: tender
