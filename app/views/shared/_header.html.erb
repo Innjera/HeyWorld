@@ -94,7 +94,21 @@
           <% end %>
         </div>
       </li>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp
     </ul>
+
+    <div class="text-white btn-right">
+      <% if I18n.locale.to_s == "en" %>
+      <%= link_to('JP', { :locale => '' }, { class: "btn btn-sm btn-success js-scroll-trigger" }) %>
+      <% else %>
+      <%= link_to('EN', { :locale => 'en' }, { class: "btn btn-sm btn-success js-scroll-trigger" }) %>
+      <% end %>
+    </div>
+
+
   </nav>
 
 </header>
