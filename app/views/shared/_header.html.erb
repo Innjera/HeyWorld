@@ -41,6 +41,18 @@
 
   <nav class="navbar navbar-expand navbar-light bg-dark">
 
+    &nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="text-white btn-right">
+      <% if I18n.locale.to_s == "en" %>
+      <%= link_to('JP', { :locale => '' }, { class: "btn btn-sm btn-success js-scroll-trigger" }) %>
+      <% else %>
+      <%= link_to('EN', { :locale => 'en' }, { class: "btn btn-sm btn-success js-scroll-trigger" }) %>
+      <% end %>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;
+
     <ul class="navbar-nav align-items-center">
       <i class="far fa-user-circle fa-2x py-2 text-white"></i>
       <span class="px-2 text-white">welcome!</span>
@@ -94,20 +106,7 @@
           <% end %>
         </div>
       </li>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp
     </ul>
-
-    <div class="text-white btn-right">
-      <% if I18n.locale.to_s == "en" %>
-      <%= link_to('JP', { :locale => '' }, { class: "btn btn-sm btn-success js-scroll-trigger" }) %>
-      <% else %>
-      <%= link_to('EN', { :locale => 'en' }, { class: "btn btn-sm btn-success js-scroll-trigger" }) %>
-      <% end %>
-    </div>
-
 
   </nav>
 
