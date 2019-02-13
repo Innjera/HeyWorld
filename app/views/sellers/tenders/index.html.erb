@@ -16,12 +16,7 @@
           終了：<%= tender.ends_at.strftime("%Y年%m月%d日（#{format_wday_ja(tender.starts_at)}）%H:%M") %>
           <br>
           <span class="tender-duration">
-            <% if tender.status == "ready" %>
-            <span class="badge badge-pill badge-primary">準備完了</span>
-            <% else %>
-            <span class="badge badge-pill badge-secondary">準備中</span>
-            <% end %>
-            by <%= tender.seller.company_name %>
+            <%= tender_status_text(tender) %>
           </span>
         </div>
         <% end %>

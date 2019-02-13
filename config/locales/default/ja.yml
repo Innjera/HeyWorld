@@ -1,12 +1,1 @@
 ja:
-  view:
-    toptext: 中古自動車パーツ産業を
-    toptext2: 次のステージへ
-  activerecord:
-    models:
-      tender: 入札
-    attributes:
-      tender:
-        status: 状態
-        status_draft: 準備中
-        status_ready: 準備完了(入札会が開催されます)

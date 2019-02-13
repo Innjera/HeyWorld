@@ -1,0 +1,6 @@
+ja:
+  activerecord:
+    models:
+      tender: 入札
+    attributes:
+      tender:

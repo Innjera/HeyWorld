@@ -1,0 +1,9 @@
+en:
+  tenders:
+    draft: draft
+    ready: ready
+    warn_text: change the starting day of this tender
+    draft_text: draft
+    ready_text: ready
+    in_progress: ongoing
+    completed: completed

@@ -1,4 +1,4 @@
-engines = Engine.joins(:tender).where('status= ?', "ready")
+engines = Engine.joins(:tender).where('status= ?', "1")
 open_engines = engines.joins(:tender).where('starts_at <= ?', Time.current)
 
 1.upto(15) do |idx|

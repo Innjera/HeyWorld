@@ -2,8 +2,6 @@ class Sellers::TendersController < ApplicationController
 
   before_action :authenticate_seller!
 
-  I18n.locale = "ja"
-
   def index
     @tenders = current_seller.tenders.order(id: :desc)
   end

@@ -16,7 +16,7 @@ company_names.each do |seller|
       delivery: [1,0,0,0,0].sample,
       pickup_date: rand(0..10),
       cancel: 0,
-      priority: [0, 0, 0, 0, 1, 0].sample,
+      priority: 0,
       disclose: [0, 0, 0, 1, 0, 0].sample
     )
 end

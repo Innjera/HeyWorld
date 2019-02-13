@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 2018_12_20_175058) do
     t.bigint "tender_location_id", null: false
     t.datetime "starts_at", null: false
     t.datetime "ends_at", null: false
-    t.string "status", default: "draft", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["seller_id"], name: "index_tenders_on_seller_id"

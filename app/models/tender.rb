@@ -7,7 +7,7 @@
 #  tender_location_id :bigint(8)        not null
 #  starts_at          :datetime         not null
 #  ends_at            :datetime         not null
-#  status             :string           default("draft"), not null
+#  status             :integer          default(0), not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
@@ -19,24 +19,11 @@ class Tender < ApplicationRecord
   has_many :engines, dependent: :destroy
   accepts_nested_attributes_for :engines, allow_destroy: true
 
-
-  STATUS_VALUES = %w(draft ready)
-
-  class << self
-    def status_text(status)
-      I18n.t("activerecord.attributes.tender.status_#{status}")
-    end
-
-    def status_options
-      STATUS_VALUES.map {|status| [status_text(status), status]}
-    end
-  end
-
   validates :starts_at, presence: true
   validates :ends_at, presence: true
-  validates :status, inclusion: {in: STATUS_VALUES}
+  validates :status, presence: true
 
-  scope :open, -> { where(status: "ready")}
+  scope :open, -> { where(status:1)}
 
   before_validation do
     if starts_at_date_part && starts_at_time_part
