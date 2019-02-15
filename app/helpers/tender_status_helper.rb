@@ -9,14 +9,14 @@ module TenderStatusHelper
     if tender.status == 0
       ### 現在より入札開始日が未来
       if T1 < tender.starts_at
-        content_tag(:span, class:"badge badge-pill badge-primary py-1", style:"font-size:0.8rem;") do
-          content_tag(:strong, t('tenders.draft_text'))
+        content_tag(:span, class:"text-danger", style:"font-size:1rem;") do
+          t('tenders.draft_text')
         end
-      ### 入札開始予定日を過ぎているのにまだステータスがドラフトの場合
+        ### 入札開始予定日を過ぎているのにまだステータスがドラフトの場合
       elsif tender.starts_at < T1
-        content_tag(:span, class:"badge badge-pill badge-warning py-1", style:"font-size:0.8rem;") do
+        content_tag(:span, class:"badge badge-pill badge-warning py-1", style:"font-size:1rem;") do
           content_tag(:i, class: "fas fa-exclamation-triangle") do
-            content_tag(:strong, t('tenders.warn_text'))
+            t('tenders.warn_text')
           end
         end
       end
@@ -24,17 +24,17 @@ module TenderStatusHelper
     elsif tender.status == 1
       ### 現在より入札開始日が未来
       if T1 < tender.starts_at
-        content_tag(:span, class:"text-success") do
-          content_tag(:strong, "ready_text")
+        content_tag(:span, class:"text-success", style:"font-size:1rem;") do
+          t("tenders.ready_text")
         end
     ### 入札中
     elsif tender.starts_at < T1 && T1 < tender.ends_at
-      content_tag(:span, class:"badge badge-pill badge-danger py-1", style:"font-size:0.8rem;") do
-        content_tag(:strong, t('tenders.in_progress'))
+      content_tag(:span, class:"text-primary", style:"font-size:1rem;") do
+        t('tenders.in_progress')
       end
     elsif tender.ends_at < T1
-      content_tag(:span, class:"badge badge-pill badge-secondary py-1", style:"font-size:0.8rem;") do
-        content_tag(:strong, t('tenders.completed'))
+      content_tag(:span, class:"text-secondary", style:"font-size:1rem;") do
+        t('tenders.completed')
       end
     end
   end ### if

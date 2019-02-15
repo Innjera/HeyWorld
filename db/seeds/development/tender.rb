@@ -33,6 +33,14 @@ datetime0 = Time.current.beginning_of_day
   )
 
   Tender.create!(
+      seller: Seller.find_by(company_name: "株式会社コマゼン"),
+      tender_location: TenderLocation.where(seller_id: 1).sample,
+      starts_at: datetime0.advance(days: +5, hours: 9),
+      ends_at: datetime0.advance(days: +8, hours: 12),
+      status: 1
+    )
+
+  Tender.create!(
     seller: Seller.find_by(company_name: "株式会社ユーパーツ"),
     tender_location: TenderLocation.where(seller_id: 2).sample,
     starts_at: datetime0.advance(days: -10, hours: 7),

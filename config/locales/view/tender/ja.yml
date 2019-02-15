@@ -2,8 +2,8 @@ ja:
   tenders:
     draft: ドラフト
     ready: 準備完了
-    warn_text: 入札開予定日を過ぎています。開始日を変更してください。
-    draft_text: ドラフト（ステータスを準備完了にしてください。）
-    ready_text: 準備完了（入札開始日に自動的に開催されます）
+    warn_text: 入札開予定日を過ぎています。開始日を変更してください
+    draft_text: 準備中 - ステータスを準備完了にしてください
+    ready_text: 準備完了 - 入札開始日に自動的に開催されます
     in_progress: 入札会開催中
     completed: 終了

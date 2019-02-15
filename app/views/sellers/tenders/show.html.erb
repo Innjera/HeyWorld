@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col-12 my-3">
           <div class="alert alert-success">
-            <strong><%= @tender.seller.company_name %> 入札 No. <%= @tender.id %></strong>
+            <%= @tender.seller.company_name %> 入札 No. <%= @tender.id %>
 
             <%= link_to :edit_sellers_tender, class:"btn btn-sm btn-success ml-4" do %>
             <i class="fas fa-edit"></i>&nbsp;設定を変更
@@ -24,25 +24,24 @@
             <% end %>
 
             <div class="bg-light p-2 my-2">
-              入札開始日：<strong><%= @tender.starts_at.strftime("%Y年%m月%d日（#{format_wday_ja(@tender.starts_at)}） %H:%M") %></strong>、
-              入札終了日：<strong><%= @tender.ends_at.strftime("%Y年%m月%d日（#{format_wday_ja(@tender.starts_at)}）%H:%M") %></strong>
+              入札開始日：
+              <strong>
+              <%= @tender.starts_at.strftime("%Y年%m月%d日（#{format_wday_ja(@tender.starts_at)}） %H:%M") %>
+              </strong>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              入札終了日：
+              <strong>
+              <%= @tender.ends_at.strftime("%Y年%m月%d日（#{format_wday_ja(@tender.starts_at)}）%H:%M") %>
+              </strong>
             </div>
 
             <div class="bg-light p-2 my-2">
-              入札場所：<strong><%= @tender.tender_location.address %>(id:<%= @tender.tender_location.id %>)</strong>
+              入札場所：<%= @tender.tender_location.address %>(id:<%= @tender.tender_location.id %>)
             </div>
 
             <div class="bg-light p-2">
               ステータス：
-              <% if @tender.status == "ready" %>
-              <span class="text-primary">
-                <strong>準備完了 - 自動で入札が開催されます。 </strong>
-              </span>
-              <% else %>
-              <span class="text-danger">
-                <strong>準備中</strong>
-              </span>
-              <% end %>
+              <%= tender_status_text(@tender)%>
             </div>
 
           </div>
@@ -53,7 +52,7 @@
 
         <div class="col-12">
 
-          <%= link_to new_sellers_tender_engine_path(@tender), class:"btn btn-primary mb-3" do %>
+          <%= link_to new_sellers_tender_engine_path(@tender), class:"btn btn-warning mb-3" do %>
           <i class="fas fa-plus"></i>&nbsp;エンジンを追加する
           <% end %>
 
@@ -113,7 +112,7 @@
                 人
               </div>
               <div class="card-footer w-100 bg-white p-2 justify-content-end">
-                <%= link_to sellers_tender_engine_path(@tender, engine), class:"btn btn-sm btn-success" do %>
+                <%= link_to sellers_tender_engine_path(@tender, engine), class:"btn btn-sm btn-outline-success" do %>
                 詳細確認
                 <% end %>
               </div>
