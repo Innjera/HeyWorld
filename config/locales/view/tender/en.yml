@@ -3,7 +3,7 @@ en:
     draft: draft
     ready: ready
     warn_text: change the starting day of this tender
-    draft_text: draft
-    ready_text: ready
+    draft_text: under preparation - make the status "ready"
+    ready_text: ready - the tender will start automatically. 
     in_progress: ongoing
     completed: completed
