@@ -27,10 +27,12 @@ class Sellers::TendersController < ApplicationController
   def create
     @tender = Tender.new(tender_params)
     @tender.seller = current_seller
-    if @tender.save
+    if @tender.valid?
+      @tender.save!
       flash.notice = "入札会を設定しました。掲載商品を追加してください。"
       redirect_to sellers_tender_path(@tender)
     else
+      @tender_location_candidates = current_seller.tender_locations
       render "new"
     end
   end

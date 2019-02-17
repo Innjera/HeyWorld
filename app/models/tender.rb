@@ -21,7 +21,14 @@ class Tender < ApplicationRecord
 
   validates :starts_at, presence: true
   validates :ends_at, presence: true
+  validates :starts_at_date_part, presence: true
   validates :status, presence: true
+
+  validate do
+    if starts_at > ends_at
+      errors.add(:ends_at, :too_early)
+    end
+  end
 
   scope :open, -> { where(status:1)}
 
