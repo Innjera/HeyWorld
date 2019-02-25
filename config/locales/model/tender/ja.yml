@@ -2,7 +2,12 @@ ja:
   activerecord:
     attributes:
       tender:
+        starts_at: "開始日"
+        starts_at_date_part: "開始日"
+        starts_at_time_part: "開始時間"
         ends_at: "終了日"
+        ends_at_date_part: "終了日"
+        ends_at_time_part: "終了時間"
     errors:
       models:
         tender:

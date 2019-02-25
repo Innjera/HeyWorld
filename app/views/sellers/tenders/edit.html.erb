@@ -8,6 +8,17 @@
     <main class="col-10 ml-sm-auto">
 
       <div class="mt-3">
+
+        <% if @tender.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+          <ul>
+            <% @tender.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+
         <%= form_for @tender, url: :sellers_tender do |f| %>
 
         <%= render 'fields', f: f %>

@@ -19,13 +19,11 @@ class Tender < ApplicationRecord
   has_many :engines, dependent: :destroy
   accepts_nested_attributes_for :engines, allow_destroy: true
 
-  validates :starts_at, presence: true
-  validates :ends_at, presence: true
-  validates :starts_at_date_part, presence: true
+  validates :starts_at, :ends_at, presence: true
   validates :status, presence: true
 
   validate do
-    if starts_at > ends_at
+    if starts_at && ends_at && starts_at > ends_at
       errors.add(:ends_at, :too_early)
     end
   end
@@ -34,11 +32,19 @@ class Tender < ApplicationRecord
 
   before_validation do
     if starts_at_date_part && starts_at_time_part
-      self.starts_at = "#{starts_at_date_part} #{starts_at_time_part}"
+      if starts_at_date_part.present? && starts_at_time_part.present?
+        self.starts_at = "#{starts_at_date_part} #{starts_at_time_part}"
+      else
+        self.starts_at = nil
+      end
     end
 
     if ends_at_date_part && ends_at_time_part
-      self.ends_at = "#{ends_at_date_part} #{ends_at_time_part}"
+      if ends_at_date_part.present? && ends_at_time_part.present?
+        self.ends_at = "#{ends_at_date_part} #{ends_at_time_part}"
+      else
+        self.ends_at = nil
+      end
     end
   end
 

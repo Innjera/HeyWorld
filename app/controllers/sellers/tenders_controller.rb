@@ -44,6 +44,7 @@ class Sellers::TendersController < ApplicationController
       flash.alert = "入札会の設定をupdateしました。"
       redirect_to sellers_tender_path(@tender)
     else
+      @tender_location_candidates = current_seller.tender_locations
       render "edit"
     end
   end
