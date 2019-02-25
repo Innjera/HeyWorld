@@ -9,6 +9,16 @@
 
       <h1 class="text-secondary my-4">入札を開始する</h1>
 
+      <% if @tender.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <ul>
+          <% @tender.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+
 
       <div class="mt-3">
         <%= form_for @tender, url: :sellers_tenders do |f| %>

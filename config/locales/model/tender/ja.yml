@@ -1,6 +1,11 @@
 ja:
   activerecord:
-    models:
-      tender: 入札
     attributes:
       tender:
+        ends_at: "終了日"
+    errors:
+      models:
+        tender:
+          attributes:
+            ends_at:
+              too_early: "には開始日より後の日時を設定してください"
