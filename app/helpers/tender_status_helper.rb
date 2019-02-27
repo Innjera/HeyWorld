@@ -6,7 +6,7 @@ module TenderStatusHelper
 
   def tender_status_text(tender)
     ### 0(ドラフト)
-    if tender.status == 0
+    if tender.preparation_status == 0
       ### 現在より入札開始日が未来
       if T1 < tender.starts_at
         content_tag(:span, class:"text-danger", style:"font-size:1rem;") do
@@ -21,7 +21,7 @@ module TenderStatusHelper
         end
       end
     ### 1(準備完了)
-    elsif tender.status == 1
+  elsif tender.preparation_status == 1
       ### 現在より入札開始日が未来
       if T1 < tender.starts_at
         content_tag(:span, class:"text-success", style:"font-size:1rem;") do

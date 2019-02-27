@@ -7,7 +7,7 @@
 #  tender_location_id :bigint(8)        not null
 #  starts_at          :datetime         not null
 #  ends_at            :datetime         not null
-#  status             :integer          default(0), not null
+#  preparation_status :integer          default(0), not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
@@ -20,7 +20,7 @@ class Tender < ApplicationRecord
   accepts_nested_attributes_for :engines, allow_destroy: true
 
   validates :starts_at, :ends_at, presence: true
-  validates :status, presence: true
+  validates :preparation_status, presence: true
 
   validate do
     if starts_at && ends_at && starts_at > ends_at
@@ -28,7 +28,7 @@ class Tender < ApplicationRecord
     end
   end
 
-  scope :open, -> { where(status:1)}
+  scope :open, -> { where(preparation_status:1)}
 
   before_validation do
     if starts_at_date_part && starts_at_time_part
@@ -65,6 +65,21 @@ class Tender < ApplicationRecord
 
   def ends_at_time_part
     @ends_at_time_part ||= ends_at&.strftime('%H:%M')
+  end
+
+  def tender_status
+    time_now = Time.current
+    ### before tender
+    if time_now < starts_at
+      tender_status = 0
+    ### tender ongoing
+    elsif starts_at < time_now && time_now < ends_at
+      tender_status = 1
+    ### tender finished
+    elsif ends_at < time_now
+      tender_status = 2
+    end
+    tender_status
   end
 
 end
