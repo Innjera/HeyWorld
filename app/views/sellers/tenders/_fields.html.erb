@@ -35,10 +35,10 @@
   </div>
 </div>
 <div class="form-group" >
-  <%= f.label :status, "ステータス" %>
+  <%= f.label :preparation_status, "ステータス" %>
   &nbsp;&nbsp;&nbsp;<span class="badge badge-pill badge-danger">必須</span>
   &nbsp;&nbsp;&nbsp;<span class="text-danger">* 全ての設定が完了した場合は完了を、ドラフトの場合はドラフトを選択してください</span>
-  <%= f.select :status, options_for_select("#{t("tenders.draft")}" => 0, "#{t("tenders.ready")}" => 1 ), {}, class: 'form-control' %>
+  <%= f.select :preparation_status, options_for_select("#{t("tenders.draft")}" => 0, "#{t("tenders.ready")}" => 1 ), {}, class: 'form-control' %>
 </div>
 
 <div class="form-group" >
