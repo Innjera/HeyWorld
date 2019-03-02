@@ -83,30 +83,24 @@ class Tender < ApplicationRecord
   end
 
   ### for remaining time calculation
+  def total_seconds
+    (ends_at - Time.current).round
+  end
+
   def remaining_days
-    total_seconds = (ends_at - Time.current).round
     total_seconds / (60 * 60 * 24)
   end
 
   def remaining_hours
-    total_seconds = (ends_at - Time.current).round
-    remaining_days = total_seconds / (60 * 60 * 24)
     total_seconds / (60 * 60) - (remaining_days * 24)
   end
 
-  def remaining_minuites
-    total_seconds = (ends_at - Time.current).round
-    remaining_days = total_seconds / (60 * 60 * 24)
-    remaining_hours = (total_seconds / (60 * 60) - (remaining_days * 24))
+  def remaining_minutes
     total_seconds / 60 - (remaining_days * 24 * 60 + remaining_hours * 60)
   end
 
   def remaining_seconds
-    total_seconds = (ends_at - Time.current).round
-    remaining_days = total_seconds / (60 * 60 * 24)
-    remaining_hours = (total_seconds / (60 * 60) - (remaining_days * 24))
-    remaining_miniutes = (total_seconds / 60) - (remaining_days * 24 * 60 + remaining_hours * 60)
-    total_seconds - (remaining_days * 24 * 60 * 60 + remaining_hours * 60 * 60 + remaining_miniutes * 60)
+    total_seconds - (remaining_days * 24 * 60 * 60 + remaining_hours * 60 * 60 + remaining_minutes * 60)
   end
 
 end
