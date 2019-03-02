@@ -1,9 +1,14 @@
 en:
   tenders:
+    start: "Start"
+    end: "End"
+    location: "Location"
+    status: "Status"
     draft: draft
     ready: ready
     warn_text: change the starting day of this tender
     draft_text: under preparation - make the status "ready"
-    ready_text: ready - the tender will start automatically.
+    ready_text: "Ready - will start automatically"
+    ready_text_for_c: "Please wait till START date"
     in_progress: "Ongoing"
-    completed: "Completed"
+    completed: "Finished"

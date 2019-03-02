@@ -115,11 +115,15 @@
           </strong>
           bidders already
           <div class>
+            <%= tender_remaining_count(@engine.tender)%>
+            <br>
             remaining
             <span class="text-danger"><strong>
-            <%= ((@engine.tender.ends_at - Time.current)/60/60/24).floor %>
+            <%= @engine.tender.remaining_days %>d
+            <%= @engine.tender.remaining_hours %>h
+            <%= @engine.tender.remaining_minuites %>m
+            <%= @engine.tender.remaining_seconds %>s
             </strong></span>
-            days
           </div>
 
         <hr>

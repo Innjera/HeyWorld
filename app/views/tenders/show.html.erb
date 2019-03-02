@@ -16,13 +16,13 @@
           <%= link_to @tender.seller.company_name_en, seller_path(@tender.seller) %>
         </strong>
         <div class="bg-light p-2 my-2">
-          Start：<strong><%= @tender.starts_at.strftime("%d %b %Y (%a) %H:%M") %></strong>
+          <%= t("tenders.start")%>：<strong><%= @tender.starts_at.strftime("%d %b %Y (%a) %H:%M") %></strong>
           <br>
-          End：<strong><%= @tender.ends_at.strftime("%d %b %Y (%a) %H:%M") %></strong>
+          <%= t("tenders.end")%>：<strong><%= @tender.ends_at.strftime("%d %b %Y (%a) %H:%M") %></strong>
         </div>
 
         <div class="bg-light p-2 mb-2">
-          location：
+          <%= t("tenders.location")%>：
           <span>
             <% unless @tender.tender_location.nil? %>
             <strong><%= @tender.tender_location.address_city_part %>, <%= @tender.tender_location.address_rest_part%>, <%= @tender.tender_location.address_prefecture_part%></strong>
@@ -33,7 +33,7 @@
         </div>
 
         <div class="bg-light p-2">
-          Status： <%= tender_status_text(@tender) %>
+          <%= t("tenders.status")%>： <%= tender_status_text_for_c(@tender) %>
         </div>
 
       </div>
