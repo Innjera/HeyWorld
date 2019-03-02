@@ -116,12 +116,12 @@
           bidders already
           <div class>
             <br>
+            <i class="far fa-clock"></i>
             remaining
             <span class="text-danger"><strong>
-            <%= @engine.tender.remaining_days %>d
-            <%= @engine.tender.remaining_hours %>h
-            <%= @engine.tender.remaining_minutes %>m
-            <%= @engine.tender.remaining_seconds %>s
+            <%= @engine.tender.remaining_days %> <small>days</small>
+            <%= @engine.tender.remaining_hours %> <small>hours</small>
+            <%= @engine.tender.remaining_minutes %> <small>minutes</small>
             </strong></span>
           </div>
 

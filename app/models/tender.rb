@@ -28,7 +28,11 @@ class Tender < ApplicationRecord
     end
   end
 
+  T1 = Time.current
   scope :open, -> { where(preparation_status:1)}
+  scope :ongoing, -> {open.where('starts_at < ? AND ends_at > ?', T1, T1 )}
+  scope :coming, -> {open.where('starts_at > ?', T1)}
+  scope :finished, -> {open.where('starts_at < ? AND ends_at < ?', T1, T1 )}
 
   before_validation do
     if starts_at_date_part && starts_at_time_part

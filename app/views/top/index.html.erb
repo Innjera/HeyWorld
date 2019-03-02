@@ -109,8 +109,9 @@
               <%= image_tag("parts_example.JPG", size: "158x120")%>
               <div class="pill-position-top">
               <span class="badge badge-danger">
-                remaining
-                <%= ((engine.tender.ends_at - Time.current)/60/60/24).floor %>days
+                <%= engine.tender.remaining_days %> <small>d</small>
+                <%= engine.tender.remaining_hours %> <small>h</small>
+                <%= engine.tender.remaining_minutes %> <small>min</small>
               </span>
               </div>
             </div>
