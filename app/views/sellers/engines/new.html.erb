@@ -24,7 +24,7 @@
 
             <div class="bg-light p-2">
               ステータス：
-              <% if @current_tender.status == "ready" %>
+              <% if @current_tender.preparation_status == 1 %>
               <span class="text-primary">
                 <strong>準備完了 - 自動で入札が開催されます。 </strong>
               </span>

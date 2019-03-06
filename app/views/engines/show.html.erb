@@ -91,6 +91,18 @@
 
       <div class="col-lg-8 col-12">
 
+        <%= render "shared/errors", obj: @bid_price %>
+
+        <% if @bid_price.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+          <ul>
+            <% @bid_price.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+
         <div class="alert alert-success text-center my-3" role="alert">
 
           <h3 class="text-success mb-0">
