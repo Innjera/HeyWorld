@@ -64,6 +64,10 @@ class User < ApplicationRecord
 
   end
 
+  def biddable_for?(engine)
+    engine && !bid_prices.exists?(user_id: self, engine_id: engine.id)
+  end
+
   ### gem country_select
   def country_name
     country = ISO3166::Country[nationality]

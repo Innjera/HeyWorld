@@ -8,7 +8,7 @@ class BidPricesController < ApplicationController
     @bid_price.user = current_user
     @bid_price.engine = bidded_engine
     if @bid_price.valid?
-      @bif_price.save!
+      @bid_price.save!
       flash.notice = "Your Price has been submitted!"
       redirect_to tender_engine_path(bidded_engine.tender, bidded_engine)
     else
@@ -16,8 +16,8 @@ class BidPricesController < ApplicationController
       # @engine = bidded_engine
       # @tender_rule = @engine.seller.tender_rule
       # @tender = @engine.tender
-      render "engines/show"
-      # redirect_to tender_engine_path(bidded_engine.tender, bidded_engine)
+      # render "engines/show"
+      redirect_to tender_engine_path(bidded_engine.tender, bidded_engine)
     end
   end
 

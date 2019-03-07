@@ -114,9 +114,30 @@
 
           <hr>
 
+          <% if current_user && !current_user&.biddable_for?(@engine) %>
+
+          <div class="alert alert-warning">
+          You have already bidded at
+          <% @yourprice = BidPrice.find_by(engine_id: @engine.id, user_id: current_user.id) %>
+          <%= number_to_currency(@yourprice.price, :unit => " JPY ", :precision => 0) %>
+          <br>
+          <%= link_to "#", class:"btn btn-lg btn-success my-2" do %>
+          Revise Your Bid
+          <% end %>
+          <br>
+          <%= link_to "#", class:"text-secondary" do %>
+          cancel your bid
+          <% end %>
+          </div>
+
+
+          <% else %>
+
           <%= render "place_bid", engine: @engine %>
           <%= link_to "#place-bid-#{@engine.id}", data: {toggle: "modal"}, class:"btn btn-lg btn-success my-2" do%>
           <strong>Place Your Bid</strong>
+          <% end %>
+
           <% end %>
 
           <br>

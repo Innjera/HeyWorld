@@ -20,5 +20,19 @@ class BidPrice < ApplicationRecord
     less_than: 100000000,
     allow_blank: true
   }
+  validate :check_bid_price
+  validate :check_biddable, on: :create
+
+  def check_biddable
+    unless user.biddable_for?(self.engine)
+      errors.add(:price, :already_bidded)
+    end
+  end
+
+  def check_bid_price
+    if price && self.engine && price < self.engine.minimum_price
+      errors.add(:price, :too_low_price)
+    end
+  end
 
 end

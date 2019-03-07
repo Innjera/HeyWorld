@@ -1,1 +1,20 @@
 en:
+  activerecord:
+    attributes:
+      tender:
+        starts_at: "starts at"
+        starts_at_date_part: "start date"
+        starts_at_time_part: "start time"
+        ends_at: "endss at"
+        ends_at_date_part: "end date"
+        ends_at_time_part: "end time"
+    errors:
+      models:
+        tender:
+          attributes:
+            ends_at:
+              too_early: "end date must be later than start date"
+        bid_price:
+          attributes:
+            price:
+              too_low_price: "Price must be higher than min price"

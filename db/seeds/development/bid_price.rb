@@ -13,6 +13,6 @@ end
   BidPrice.create!(
     user_id: 2,
     engine_id: open_engines.pluck(:id).fetch(idx),
-    price: 800 * idx
+    price: 20000 * idx
   )
 end
