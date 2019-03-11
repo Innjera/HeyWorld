@@ -82,19 +82,42 @@
         Buy
       </div>
 
-      <ul class="list-group">
+      <ul class="list-group mb-3">
         <li class="list-group-item">
           <%= link_to bidded_items_path, class:"text-dark" do %>
           <i class="fas fa-list-ol"></i>
           Bidded Items
           <% end %>
         </li>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
+        <li class="list-group-item">
+          <%= link_to "#", class:"text-dark" do %>
+          <i class="fas fa-car"></i>
+          Won items
+          <% end %>
+        </li>
+        <li class="list-group-item">
+          <%= link_to "#", class:"text-dark" do %>
+          <i class="far fa-star"></i>
+          Favorite Kaitai/Auto Recycling Companies
+          <% end %>
+        </li>
       </ul>
 
+      <div class="my-2 text-secondary">
+        Payment
       </div>
-      </div>
+
+      <ul class="list-group mb-5">
+        <li class="list-group-item">
+          <%= link_to "#", class:"text-dark" do %>
+          <i class="fas fa-money-check-alt"></i>
+          Deposit
+          <% end %>
+        </li>
+      </ul>
+
+    </div>
+  </div>
 </div>
 
 </div>
