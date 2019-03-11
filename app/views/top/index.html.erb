@@ -104,6 +104,64 @@
         <%= link_to tender_path(engine.tender), class:"text-secondary remove-underline" do %>
 
         <div class="row mb-2">
+
+          <div class="d-md-none">
+            <div class="text-center mr-auto">
+              <div class="card" style="width: 100%;">
+                <%= image_tag("parts_example.JPG", class: "card-img-top", alt:"...")%>
+                <div class="pill-position-top">
+                <span class="badge badge-danger mt-2" style="font-size:1rem">
+                  <i class="far fa-clock"></i>
+                  <%= engine.tender.remaining_days %> <small>d</small>
+                  <%= engine.tender.remaining_hours %> <small>h</small>
+                  <%= engine.tender.remaining_minutes %> <small>min</small>
+                </span>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <strong>
+                      <%= engine.engine_model_code %>, <%= engine.car_model %>, <%= engine.car_make %>
+                    </strong>
+
+                  </h5>
+                  <p class="card-text">
+                    <small><span class="text-muted">min price</span></small>
+                    <%= number_to_currency(engine.minimum_price, :unit => "JPY ", :precision => 0) %>
+                  </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <span class="text-muted">
+                    <i class="fas fa-users"></i>
+                    <strong>
+                    <%= engine.bidders.count %>
+                    </strong>
+                    bidders
+                    </span>
+                    &nbsp;&nbsp;
+                    <button type="button" class="btn btn-sm btn-success">Detail</button>
+                  </li>
+                  <li class="list-group-item">
+                    <span class="text-muted">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <% unless engine.tender.tender_location.nil? %>
+                      <%= engine.tender.tender_location.address_prefecture_part %> | <%= engine.tender.tender_location.address_city_part %>
+                      <% else %>
+                      <small>This location has not been used</small>
+                      <% end %>
+                      &nbsp;
+                    </span>
+                  </li>
+                </ul>
+                <div class="card-body">
+                  <small>this item is supplied by</small>
+                  <strong><%= engine.seller.company_name_en %></strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-none d-md-block">
           <div class="card flex-row flex-wrap" style="width:100%">
             <div class="card-header d-inline border-0 p-0">
               <%= image_tag("parts_example.JPG", size: "158x120")%>
@@ -163,6 +221,8 @@
               bidders
               </span>
             </div>
+          </div>
+
           </div>
         </div>
 
