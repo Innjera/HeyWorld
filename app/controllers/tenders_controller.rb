@@ -9,7 +9,8 @@ class TendersController < ApplicationController
   end
 
   def show
-    @tender = Tender.find(params[:id])
+    tenders = Tender.all.open
+    @tender = tenders.find(params[:id])
     @engines = @tender.engines
   end
 end
