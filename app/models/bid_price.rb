@@ -21,11 +21,18 @@ class BidPrice < ApplicationRecord
     allow_blank: true
   }
   validate :check_bid_price
-  validate :check_biddable, on: :create
+  validate :check_biddable_item
+  validate :check_biddable_user, on: :create
 
-  def check_biddable
+  def check_biddable_user
     unless user.biddable_for?(self.engine)
       errors.add(:price, :already_bidded)
+    end
+  end
+
+  def check_biddable_item
+    unless self.engine.tender.preparation_status == 1 && self.engine.tender.tender_status == 1
+      errors.add(:base, :not_biddable)
     end
   end
 
@@ -34,5 +41,6 @@ class BidPrice < ApplicationRecord
       errors.add(:price, :too_low_price)
     end
   end
+
 
 end

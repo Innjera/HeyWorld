@@ -7,5 +7,8 @@ en:
       models:
         bid_price:
           attributes:
+            base:
+              not_biddable: "This item is not biddable"
             price:
               too_low_price: "must be higher than min price"
+              not_biddable: "this item is not biddable "

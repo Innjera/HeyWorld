@@ -7,5 +7,7 @@ ja:
       models:
         bid_price:
           attributes:
+            base:
+              not_biddable: "この商品は入札できません。"
             price:
               too_low_price: "は最低価格より高い値段を入れてください。"
