@@ -1,8 +1,11 @@
 en:
   activerecord:
+    attributes:
+      bid_price:
+        price: "Price"
     errors:
       models:
         bid_price:
           attributes:
             price:
-              too_low_price: "Price must be higher than min price"
+              too_low_price: "must be higher than min price"

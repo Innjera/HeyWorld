@@ -14,7 +14,3 @@ ja:
           attributes:
             ends_at:
               too_early: "には開始日より後の日時を設定してください"
-        bid_price:
-          attributes:
-            price:
-              too_low_price: "最低価格より高い値段を入れてください。"

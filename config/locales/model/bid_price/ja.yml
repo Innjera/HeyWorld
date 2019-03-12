@@ -1,8 +1,11 @@
 ja:
   activerecord:
+    attributes:
+      bid_price:
+        price: "価格"
     errors:
       models:
         bid_price:
           attributes:
             price:
-              too_low_price: "最低価格より高い値段を入れてください。"
+              too_low_price: "は最低価格より高い値段を入れてください。"
