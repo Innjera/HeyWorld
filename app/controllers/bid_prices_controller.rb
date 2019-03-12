@@ -12,12 +12,7 @@ class BidPricesController < ApplicationController
       flash.notice = "Your Price has been submitted!"
       redirect_to tender_engine_path(bidded_engine.tender, bidded_engine)
     else
-      binding.pry
-      # @engine = bidded_engine
-      # @tender_rule = @engine.seller.tender_rule
-      # @tender = @engine.tender
-      # render "engines/show"
-      redirect_to tender_engine_path(bidded_engine.tender, bidded_engine)
+      redirect_to tender_engine_path(bidded_engine.tender, bidded_engine),flash: {bid_price_error_messages: @bid_price.errors.full_messages}
     end
   end
 

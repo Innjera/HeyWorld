@@ -91,7 +91,17 @@
 
       <div class="col-lg-8 col-12">
 
-        <%= render "shared/errors", obj: @bid_price %>
+        <% if flash[:bid_price_error_messages] %>
+
+        <div id="error_explanation" class="alert alert-danger mt-3">
+          <ul class="mb-0">
+            <% flash[:bid_price_error_messages].each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+
+        <% end %>
 
         <% if @bid_price.errors.any? %>
         <div id="error_explanation" class="alert alert-danger">
