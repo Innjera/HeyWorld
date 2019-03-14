@@ -3,9 +3,34 @@
     <div class="row">
 
       <div class="col-lg-4 col-12 my-3">
-        <div class="card mx-2 mb-2" style="width:15rem;">
-        <%= image_tag("parts_example.JPG", alt: "parts_example", size: "238x180")%>
+
+        <div id="wrap" class="p-1 mb-2 bg-light">
+          <ul id="slider" class="pl-0">
+            <li class="slide-item bg-dark">
+              <%= image_tag("parts_example.JPG", alt: "parts_example")%>
+            </li>
+            <li class="slide-item bg-dark">
+              <%= image_tag("parts_example_2.JPG", alt: "parts_example")%>
+            </li>
+            <li class="slide-item bg-dark">
+              <%= image_tag("parts_example_3.JPG", alt: "parts_example")%>
+            </li>
+          </ul>
+
+          <ul id="thumbnail_slider" class=" bg-secondary pl-0">
+            <li class="thumbnail-item">
+              <%= image_tag("parts_example.JPG", alt: "parts_example")%>
+            </li>
+            <li class="thumbnail-item">
+              <%= image_tag("parts_example_2.JPG", alt: "parts_example")%>
+            </li>
+            <li class="thumbnail-item">
+              <%= image_tag("parts_example_3.JPG", alt: "parts_example")%>
+            </li>
+          </ul>
+
         </div>
+
 
         <div class="alert alert-warning d-none d-lg-block">
           <i class="fas fa-exclamation-triangle"></i>
