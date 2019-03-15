@@ -48,22 +48,28 @@
             </div>
             <div id="collapseOne" class="collapse show text-dark" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div class="p-2">
+
                 <% if @bidders.present? %>
-                <% @bidders.each do |bidder| %>
 
                 <table class="table">
                   <thead>
                     <tr>
                       <th scope="col">名前</th>
+                      <th scope="col">連絡先（メール | 電話）</th>
                       <th scope="col">金額</th>
                       <th scope="col">入札日時</th>
                     </tr>
                   </thead>
                   <tbody>
+                    <% @bidders.each do |bidder| %>
                     <tr>
                       <th scope="row">
                         <%= bidder.name %>
                       </th>
+                      <td>
+                        <%= bidder.email %> |
+                        <%= bidder.tel.present? ? "#{bidder.tel}" : "電話番号が登録されてません" %>
+                      </td>
                       <td>
                         <% @price = BidPrice.find_by(engine_id: @engine.id, user_id: bidder.id)%>
                         <%= number_to_currency(@price.price, :unit => "JPY ", :precision => 0) %>
@@ -72,10 +78,10 @@
                         <%= @price.updated_at.strftime("%m/%d（#{format_wday_ja(@price.updated_at)}） %H:%M") %>
                       </td>
                     </tr>
+                    <% end %>
                   </tbody>
                 </table>
 
-                <% end %>
                 <% else %>
 
                 <div class="alert alert-danger">
