@@ -17,8 +17,6 @@
 
         <% if @bidders.present? %>
 
-        <% @bidders.each do |bidder| %>
-
         <table class="table">
           <thead>
             <tr>
@@ -28,6 +26,7 @@
             </tr>
           </thead>
           <tbody>
+            <% @bidders.each do |bidder| %>
             <tr>
               <th scope="row">
                 <%= bidder.name %>
@@ -40,9 +39,9 @@
                 <%= @price.updated_at.strftime("%m/%d（#{format_wday_ja(@tender.starts_at)}） %H:%M") %>
               </td>
             </tr>
+            <% end %>
           </tbody>
         </table>
-        <% end %>
 
         <% else %>
 
