@@ -1,37 +1,37 @@
-  <div class="sidebar-sticky">
-    <ul class="nav flex-column">
+  <div class="sidebar-sticky bg-dark" style="height:100%">
+    <ul class="nav flex-column hover-dark">
       <li class="nav-item">
-      <%= link_to :sellers_root, class:"nav-link text-dark hover-bold" do %>
+      <%= link_to :sellers_root, class:"nav-link text-white" do %>
       <i class="fas fa-home"></i>&nbsp;トップページ
       <% end %>
       </li>
       <li class="nav-item">
-      <%= link_to sellers_tender_rule_path, class:"nav-link text-dark" do %>
+      <%= link_to sellers_tender_rule_path, class:"nav-link text-white" do %>
       <i class="fas fa-chalkboard-teacher"></i>&nbsp;入札基本設定
       <% end %>
       </li>
       <li class="nav-item">
-      <%= link_to new_sellers_tender_path(locale:"ja"), class:"nav-link text-dark" do %>
+      <%= link_to new_sellers_tender_path(locale:"ja"), class:"nav-link text-white" do %>
       <i class="fas fa-box-open"></i>&nbsp;入札を開始する
       <% end %>
       </li>
       <li class="nav-item">
-      <%= link_to :sellers_tenders, class:"nav-link text-dark" do %>
+      <%= link_to :sellers_tenders, class:"nav-link text-white" do %>
       <i class="fas fa-clipboard-list"></i>&nbsp;入札会一覧
       <% end %>
       </li>
       <li class="nav-item">
-      <%= link_to :sellers_tenders, class:"nav-link text-dark" do %>
+      <%= link_to :sellers_tenders, class:"nav-link text-white" do %>
       <i class="fas fa-truck"></i>&nbsp;商品引取状況
       <% end %>
       </li>
       <li class="nav-item">
-      <%= link_to "#", class:"nav-link text-dark" do %>
+      <%= link_to "#", class:"nav-link text-white" do %>
       <i class="fas fa-yen-sign"></i>&nbsp;入金関連
       <% end %>
       </li>
       <li class="nav-item">
-      <%= link_to sellers_account_info_path, class:"nav-link text-dark" do %>
+      <%= link_to sellers_account_info_path, class:"nav-link text-white" do %>
       <i class="fas fa-user-circle"></i>&nbsp;アカウント
       <% end %>
       </li>

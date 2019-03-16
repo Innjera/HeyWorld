@@ -9,4 +9,7 @@
 .sidebar-sticky {
   height: 100vh;
   overflow-y: auto; /* 縦Scrolln */
+  .hover-dark li a:hover{
+    background-color: black !important;
+  }
 }
