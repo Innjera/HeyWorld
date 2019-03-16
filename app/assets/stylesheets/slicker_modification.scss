@@ -1,3 +1,42 @@
+// Slickerではなく自力
+.gallery-seller {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background: #ededed;
+  border-radius: 5px;
+  line-height: 0;
+  .main-image {
+    text-align: center;
+  }
+  .main-image > img {
+    max-height: 15rem;
+    max-width: 100%;
+  }
+}
+
+.thumbnails-seller {
+  margin: 10px 0 0 0;
+  img {
+    width: auto;
+    // height: 100%;
+    max-height: 5rem;
+    margin: auto;
+    padding: 0;
+  }
+  li {
+    float: left;
+    list-style: none;
+    margin: 0 2px 0 0;
+    border: 2px solid #ededed;
+  }
+  li.selected {
+    border: 2px solid #8ac2d0;
+  }
+}
+
+
+// 以下Slicker
 #slider,#thumbnail_slider{
   width: 300px;
   margin: 0 auto 10px;

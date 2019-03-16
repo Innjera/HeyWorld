@@ -28,3 +28,20 @@ $(document).on("turbolinks:load", function(){
   //   $(thumbnailSlider).slick("slickGoTo",index,false);
   //  });
 });
+
+$(document).on("turbolinks:load", function(){
+  $('.thumbnails-seller').on('click', 'li > a', function(event){
+    event.preventDefault();
+    var $this = $(this);
+
+    //ボタンのアピアアンス変更
+    $this.parent().siblings()
+    .removeClass('selected')
+    .end()
+    .addClass('selected');
+
+    // イメージ切り替え
+    var imagePath = $this.data('img');
+    $('.gallery-seller .main-image img').attr('src', imagePath);
+  })
+});

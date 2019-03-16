@@ -99,11 +99,24 @@
 
       </div>
 
-      <div class="gallery-seller mx-2 mb-2">
+      <div class="gallery-seller">
+        <div class="main-image">
+          <%= image_tag("parts_example.JPG", alt: "parts_example") %>
+        </div>
         <ul class="thumbnails-seller clear">
-          <li class="selected-seller">
-            <%= link_to "#" do %>
-            <%= image_tag("parts_example.JPG", alt: "parts_example", size: "238x180") %>
+          <li class="selected">
+            <%= link_to "#", "data-img":image_url("parts_example.JPG") do %>
+            <%= image_tag("parts_example.JPG", alt: "parts_example") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "#", "data-img":image_url("parts_example_2.JPG") do %>
+            <%= image_tag("parts_example_2.JPG", alt: "parts_example") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "#", "data-img":image_url("parts_example_3.JPG")  do %>
+            <%= image_tag("parts_example_3.JPG", alt: "parts_example") %>
             <% end %>
           </li>
         </ul>
