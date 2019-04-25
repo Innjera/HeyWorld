@@ -46,9 +46,11 @@
         <div class="col-lg-10 mx-auto">
           <h1>
             <strong>
-              Tech x Africa x
+              Auto After Market
               <br>
-              Used Auto Parts
+              x
+              <br>
+              Tech
             </strong>
           </h1>
           <hr class="corporate-green">
@@ -56,8 +58,6 @@
         <div class="col-lg-8 mx-auto">
           <h2 class="text-faded mb-5">
             <%= t('corporate.toptext') %>
-            <br>
-            <%= t('corporate.toptext2') %>
           </h2>
           <%= link_to "#{t('corporate.findoutmore')}", "#about", class:"btn btn-corporate btn-corporate-green btn-corporate-xl js-scroll-trigger" %>
         </div>
@@ -73,7 +73,7 @@
             Mission
           </h2>
           <hr class="corporate-light my-4">
-          <p class="text-faded mb-4">
+          <h4 class="text-faded mb-4">
             <%= t('corporate.mission1')%>
             <br><br>
             <%= t('corporate.mission2')%>
@@ -83,7 +83,7 @@
             <%= t('corporate.mission4')%>
             <br><br>
             <%= t('corporate.mission5')%>
-          </p>
+          </h4>
           <%= link_to "#{t('corporate.product')}", "#services", class:"btn btn-corporate btn-light btn-corporate-xl js-scroll-trigger" %>
         </div>
       </div>
@@ -95,9 +95,7 @@
       <div class="row">
         <div class="col-lg-12 text-center">
           <h2 class="section-heading">
-            自社専用オンライン入札システム
-            <br>
-            - SaaS/クラウドベース -
+            Under Preparation!!
           </h2>
           <hr class="my-4 corporate-green">
         </div>
@@ -109,25 +107,23 @@
           <div class="service-box mt-5 mx-auto">
             <i class="fas fa-4x fa-car-alt text-corporate-green mb-3 sr-icon-2"></i>
             <h3 class="mb-3">
-              簡単・安価に専用の
-              <br>
-              オンライン入札を開催
+              Coming soon!
             </h3>
             <p class="text-muted mb-0">
-              インターネットを利用して、自動車解体会社・中古パーツ会社様も簡単に自社単独の入札会を開催できます。
+              <i class="fas fa-laptop-code"></i>
+              Now coding.....!
             </p>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 text-center">
           <div class="service-box mt-5 mx-auto">
-            <i class="fas fa-cloud fa-4x text-corporate-green mb-3 sr-icon-1"></i>
+            <i class="fas fa-tools fa-4x text-corporate-green mb-3 "></i>
             <h3 class="mb-3">
-              SaaS/クラウドベース
+              Wait for a while!
             </h3>
             <p class="text-muted mb-0">
-              月額/販売実績ベースの安価な料金設定。
-              <br>
-              クラウドベースだから、常に最新のソフトウェアにアップデートされます。
+              <i class="far fa-grin-squint"></i>
+              Now coding.....!
             </p>
           </div>
         </div>
@@ -135,19 +131,19 @@
           <div class="service-box mt-5 mx-auto">
             <i class="fas fa-4x fa-clipboard-list text-corporate-green mb-3 sr-icon-3"></i>
             <h3 class="mb-3">
-              アフリカ市場開拓
+              Soon to launch!
             </h3>
             <p class="text-muted mb-0">
-              多数の外国人バイヤーと接続し、販売先の多角化と売上増加を実現。
-              アフリカ市場への直接輸出やマーケット調査を含め、
-              総合商社にてアフリカ市場のビジネスで経験を積んだメンバーが
-              支援いたします。
+              <i class="fas fa-running"></i>
+              Rushing.....!
             </p>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <% if false %>
 
   <section class="p-0" id="portfolio">
     <div class="container-fluid p-0">
@@ -203,6 +199,8 @@
     </div>
   </section>
 
+  <% end %>
+
   <!-- Team -->
   <section class="bg-light" id="team">
     <div class="container">
@@ -243,8 +241,7 @@
           </div>
         </div>
 
-        <% if false %>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
           <div class="team-member">
             <%= image_tag "team/maki.jpeg", class:"mx-auto rounded-circle"  %>
             <h4><%= t('corporate.makichimura')%></h4>
@@ -262,6 +259,11 @@
                 <i class="fab fa-blogger-b"></i>
                 <% end %>
               </li>
+              <li class="list-inline-item">
+                <%= link_to "https://www.linkedin.com/in/maki-chimura/", target:["_blank"] do %>
+                <i class="fab fa-linkedin-in"></i>
+                <% end %>
+              </li>
             </ul>
           </div>
           <div class="text-center">
@@ -270,28 +272,7 @@
             </p>
           </div>
         </div>
-        <% end %>
 
-        <div class="col-sm-6">
-          <div class="team-member">
-            <%= image_tag "team/pt.JPG", class:"mx-auto rounded-circle"  %>
-            <h4>Patrick Chibilige</h4>
-            <p class="text-muted">Chief in Uganda</p>
-            <ul class="list-inline social-buttons">
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-whatsapp"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="text-center">
-            <p>
-              <%= t('corporate.profileofpatrick')%>
-          </p>
-          </div>
-
-        </div>
       </div>
     </div>
   </section>
@@ -330,7 +311,7 @@
           <br>
           <h4>
             <ul style="list-style-type: disc">
-              <li class="my-2">Ruby, Ruby on Rails, Python</li>
+              <li class="my-2">Ruby, Ruby on Rails</li>
               <li class="my-2">Github</li>
               <li class="my-2">AWS</li>
             </ul>
