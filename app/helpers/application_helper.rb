@@ -14,7 +14,8 @@ module ApplicationHelper
     title = options[:title]
     description = options[:description]
     keywords = options[:keywords]
-    image = options[:image].presence || image_url('portfolio/thumbnails/market.JPG')
+    # image = options[:image].presence || image_url('heyworld.png')
+    image = image_url('heyworld.png')
 
     configs = {
       separator: '|',
