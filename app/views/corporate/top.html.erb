@@ -1,3 +1,13 @@
+<!-- topへ戻るボタン -->
+<div id="return-top">
+  <span class="return-top-icon">
+    <%= link_to "#index", class:"text-white" do %>
+    <i class="fas fa-arrow-up"></i>
+    <% end %>
+  </span>
+</div>
+<!-- topへ戻るボタン -->
+
 <% assign_meta_tags title: t("meta_tags.defaults.title"),
                     description: t("meta_tags.defaults.description"),
                     keywords: t("meta_tags.defaults.keywords") %>
@@ -91,6 +101,8 @@
   </section>
 
   <section id="services">
+
+    <% if false %>
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
@@ -141,65 +153,66 @@
         </div>
       </div>
     </div>
-  </section>
+    <% end %>
 
-  <% if false %>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">
+            Products & Services
+          </h2>
+          <hr class="my-4 corporate-green">
+        </div>
+      </div>
+    </div>
 
-  <section class="p-0" id="portfolio">
     <div class="container-fluid p-0">
       <div class="row no-gutters popup-gallery">
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="#">
-            <%=image_tag "portfolio/thumbnails/product.png", class:"img-fluid" %>
+        <div class="col-md-6 col-12">
+          <%= link_to "https://www.seibii.work/", class:"portfolio-box", target:["_blank"] do %>
+            <%=image_tag "portfolio/thumbnails/seibii_top.png", class:"img-fluid" %>
             <div class="portfolio-box-caption">
               <div class="portfolio-box-caption-content">
                 <div class="project-category text-faded">
-                  オンライン入札
+                  <h3><strong>Seibii（セイビー）</strong></h3>
                 </div>
                 <div class="project-name">
-                  現在、招待制にて運用を開始しています。
-                  詳細は、お問い合わせからご連絡ください。
+                  <p>
+                    オンライン、オンデマンドの出張自動車整備
+                  <br>
+                  ディーラーや整備工場に行く煩わしい時代は終わりです。
+                  国家資格を有するSeibiiの整備士が、いつでも・どこでも伺います。
+                  ディーラーと同等、ディーラーよりも安価と透明性のある価格を提供します。
+                  </p>
                 </div>
               </div>
             </div>
-          </a>
+          <% end %>
         </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="#">
-            <%=image_tag "portfolio/thumbnails/bid.png", class:"img-fluid" %>
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  オンライン入札
-                </div>
-                <div class="project-name">
-                  現在、招待制にて運用を開始しています。
-                  詳細は、お問い合わせからご連絡ください。
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="#">
+        <div class="col-md-6 col-12">
+          <%= mail_to "heyworld.from.japan@gmail.com", :subject => 'アフリカ市場調査に関する問い合わせ', class:"portfolio-box" do %>
             <%=image_tag "portfolio/thumbnails/market.JPG", class:"img-fluid" %>
             <div class="portfolio-box-caption">
               <div class="portfolio-box-caption-content">
                 <div class="project-category text-faded">
-                  アフリカ市場調査・開拓
+                  <h3><strong>アフリカ市場調査・開拓</strong></h3>
                 </div>
                 <div class="project-name">
-                  自動車マーケットに限らず、対応可能。
+                  <p>
+                  アフリカへの深い知見と繋がり、総合商社での実務実績（アフリカビジネス）を有する元総合商社勤務の2人が対応します。
+                  基本的にどんな調査でも対応可能です。まずはご連絡ください。
+                  </p>
                 </div>
               </div>
             </div>
-          </a>
+          <% end %>
         </div>
       </div>
     </div>
+
+
   </section>
 
-  <% end %>
 
   <!-- Team -->
   <section class="bg-light" id="team">
@@ -249,7 +262,7 @@
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <li class="list-inline-item">
-                  <%= link_to "https://twitter.com/NoteCrime", target:["_blank"] do %>
+                  <%= link_to "https://twitter.com/mekki_1987", target:["_blank"] do %>
                   <i class="fab fa-twitter"></i>
                   <% end %>
                 </li>
